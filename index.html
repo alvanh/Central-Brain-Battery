@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Central Brain Battery</title>
+  <style>
+    :root { --bg:#f6f7fb; --card:#fff; --text:#111827; --muted:#6b7280; --line:#e5e7eb; --dark:#111827; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background:var(--bg); color:var(--text); }
+    .wrap { max-width:1180px; margin:0 auto; padding:28px; }
+    header { display:flex; justify-content:space-between; gap:20px; align-items:flex-start; margin-bottom:24px; }
+    h1 { font-size:42px; line-height:1.05; margin:6px 0 10px; letter-spacing:-1.2px; }
+    .kicker, .muted { color:var(--muted); }
+    .kicker { font-weight:600; font-size:14px; }
+    button { border:1px solid var(--line); background:#fff; border-radius:14px; padding:10px 14px; cursor:pointer; font-weight:600; }
+    .grid { display:grid; gap:16px; }
+    .metrics { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .main { grid-template-columns: 1fr 2fr; margin-top:16px; }
+    .batteries { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:22px; padding:22px; box-shadow:0 1px 2px rgba(0,0,0,.04); }
+    .label { color:var(--muted); font-size:14px; }
+    .value { font-size:32px; font-weight:750; margin-top:8px; letter-spacing:-.5px; }
+    .small { font-size:12px; color:var(--muted); margin-top:8px; }
+    .row { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+    .pill { background:#f3f4f6; border-radius:999px; padding:6px 10px; font-size:12px; font-weight:700; color:#374151; }
+    .bar { height:12px; border-radius:999px; background:#eef0f4; overflow:hidden; margin-top:14px; }
+    .bar > div { height:100%; background:var(--dark); border-radius:999px; }
+    .two { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:18px; }
+    .subcard { background:#f9fafb; border-radius:18px; padding:16px; }
+    .flow .row { background:#f9fafb; border-radius:16px; padding:14px; margin-top:10px; }
+    @media (max-width:900px) { .metrics, .main, .batteries { grid-template-columns:1fr; } header { flex-direction:column; } h1 { font-size:34px; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <div class="kicker">Central Brain Battery</div>
+        <h1>Tableau de bord énergie</h1>
+        <div class="muted">Production solaire, consommation maison, réseau et état des batteries.</div>
+      </div>
+      <button onclick="refresh()">Actualiser</button>
+    </header>
+
+    <section class="grid metrics">
+      <div class="card"><div class="label">Production solaire</div><div class="value" id="solar">—</div><div class="small">Homey / Shelly</div></div>
+      <div class="card"><div class="label">Consommation maison</div><div class="value" id="house">—</div><div class="small">Shelly Pro / Homey</div></div>
+      <div class="card"><div class="label">Réseau</div><div class="value" id="grid">—</div><div class="small">Import positif / injection négative</div></div>
+      <div class="card"><div class="label">Puissance batteries</div><div class="value" id="batPower">—</div><div class="small" id="batPowerSub">—</div></div>
+    </section>
+
+    <section class="grid main">
+      <div class="card flow">
+        <div class="row"><strong>Flux instantané</strong><span class="pill" id="time">—</span></div>
+        <div class="row"><span>Solaire</span><strong id="flowSolar">—</strong></div>
+        <div class="row"><span>Maison</span><strong id="flowHouse">—</strong></div>
+        <div class="row"><span>Autoconsommé</span><strong id="selfUse">—</strong></div>
+        <div class="row"><span>Réseau</span><strong id="flowGrid">—</strong></div>
+      </div>
+      <div class="grid batteries" id="batteries"></div>
+    </section>
+  </div>
+
+<script>
+const MODE_LABELS = {
+  self_consumption: "Autoconsommation",
+  manual_charge: "Charge manuelle",
+  manual_discharge: "Décharge manuelle",
+  standby: "Attente",
+  forced_grid_charge: "Charge réseau forcée",
+  export_limit: "Limitation injection",
+  unknown: "Inconnu"
+};
+
+function fakeData() {
+  const v = Math.round((Math.random() - 0.5) * 450);
+  return {
+    updatedAt: new Date(),
+    solarW: Math.max(0, 4800 + v),
+    houseW: Math.max(0, 3150 - Math.round(v / 2)),
+    gridW: -720 + Math.round(v / 3),
+    batteries: [
+      { name:"Batterie 1", soc:74 + Math.round(Math.random()*2), powerW:-960 + Math.round((Math.random()-.5)*140), mode:"self_consumption", temp:27, kwh:3.8, cap:5.12 },
+      { name:"Batterie 2", soc:41 - Math.round(Math.random()*2), powerW:420 + Math.round((Math.random()-.5)*140), mode:"manual_discharge", temp:29, kwh:2.1, cap:5.12 }
+    ]
+  };
+}
+
+function fmtW(w) {
+  const abs = Math.abs(w);
+  return abs >= 1000 ? (w/1000).toFixed(2) + " kW" : Math.round(w) + " W";
+}
+
+function refresh() {
+  const d = fakeData();
+  const batteryTotal = d.batteries.reduce((s,b)=>s+b.powerW,0);
+  const gridText = d.gridW < 0 ? "Injection " + fmtW(Math.abs(d.gridW)) : "Import " + fmtW(d.gridW);
+  document.getElementById("solar").textContent = fmtW(d.solarW);
+  document.getElementById("house").textContent = fmtW(d.houseW);
+  document.getElementById("grid").textContent = gridText;
+  document.getElementById("batPower").textContent = fmtW(Math.abs(batteryTotal));
+  document.getElementById("batPowerSub").textContent = batteryTotal < 0 ? "Charge globale" : "Décharge globale";
+  document.getElementById("flowSolar").textContent = fmtW(d.solarW);
+  document.getElementById("flowHouse").textContent = fmtW(d.houseW);
+  document.getElementById("selfUse").textContent = fmtW(Math.min(d.solarW, d.houseW));
+  document.getElementById("flowGrid").textContent = gridText;
+  document.getElementById("time").textContent = d.updatedAt.toLocaleTimeString("fr-FR");
+
+  document.getElementById("batteries").innerHTML = d.batteries.map(b => {
+    const status = b.powerW < -20 ? "En charge" : b.powerW > 20 ? "En décharge" : "Stable";
+    const sens = b.powerW < 0 ? "Charge" : b.powerW > 0 ? "Décharge" : "Repos";
+    return `
+      <div class="card">
+        <div class="row"><strong>${b.name}</strong><span class="pill">${status}</span></div>
+        <div class="small">Mode : ${MODE_LABELS[b.mode] || MODE_LABELS.unknown}</div>
+        <div class="row" style="margin-top:18px;"><div class="value">${b.soc}%</div><div class="small">${b.kwh} / ${b.cap} kWh</div></div>
+        <div class="bar"><div style="width:${b.soc}%"></div></div>
+        <div class="two">
+          <div class="subcard"><div class="label">Puissance</div><div class="value" style="font-size:24px">${fmtW(Math.abs(b.powerW))}</div><div class="small">${sens}</div></div>
+          <div class="subcard"><div class="label">Température</div><div class="value" style="font-size:24px">${b.temp} °C</div><div class="small">BMS</div></div>
+        </div>
+      </div>`;
+  }).join("");
+}
+refresh();
+setInterval(refresh, 5000);
+</script>
+</body>
+</html>
