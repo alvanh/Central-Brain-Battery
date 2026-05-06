@@ -59,8 +59,21 @@ async function fetchLiveData(){
   return json.data;
 }
 function fmtW(w){if(w===null||w===undefined||isNaN(w))return "—";const a=Math.abs(w);return a>=1000?(w/1000).toFixed(2)+" kW":Math.round(w)+" W"}
-function labelDirection(d){return d==="CHARGING"?"En charge":d==="DISCHARGING"?"En décharge":d==="IDLE"?"Attente":"Inconnu"}
-function modeLabel(m){return m==="charge"?"Charge":m==="decharge"?"Décharge":m==="attente"?"Attente":"Inconnu"}
+function labelDirection(d){
+  return d==="CHARGING" ? "En charge" :
+         d==="DISCHARGING" ? "En décharge" :
+         d==="IDLE" ? "Attente" :
+         d==="STALE" ? "Donnée périmée" :
+         "Inconnu";
+}
+
+function modeLabel(m){
+  return m==="charge" ? "Charge" :
+         m==="decharge" ? "Décharge" :
+         m==="attente" ? "Attente" :
+         m==="donnee_perimee" ? "Périmée" :
+         "Inconnu";
+}
 async function refresh(){
  try{
   const d=await fetchLiveData();
