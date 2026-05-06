@@ -1,57 +1,34 @@
-const { getStore } = require("@netlify/blobs");
+let latestData = {
+  updatedAt: null
+};
 
-function getBlobStore() {
-  return getStore({
-    name: "central-brain-battery",
-    siteID: process.env.NETLIFY_SITE_ID,
-    token: process.env.NETLIFY_BLOBS_TOKEN
-  });
-}
+exports.handler = async (event) => {
 
-exports.handler = async function(event) {
-  try {
-    const store = getBlobStore();
-
-    if (event.httpMethod === "POST") {
-      const data = JSON.parse(event.body || "{}");
-
-      await store.setJSON("latest", {
-        ...data,
-        receivedAt: new Date().toISOString()
-      });
+  // SAVE
+  if (event.httpMethod === 'POST') {
+    try {
+      latestData = JSON.parse(event.body);
 
       return {
         statusCode: 200,
-        body: JSON.stringify({ ok: true })
-      };
-    }
-
-    if (event.httpMethod === "GET") {
-      const latest = await store.get("latest", { type: "json" });
-
-      return {
-        statusCode: 200,
-        headers: { "Cache-Control": "no-store" },
         body: JSON.stringify({
-          ok: !!latest,
-          data: latest || null,
-          message: latest ? undefined : "Aucune donnée"
+          success: true
+        })
+      };
+
+    } catch (e) {
+      return {
+        statusCode: 500,
+        body: JSON.stringify({
+          error: e.message
         })
       };
     }
-
-    return {
-      statusCode: 405,
-      body: JSON.stringify({ ok: false, error: "Méthode non autorisée" })
-    };
-
-  } catch (err) {
-    return {
-      statusCode: 500,
-      body: JSON.stringify({
-        ok: false,
-        error: err.message
-      })
-    };
   }
+
+  // READ
+  return {
+    statusCode: 200,
+    body: JSON.stringify(latestData)
+  };
 };
