@@ -1,34 +1,36 @@
-let latestData = {
-  updatedAt: null
-};
+let latestData = null;
 
 exports.handler = async (event) => {
-
-  // SAVE
   if (event.httpMethod === 'POST') {
-    try {
-      latestData = JSON.parse(event.body);
+    latestData = JSON.parse(event.body || '{}');
 
-      return {
-        statusCode: 200,
-        body: JSON.stringify({
-          success: true
-        })
-      };
-
-    } catch (e) {
-      return {
-        statusCode: 500,
-        body: JSON.stringify({
-          error: e.message
-        })
-      };
-    }
+    return {
+      statusCode: 200,
+      body: JSON.stringify({
+        ok: true,
+        success: true
+      })
+    };
   }
 
-  // READ
+  if (!latestData) {
+    return {
+      statusCode: 200,
+      body: JSON.stringify({
+        ok: false,
+        message: 'Aucune donnée'
+      })
+    };
+  }
+
   return {
     statusCode: 200,
-    body: JSON.stringify(latestData)
+    headers: {
+      'Cache-Control': 'no-store'
+    },
+    body: JSON.stringify({
+      ok: true,
+      data: latestData
+    })
   };
 };
