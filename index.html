@@ -93,7 +93,7 @@ async function refresh(){
   document.getElementById("received").textContent=d.receivedAt ? new Date(d.receivedAt).toLocaleTimeString("fr-FR",{hour:"2-digit",minute:"2-digit"}) : "—";
   document.getElementById("batteries").innerHTML=d.batteries.map(b=>`
    <div class="card">
-    <div class="row"><strong>${b.name}</strong><span class="pill">${labelDirection(b.direction)}</span></div>
+    <div class="row"><strong>${b.name}</strong><span class="pill">${<span class="pill ${b.stale ? 'warn' : ''}">${labelDirection(b.direction)}</span>(b.direction)}</span></div>
     <div class="small">Mode : ${modeLabel(b.mode)} ${b.online===false ? "• hors ligne" : ""}</div>
     <div class="row" style="margin-top:14px"><div class="value">${b.soc ?? "—"}%</div><div class="small">SoC Homey</div></div>
     <div class="bar"><div style="width:${Math.max(0,Math.min(100,b.soc||0))}%"></div></div>
