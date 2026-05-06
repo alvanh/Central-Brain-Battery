@@ -1,18 +1,19 @@
 const { getStore } = require("@netlify/blobs");
 
+function getBlobStore() {
+  return getStore({
+    name: "central-brain-battery",
+    siteID: process.env.NETLIFY_SITE_ID,
+    token: process.env.NETLIFY_BLOBS_TOKEN
+  });
+}
+
 exports.handler = async function(event) {
-  const store = getStore("central-brain-battery");
+  try {
+    const store = getBlobStore();
 
-  if (event.httpMethod === "POST") {
-    try {
+    if (event.httpMethod === "POST") {
       const data = JSON.parse(event.body || "{}");
-
-      if (!data.batteries || !Array.isArray(data.batteries)) {
-        return {
-          statusCode: 400,
-          body: JSON.stringify({ ok: false, error: "JSON invalide : batteries manquant" })
-        };
-      }
 
       await store.setJSON("latest", {
         ...data,
@@ -23,41 +24,34 @@ exports.handler = async function(event) {
         statusCode: 200,
         body: JSON.stringify({ ok: true })
       };
-    } catch (err) {
-      return {
-        statusCode: 500,
-        body: JSON.stringify({ ok: false, error: err.message })
-      };
     }
-  }
 
-  if (event.httpMethod === "GET") {
-    const latest = await store.get("latest", { type: "json" });
+    if (event.httpMethod === "GET") {
+      const latest = await store.get("latest", { type: "json" });
 
-    if (!latest) {
       return {
         statusCode: 200,
+        headers: { "Cache-Control": "no-store" },
         body: JSON.stringify({
-          ok: false,
-          message: "Aucune donnée Homey reçue pour l’instant"
+          ok: !!latest,
+          data: latest || null,
+          message: latest ? undefined : "Aucune donnée"
         })
       };
     }
 
     return {
-      statusCode: 200,
-      headers: {
-        "Cache-Control": "no-store"
-      },
+      statusCode: 405,
+      body: JSON.stringify({ ok: false, error: "Méthode non autorisée" })
+    };
+
+  } catch (err) {
+    return {
+      statusCode: 500,
       body: JSON.stringify({
-        ok: true,
-        data: latest
+        ok: false,
+        error: err.message
       })
     };
   }
-
-  return {
-    statusCode: 405,
-    body: JSON.stringify({ ok: false, error: "Méthode non autorisée" })
-  };
 };
