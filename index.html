@@ -181,11 +181,10 @@ async function loadData(){
 
   try{
 
-    const response = await fetch('/.netlify/functions/energy');
+    const response = await fetch('/.netlify/functions/energy', { cache: 'no-store' });
 
-    const json = await response.json();
-
-    const data = json.data;
+const json = await response.json();
+const data = json.data;
 
     document.getElementById('solarPower').innerText =
       `${data.solar.productionW} W`;
