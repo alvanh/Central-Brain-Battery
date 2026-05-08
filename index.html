@@ -1,441 +1,398 @@
-<!doctype html>
+# Fuveau Energie — Fichiers à uploader
+
+---
+
+# 1. index.html
+
+Créer un fichier nommé :
+
+```text
+index.html
+```
+
+Puis coller ce contenu :
+
+```html
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<meta name="theme-color" content="#0f172a" />
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-title" content="Central Brain" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Homey Energy Dashboard</title>
 
-<title>Central Brain Battery Live</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+    }
 
-<style>
-:root{
-  --bg:#eef2f7;
-  --card:#fff;
-  --text:#0f172a;
-  --muted:#64748b;
-  --line:#e2e8f0;
-  --dark:#0f172a;
-  --soft:#f8fafc;
-}
+    body {
+      background: #0b0b0d;
+      color: white;
+      padding: 20px;
+    }
 
-*{box-sizing:border-box}
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
 
-body{
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font-family:-apple-system,BlinkMacSystemFont,sans-serif;
-}
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
 
-.wrap{
-  max-width:1120px;
-  margin:auto;
-  padding:18px;
-  padding-top:calc(14px + env(safe-area-inset-top));
-}
+    .card {
+      background: #17181c;
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
 
-header{
-  position:sticky;
-  top:0;
-  z-index:2;
-  margin:-18px -18px 14px;
-  padding:calc(14px + env(safe-area-inset-top)) 18px 12px;
-  background:var(--bg);
-}
+    .wide {
+      grid-column: span 2;
+    }
 
-.kicker{
-  font-size:12px;
-  color:var(--muted);
-  font-weight:800;
-  letter-spacing:-.2px;
-}
+    .label {
+      opacity: 0.7;
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
 
-.title{
-  font-size:26px;
-  font-weight:850;
-  letter-spacing:-.7px;
-}
+    .value {
+      font-size: 34px;
+      font-weight: 700;
+    }
 
-.source{
-  color:var(--muted);
-  font-size:14px;
-  margin-top:4px;
-}
+    .sub {
+      margin-top: 8px;
+      opacity: 0.8;
+      font-size: 13px;
+    }
 
-button{
-  border:1px solid var(--line);
-  background:#fff;
-  border-radius:15px;
-  padding:9px 12px;
-  font-weight:800;
-  cursor:pointer;
-}
+    .battery-bar {
+      width: 100%;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      overflow: hidden;
+      margin-top: 14px;
+    }
 
-.grid{
-  display:grid;
-  gap:12px;
-}
+    .battery-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg,#00ff88,#00b894);
+    }
 
-.metrics{
-  grid-template-columns:repeat(4,1fr);
-}
+    .status {
+      margin-top: 10px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
 
-.main{
-  grid-template-columns:1fr 2fr;
-  margin-top:12px;
-}
+    .weather {
+      font-size: 38px;
+      margin-bottom: 10px;
+      filter: grayscale(1) brightness(4);
+    }
 
-.card{
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:22px;
-  padding:16px;
-  box-shadow:0 1px 2px rgba(15,23,42,.03);
-}
+    @media (max-width: 700px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
 
-.label{
-  font-size:12px;
-  color:var(--muted);
-}
-
-.value{
-  font-size:25px;
-  font-weight:850;
-  margin-top:6px;
-}
-
-.small{
-  font-size:12px;
-  color:var(--muted);
-}
-
-.row{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-  padding:14px;
-  background:#f1f5f9;
-  border-radius:14px;
-  margin-top:12px;
-}
-
-.bar{
-  height:12px;
-  border-radius:999px;
-  background:#eef2f7;
-  overflow:hidden;
-  margin-top:12px;
-}
-
-.bar>div{
-  height:100%;
-  background:var(--dark);
-}
-
-.two{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-  margin-top:14px;
-}
-
-.subcard{
-  background:var(--soft);
-  border-radius:17px;
-  padding:12px;
-}
-
-.pill{
-  background:#f1f5f9;
-  border-radius:999px;
-  padding:6px 10px;
-  font-size:12px;
-  font-weight:800;
-}
-
-.warn{
-  background:#fde7ea;
-  color:#943412;
-}
-
-@media(max-width:760px){
-  .metrics{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .main{
-    grid-template-columns:1fr;
-  }
-}
-</style>
+      .wide {
+        grid-column: span 1;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-<div class="wrap">
+  <h1>Homey Energy Dashboard</h1>
 
-<header>
-  <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
-    <div>
-      <div class="kicker">Central Brain Battery</div>
-      <div class="title">Énergie maison</div>
-      <div class="source" id="source">Connexion Homey...</div>
+  <div class="grid">
+
+    <div class="card">
+      <div class="label">Aujourd’hui</div>
+      <div class="weather" id="weatherTodayIcon">☁</div>
+      <div class="value" id="tempoToday">BLEU</div>
+      <div class="sub" id="weatherTodayText">Partiellement nuageux</div>
     </div>
 
-    <button onclick="refresh()">Actualiser</button>
-  </div>
-</header>
-
-<section class="grid metrics">
-
-  <div class="card">
-    <div class="label">Solaire</div>
-    <div class="value" id="solar">—</div>
-    <div class="small">Homey</div>
-  </div>
-
-  <div class="card">
-    <div class="label">Maison</div>
-    <div class="value" id="house">—</div>
-    <div class="small">À ajouter ensuite</div>
-  </div>
-
-  <div class="card">
-    <div class="label">Réseau</div>
-    <div class="value" id="grid">—</div>
-    <div class="small">Shelly Pro 3EM</div>
-  </div>
-
-  <div class="card">
-    <div class="label">Batteries</div>
-    <div class="value" id="batPower">—</div>
-    <div class="small" id="batPowerSub">—</div>
-  </div>
-
-</section>
-
-<section class="grid main">
-
-  <div class="card flow">
-    <div class="row">
-      <strong>Flux instantané</strong>
-      <span class="pill" id="time">—</span>
+    <div class="card">
+      <div class="label">Demain</div>
+      <div class="weather" id="weatherTomorrowIcon">☀</div>
+      <div class="value" id="tempoTomorrow">BLEU</div>
+      <div class="sub" id="weatherTomorrowText">Ensoleillé</div>
     </div>
 
-    <div class="row">
-      <span>Solaire</span>
-      <strong id="flowSolar">—</strong>
+    <div class="card wide">
+      <div class="label">Production solaire</div>
+      <div class="value" id="solarPower">0 W</div>
+      <div class="sub">Production actuelle</div>
     </div>
 
-    <div class="row">
-      <span>Réseau</span>
-      <strong id="flowGrid">—</strong>
+    <div class="card wide">
+      <div class="label">Réseau</div>
+      <div class="value" id="gridPower">0 W</div>
+      <div class="sub">Shelly Pro 3EM</div>
     </div>
 
-    <div class="row">
-      <span>Total batteries</span>
-      <strong id="flowBats">—</strong>
+    <div class="card">
+      <div class="label">Batterie 1</div>
+      <div class="value" id="bat1soc">0%</div>
+      <div class="status" id="bat1status">IDLE</div>
+      <div class="battery-bar">
+        <div class="battery-fill" id="bat1fill" style="width:0%"></div>
+      </div>
     </div>
 
-    <div class="row">
-      <span>Données reçues</span>
-      <strong id="received">—</strong>
+    <div class="card">
+      <div class="label">Batterie 2</div>
+      <div class="value" id="bat2soc">0%</div>
+      <div class="status" id="bat2status">IDLE</div>
+      <div class="battery-bar">
+        <div class="battery-fill" id="bat2fill" style="width:0%"></div>
+      </div>
     </div>
+
+    <div class="card">
+      <div class="label">Batterie 3</div>
+      <div class="value" id="bat3soc">0%</div>
+      <div class="status" id="bat3status">IDLE</div>
+      <div class="battery-bar">
+        <div class="battery-fill" id="bat3fill" style="width:0%"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="label">Batterie 4</div>
+      <div class="value" id="bat4soc">0%</div>
+      <div class="status" id="bat4status">IDLE</div>
+      <div class="battery-bar">
+        <div class="battery-fill" id="bat4fill" style="width:0%"></div>
+      </div>
+    </div>
+
   </div>
-
-  <div class="grid batteries" id="batteries"></div>
-
-</section>
-
-</div>
 
 <script>
+async function loadData() {
 
-async function fetchLiveData(){
-  const res = await fetch('/.netlify/functions/energy', {
-    cache:'no-store'
+  const response = await fetch('dashboard.json?t=' + Date.now());
+  const data = await response.json();
+
+  document.getElementById('tempoToday').innerText = data.tempo.today;
+  document.getElementById('tempoTomorrow').innerText = data.tempo.tomorrow;
+
+  document.getElementById('weatherTodayText').innerText = data.weather.today.description;
+  document.getElementById('weatherTomorrowText').innerText = data.weather.tomorrow.description;
+
+  document.getElementById('solarPower').innerText = data.solar + ' W';
+  document.getElementById('gridPower').innerText = data.grid + ' W';
+
+  data.batteries.forEach((bat, index) => {
+
+    const i = index + 1;
+
+    document.getElementById(`bat${i}soc`).innerText = bat.soc + '%';
+    document.getElementById(`bat${i}status`).innerText = bat.state;
+    document.getElementById(`bat${i}fill`).style.width = bat.soc + '%';
   });
-
-  const json = await res.json();
-
-  if(!json.ok){
-    throw new Error(json.message || json.error || 'Aucune donnée');
-  }
-
-  return json.data;
 }
 
-function fmtW(w){
-  if(w===null || w===undefined || isNaN(w)) return "—";
-
-  const a = Math.abs(w);
-
-  return a >= 1000
-    ? (a/1000).toFixed(2)+" kW"
-    : a.toFixed(0)+" W";
-}
-
-function labelDirection(d){
-  return d==="CHARGING" ? "En charge" :
-         d==="DISCHARGING" ? "En décharge" :
-         d==="IDLE" ? "Attente" :
-         d==="STALE" ? "Donnée périmée" :
-         "Inconnu";
-}
-
-function modeLabel(m){
-  return m==="charge" ? "Charge" :
-         m==="decharge" ? "Décharge" :
-         m==="attente" ? "Attente" :
-         m==="donnee_perimee" ? "Périmée" :
-         "Inconnu";
-}
-
-async function refresh(){
-
-  try{
-
-    const d = await fetchLiveData();
-
-    const batteryTotal =
-      d.totals?.batteryPowerW ??
-      d.batteries.reduce((s,b)=>s+(Number(b.powerW)||0),0);
-
-    const gridW = d.grid?.powerW || 0;
-
-    const gridText =
-      gridW < 0
-      ? "Injection "+fmtW(Math.abs(gridW))
-      : "Import "+fmtW(gridW);
-
-    document.getElementById("source").textContent =
-      "Source : "+(d.source || "Homey")+" • live";
-
-    document.getElementById("solar").textContent =
-      fmtW(d.solar?.productionW);
-
-    document.getElementById("house").textContent = "—";
-
-    document.getElementById("grid").textContent =
-      gridText;
-
-    document.getElementById("batPower").textContent =
-      fmtW(Math.abs(batteryTotal));
-
-    document.getElementById("batPowerSub").textContent =
-      batteryTotal < 0
-      ? "Charge globale"
-      : "Décharge globale";
-
-    document.getElementById("flowSolar").textContent =
-      fmtW(d.solar?.productionW);
-
-    document.getElementById("flowGrid").textContent =
-      gridText;
-
-    document.getElementById("flowBats").textContent =
-      fmtW(Math.abs(batteryTotal));
-
-    document.getElementById("time").textContent =
-      new Date(d.updatedAt).toLocaleTimeString("fr-FR",{
-        hour:"2-digit",
-        minute:"2-digit"
-      });
-
-    document.getElementById("received").textContent =
-      new Date(d.updatedAt).toLocaleTimeString("fr-FR");
-
-    document.getElementById("batteries").innerHTML =
-      d.batteries.map(b=>`
-
-      <div class="card">
-
-        <div class="row" style="margin-top:0">
-          <strong>${b.name}</strong>
-          <span class="pill ${b.stale ? 'warn' : ''}">
-            ${labelDirection(b.direction)}
-          </span>
-        </div>
-
-        <div class="small">
-          Mode : ${modeLabel(b.mode)}
-        </div>
-
-        <div class="row" style="margin-top:14px">
-
-          <div class="value">
-            ${b.soc ?? "—"}%
-          </div>
-
-          <div class="small">
-            SoC Homey
-          </div>
-
-        </div>
-
-        <div class="bar">
-          <div style="width:${Math.max(0,Math.min(100,b.soc || 0))}%"></div>
-        </div>
-
-        <div class="two">
-
-          <div class="subcard">
-            <div class="label">Puissance</div>
-
-            <div class="value" style="font-size:21px">
-              ${fmtW(Math.abs(b.powerW))}
-            </div>
-
-            <div class="small">
-              ${
-                b.direction==="CHARGING"
-                  ? "Négatif"
-                  : b.direction==="DISCHARGING"
-                  ? "Positif"
-                  : "Repos"
-              }
-            </div>
-          </div>
-
-          <div class="subcard">
-            <div class="label">État</div>
-
-            <div class="value" style="font-size:21px">
-              ${modeLabel(b.mode)}
-            </div>
-
-            <div class="small">
-              ${b.direction}
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
-    `).join("");
-
-  }catch(err){
-
-    document.getElementById("source").textContent =
-      "Erreur : "+err.message;
-
-    document.getElementById("batteries").innerHTML =
-      `<div class="card warn">
-        Aucune donnée Homey reçue.
-      </div>`;
-  }
-}
-
-refresh();
-
-setInterval(refresh,10000);
-
+loadData();
+setInterval(loadData, 10000);
 </script>
 
 </body>
 </html>
+```
+
+---
+
+# 2. dashboard.json
+
+Créer un fichier nommé :
+
+```text
+dashboard.json
+```
+
+Puis coller ceci pour les premiers tests :
+
+```json
+{
+  "tempo": {
+    "today": "BLEU",
+    "tomorrow": "BLEU"
+  },
+  "weather": {
+    "today": {
+      "description": "Partiellement nuageux"
+    },
+    "tomorrow": {
+      "description": "Risque de pluie"
+    }
+  },
+  "solar": 900,
+  "grid": -300,
+  "batteries": [
+    {
+      "soc": 96,
+      "state": "CHARGE"
+    },
+    {
+      "soc": 93,
+      "state": "DECHARGE"
+    },
+    {
+      "soc": 100,
+      "state": "IDLE"
+    },
+    {
+      "soc": 94,
+      "state": "DECHARGE"
+    }
+  ]
+}
+```
+
+---
+
+# 3. homey dashboard.js
+
+Créer un HomeyScript nommé :
+
+```text
+homey dashboard.js
+```
+
+Puis coller :
+
+```javascript
+const devices = await Homey.devices.getDevices();
+const logic = await Homey.logic.getVariables();
+
+function getDevice(id) {
+  return devices[id];
+}
+
+function getBatteryState(power) {
+
+  if (power > 100) return 'CHARGE';
+  if (power < -100) return 'DECHARGE';
+
+  return 'IDLE';
+}
+
+const BATTERIES = [
+  {
+    id: 'b2302309-a297-4732-9f9f-54aed7cb311f',
+    name: 'Batterie_1'
+  },
+  {
+    id: '0d3db87e-f2e2-42ee-818e-fe1eda72ea31',
+    name: 'Batterie_2'
+  },
+  {
+    id: 'fe7d4c65-1650-463f-b417-5431fb35bf1d',
+    name: 'Batterie_3'
+  },
+  {
+    id: '7cae1822-f159-4d81-a071-c078589fb74b',
+    name: 'Batterie_4'
+  }
+];
+
+const batteries = [];
+
+for (const battery of BATTERIES) {
+
+  const device = getDevice(battery.id);
+
+  const soc = device.capabilitiesObj.measure_battery?.value || 0;
+  const power = device.capabilitiesObj.measure_power_ongrid?.value || 0;
+
+  batteries.push({
+    soc,
+    power,
+    state: getBatteryState(power)
+  });
+}
+
+const tempo = getDevice('9a4727a2-0c1f-46be-8d79-6a39a7a0960b');
+
+const weatherToday = getDevice('b70c3da4-9984-46b6-9a1d-573ba62b097f');
+const weatherTomorrow = getDevice('ce82a85d-ddc2-4579-b1fe-8bd3f2919993');
+
+const shelly = getDevice('ddfe018e-5628-4a32-8aeb-07a9d8cc8f9d');
+
+const solarVariable = Object.values(logic).find(v => v.name === 'Production Solaire');
+
+const payload = {
+  tempo: {
+    today: tempo.capabilitiesObj.tempo_today.value,
+    tomorrow: tempo.capabilitiesObj.tempo_tomorrow.value
+  },
+
+  weather: {
+    today: {
+      description: weatherToday.capabilitiesObj.description.value
+    },
+    tomorrow: {
+      description: 'Prévisions demain'
+    }
+  },
+
+  solar: Math.round((solarVariable.value || 0) * 1000),
+
+  grid: Math.round(
+    shelly.capabilitiesObj.measure_power.value || 0
+  ),
+
+  batteries
+};
+
+console.log(JSON.stringify(payload, null, 2));
+
+return true;
+```
+
+---
+
+# 4. Déploiement
+
+## GitHub
+
+Uploader :
+
+```text
+index.html
+dashboard.json
+```
+
+---
+
+## Homey
+
+Créer le script :
+
+```text
+homey dashboard.js
+```
+
+---
+
+# 5. URL finale souhaitée
+
+```text
+fuveau-energie.netlify.app
+```
