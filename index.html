@@ -1,204 +1,218 @@
-const NETLIFY_URL = 'https://bejewelled-haupia-a9fa6c.netlify.app/.netlify/functions/energy';
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-const BATTERIES = {
-  batterie1: { id: 'b2302309-a297-4732-9f9f-54aed7cb311f', name: 'Batterie_1' },
-  batterie2: { id: '0d3db87e-f2e2-42ee-818e-fe1eda72ea31', name: 'Batterie_2' },
-  batterie3: { id: 'fe7d4c65-1650-463f-b417-5431fb35bf1d', name: 'Batterie_3' },
-  batterie4: { id: '7cae1822-f159-4d81-a071-c078589fb74b', name: 'Batterie_4' }
-};
+<title>Homey Energy Dashboard</title>
 
-const PRODUCTION_SOLAIRE_VAR_ID = '177acdbb-b770-41df-95a6-98a755840b96';
-const SHELLY_ID = 'ddfe018e-5628-4a32-8aeb-07a9d8cc8f9d';
-const EDF_TEMPO_ID = '9a4727a2-0c1f-46be-8d79-6a39a7a0960b';
-const WEATHER_TODAY_ID = 'b70c3da4-9984-46b6-9a1d-573ba62b097f';
-const WEATHER_TOMORROW_ID = 'ce82a85d-ddc2-4579-b1fe-8bd3f2919993';
-
-const STALE_AFTER_SEC = 120;
-const ACTIVE_POWER_THRESHOLD = 50;
-
-let allDevices = null;
-
-async function getAllDevices() {
-  if (!allDevices) allDevices = await Homey.devices.getDevices();
-  return allDevices;
+<style>
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+  background:#0f1115;
+  color:#fff;
 }
 
-async function getDeviceById(id) {
-  const devices = await getAllDevices();
-  return devices[id] || Object.values(devices).find(d => d.id === id) || null;
+.header{
+  padding:24px;
+  font-size:32px;
+  font-weight:700;
 }
 
-async function getProductionSolaire() {
-  try {
-    const variable = await Homey.logic.getVariable({ id: PRODUCTION_SOLAIRE_VAR_ID });
-    return Number(variable.value) || 0;
-  } catch (e) {
-    return 0;
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+  padding:20px;
+}
+
+.card{
+  background:#1b1f27;
+  border-radius:20px;
+  padding:20px;
+  box-shadow:0 4px 12px rgba(0,0,0,.25);
+}
+
+.card h2{
+  margin-top:0;
+  font-size:20px;
+}
+
+.value{
+  font-size:42px;
+  font-weight:700;
+  margin-top:10px;
+}
+
+.small{
+  opacity:.7;
+  margin-top:8px;
+}
+
+.batteries{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+  padding:20px;
+}
+
+.battery{
+  background:#1b1f27;
+  border-radius:20px;
+  padding:20px;
+}
+
+.bar{
+  width:100%;
+  height:14px;
+  background:#333;
+  border-radius:10px;
+  overflow:hidden;
+  margin-top:12px;
+}
+
+.fill{
+  height:100%;
+  background:#4ade80;
+}
+
+.status{
+  margin-top:10px;
+  font-weight:600;
+}
+
+.footer{
+  padding:20px;
+  opacity:.6;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  Homey Energy Dashboard
+</div>
+
+<div class="grid">
+
+  <div class="card">
+    <h2>☀️ Production Solaire</h2>
+    <div class="value" id="solarPower">--</div>
+    <div class="small">Production instantanée</div>
+  </div>
+
+  <div class="card">
+    <h2>⚡ Réseau / Shelly</h2>
+    <div class="value" id="gridPower">--</div>
+    <div class="small">Consommation réseau</div>
+  </div>
+
+  <div class="card">
+    <h2>🔋 Batteries Total</h2>
+    <div class="value" id="batteryTotal">--</div>
+    <div class="small">Charge / Décharge globale</div>
+  </div>
+
+  <div class="card">
+    <h2>🎨 EDF Tempo</h2>
+    <div class="value" id="tempoToday">--</div>
+    <div class="small" id="tempoTomorrow">--</div>
+  </div>
+
+</div>
+
+<div class="batteries" id="batteriesContainer"></div>
+
+<div class="footer" id="updatedAt">
+  Mise à jour...
+</div>
+
+<script>
+
+async function loadData(){
+
+  try{
+
+    const response = await fetch('/.netlify/functions/energy');
+    const data = await response.json();
+
+    document.getElementById('solarPower').innerText =
+      `${Math.round(data.solar.productionW)} W`;
+
+    document.getElementById('gridPower').innerText =
+      `${Math.round(data.grid.powerW)} W`;
+
+    document.getElementById('batteryTotal').innerText =
+      `${Math.round(data.totals.batteryPowerW)} W`;
+
+    document.getElementById('tempoToday').innerText =
+      data.tempo.today;
+
+    document.getElementById('tempoTomorrow').innerText =
+      `Demain : ${data.tempo.tomorrow}`;
+
+    document.getElementById('updatedAt').innerText =
+      `Dernière mise à jour : ${new Date(data.updatedAt).toLocaleString()}`;
+
+    const container = document.getElementById('batteriesContainer');
+
+    container.innerHTML = '';
+
+    data.batteries.forEach(battery => {
+
+      const percent = battery.soc || 0;
+
+      let state = 'Attente';
+
+      if(battery.direction === 'CHARGING')
+        state = 'Charge';
+
+      if(battery.direction === 'DISCHARGING')
+        state = 'Décharge';
+
+      if(battery.direction === 'STALE')
+        state = 'Données périmées';
+
+      container.innerHTML += `
+        <div class="battery">
+          <h2>${battery.homeyName}</h2>
+
+          <div class="value">
+            ${percent}%
+          </div>
+
+          <div class="bar">
+            <div class="fill" style="width:${percent}%"></div>
+          </div>
+
+          <div class="status">
+            ${state}
+          </div>
+
+          <div class="small">
+            ${battery.powerW} W
+          </div>
+
+          <div class="small">
+            ${battery.temperatureC}°C
+          </div>
+
+        </div>
+      `;
+    });
+
+  }catch(err){
+    console.error(err);
   }
 }
 
-function getCap(device, cap, fallback = null) {
-  return device?.capabilitiesObj?.[cap]?.value ?? fallback;
-}
+loadData();
 
-function weatherIconFromData(device) {
-  const condition = String(getCap(device, 'conditioncode', '')).toLowerCase();
-  const rain = Number(getCap(device, 'measure_rain', 0)) || 0;
-  const clouds = Number(getCap(device, 'measure_cloudiness', 0)) || 0;
+setInterval(loadData,15000);
 
-  if (rain > 0.2 || condition.includes('rain')) return '🌧';
-  if (condition.includes('thunder')) return '⛈';
-  if (condition.includes('snow')) return '❄';
-  if (clouds > 75 || condition.includes('cloud')) return '☁';
-  if (clouds > 25) return '🌤';
-  return '☀';
-}
+</script>
 
-function normalizeBattery(device, key, name) {
-  const soc = Number(getCap(device, 'measure_battery', 0));
-  const power = Number(getCap(device, 'measure_power_ongrid', 0));
-  const temperatureC = Number(getCap(device, 'measure_temperature', 0));
-  const ageSec = Number(getCap(device, 'last_message_received', 999999));
-
-  const stale = ageSec > STALE_AFTER_SEC;
-
-  let direction = 'IDLE';
-  let mode = 'attente';
-
-  if (stale) {
-    direction = 'STALE';
-    mode = 'donnee_perimee';
-  } else if (power > ACTIVE_POWER_THRESHOLD) {
-    direction = 'CHARGING';
-    mode = 'charge';
-  } else if (power < -ACTIVE_POWER_THRESHOLD) {
-    direction = 'DISCHARGING';
-    mode = 'decharge';
-  }
-
-  return {
-    key,
-    name,
-    homeyName: device.name,
-    online: true,
-    stale,
-    soc,
-    powerW: Math.round(power),
-    temperatureC,
-    ageSec,
-    direction,
-    mode
-  };
-}
-
-async function buildPayload() {
-  const devices = await getAllDevices();
-
-  const solarProductionKw = await getProductionSolaire();
-
-  const shelly = await getDeviceById(SHELLY_ID);
-  const tempo = await getDeviceById(EDF_TEMPO_ID);
-  const weatherToday = await getDeviceById(WEATHER_TODAY_ID);
-  const weatherTomorrow = await getDeviceById(WEATHER_TOMORROW_ID);
-
-  const batteries = [];
-
-  for (const [key, cfg] of Object.entries(BATTERIES)) {
-    const device = await getDeviceById(cfg.id);
-
-    if (!device) {
-      batteries.push({
-        key,
-        name: cfg.name,
-        homeyName: null,
-        online: false,
-        stale: true,
-        soc: null,
-        powerW: null,
-        temperatureC: null,
-        ageSec: null,
-        direction: 'UNKNOWN',
-        mode: 'unknown'
-      });
-      continue;
-    }
-
-    batteries.push(normalizeBattery(device, key, cfg.name));
-  }
-
-  const validBatteries = batteries.filter(b => !b.stale && b.online);
-
-  const totalBatteryPower = validBatteries.reduce((sum, b) => {
-    return sum + (Number(b.powerW) || 0);
-  }, 0);
-
-  const gridPowerW = Math.round(Number(getCap(shelly, 'measure_power', 0)) || 0);
-
-  return {
-    updatedAt: new Date().toISOString(),
-    source: 'Homey',
-
-    solar: {
-      productionKw: solarProductionKw,
-      productionW: Math.round(solarProductionKw * 1000)
-    },
-
-    grid: {
-      powerW: gridPowerW
-    },
-
-    tempo: {
-      today: getCap(tempo, 'tempo_today', 'BLEU'),
-      tomorrow: getCap(tempo, 'tempo_tomorrow', 'BLEU')
-    },
-
-    weather: {
-      today: {
-        description: getCap(weatherToday, 'description', ''),
-        icon: weatherIconFromData(weatherToday),
-        cloudiness: Number(getCap(weatherToday, 'measure_cloudiness', 0)) || 0,
-        rainMm: Number(getCap(weatherToday, 'measure_rain', 0)) || 0,
-        temperatureC: Number(getCap(weatherToday, 'measure_temperature', 0)) || 0
-      },
-      tomorrow: {
-        description: 'Prévision demain',
-        icon: weatherIconFromData(weatherTomorrow),
-        cloudiness: Number(getCap(weatherTomorrow, 'measure_cloudiness', 0)) || 0,
-        rainMm: Number(getCap(weatherTomorrow, 'measure_rain', 0)) || 0,
-        temperatureMinC: Number(getCap(weatherTomorrow, 'measure_temperature_min', 0)) || 0,
-        temperatureMaxC: Number(getCap(weatherTomorrow, 'measure_temperature_max', 0)) || 0
-      }
-    },
-
-    batteries,
-
-    totals: {
-      batteryPowerW: Math.round(totalBatteryPower)
-    }
-  };
-}
-
-async function pushToNetlify(data) {
-  const res = await fetch(NETLIFY_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data)
-  });
-
-  console.log('Netlify status:', res.status);
-  console.log(await res.text());
-
-  return res.ok;
-}
-
-async function main() {
-  const payload = await buildPayload();
-
-  console.log(JSON.stringify(payload, null, 2));
-
-  await pushToNetlify(payload);
-
-  return payload;
-}
-
-return await main();
+</body>
+</html>
