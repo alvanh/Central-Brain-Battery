@@ -7,85 +7,113 @@
 <title>Homey Energy Dashboard</title>
 
 <style>
+
 body{
   margin:0;
+  background:#0b0f17;
+  color:white;
   font-family:-apple-system,BlinkMacSystemFont,sans-serif;
-  background:#0f1115;
-  color:#fff;
 }
 
 .header{
-  padding:24px;
-  font-size:32px;
+  padding:28px;
+  font-size:34px;
   font-weight:700;
 }
 
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:20px;
-  padding:20px;
+  gap:22px;
+  padding:22px;
 }
 
 .card{
-  background:#1b1f27;
-  border-radius:20px;
-  padding:20px;
-  box-shadow:0 4px 12px rgba(0,0,0,.25);
+  background:#171c26;
+  border-radius:24px;
+  padding:24px;
+  box-shadow:0 4px 18px rgba(0,0,0,.35);
 }
 
 .card h2{
-  margin-top:0;
-  font-size:20px;
+  margin:0;
+  font-size:22px;
 }
 
-.value{
-  font-size:42px;
+.big{
+  margin-top:18px;
+  font-size:48px;
   font-weight:700;
-  margin-top:10px;
 }
 
 .small{
+  margin-top:10px;
   opacity:.7;
-  margin-top:8px;
 }
 
 .batteries{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
-  padding:20px;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:22px;
+  padding:22px;
 }
 
 .battery{
-  background:#1b1f27;
-  border-radius:20px;
-  padding:20px;
+  background:#171c26;
+  border-radius:24px;
+  padding:24px;
+  box-shadow:0 4px 18px rgba(0,0,0,.35);
+}
+
+.battery-title{
+  font-size:22px;
+  font-weight:700;
+}
+
+.soc{
+  margin-top:16px;
+  font-size:52px;
+  font-weight:700;
 }
 
 .bar{
   width:100%;
-  height:14px;
-  background:#333;
-  border-radius:10px;
+  height:18px;
+  background:#2d3442;
+  border-radius:20px;
   overflow:hidden;
-  margin-top:12px;
+  margin-top:18px;
 }
 
 .fill{
   height:100%;
-  background:#4ade80;
+  background:#32d74b;
 }
 
-.status{
-  margin-top:10px;
-  font-weight:600;
+.row{
+  display:flex;
+  justify-content:space-between;
+  margin-top:14px;
+  opacity:.9;
 }
 
 .footer{
-  padding:20px;
+  padding:24px;
   opacity:.6;
 }
+
+.bleu{
+  color:#4da3ff;
+}
+
+.blanc{
+  color:#ffffff;
+}
+
+.rouge{
+  color:#ff5c5c;
+}
+
 </style>
 </head>
 
@@ -99,25 +127,25 @@ body{
 
   <div class="card">
     <h2>☀️ Production Solaire</h2>
-    <div class="value" id="solarPower">--</div>
+    <div class="big" id="solarPower">--</div>
     <div class="small">Production instantanée</div>
   </div>
 
   <div class="card">
     <h2>⚡ Réseau / Shelly</h2>
-    <div class="value" id="gridPower">--</div>
-    <div class="small">Consommation réseau</div>
+    <div class="big" id="gridPower">--</div>
+    <div class="small">Puissance réseau</div>
   </div>
 
   <div class="card">
     <h2>🔋 Batteries Total</h2>
-    <div class="value" id="batteryTotal">--</div>
+    <div class="big" id="batteryTotal">--</div>
     <div class="small">Charge / Décharge globale</div>
   </div>
 
   <div class="card">
     <h2>🎨 EDF Tempo</h2>
-    <div class="value" id="tempoToday">--</div>
+    <div class="big" id="tempoToday">--</div>
     <div class="small" id="tempoTomorrow">--</div>
   </div>
 
@@ -131,27 +159,48 @@ body{
 
 <script>
 
+function tempoClass(color){
+
+  if(color === 'BLEU') return 'bleu';
+  if(color === 'BLANC') return 'blanc';
+  if(color === 'ROUGE') return 'rouge';
+
+  return '';
+}
+
+function batteryState(direction){
+
+  if(direction === 'CHARGING') return 'Charge';
+  if(direction === 'DISCHARGING') return 'Décharge';
+  if(direction === 'STALE') return 'Périmée';
+
+  return 'Attente';
+}
+
 async function loadData(){
 
   try{
 
     const response = await fetch('/.netlify/functions/energy');
-    const data = await response.json();
+
+    const json = await response.json();
+
+    const data = json.data;
 
     document.getElementById('solarPower').innerText =
-      `${Math.round(data.solar.productionW)} W`;
+      `${data.solar.productionW} W`;
 
     document.getElementById('gridPower').innerText =
-      `${Math.round(data.grid.powerW)} W`;
+      `${data.grid.powerW} W`;
 
     document.getElementById('batteryTotal').innerText =
-      `${Math.round(data.totals.batteryPowerW)} W`;
+      `${data.totals.batteryPowerW} W`;
 
-    document.getElementById('tempoToday').innerText =
-      data.tempo.today;
+    document.getElementById('tempoToday').innerHTML =
+      `<span class="${tempoClass(data.tempo.today)}">${data.tempo.today}</span>`;
 
-    document.getElementById('tempoTomorrow').innerText =
-      `Demain : ${data.tempo.tomorrow}`;
+    document.getElementById('tempoTomorrow').innerHTML =
+      `Demain : <span class="${tempoClass(data.tempo.tomorrow)}">${data.tempo.tomorrow}</span>`;
 
     document.getElementById('updatedAt').innerText =
       `Dernière mise à jour : ${new Date(data.updatedAt).toLocaleString()}`;
@@ -160,52 +209,57 @@ async function loadData(){
 
     container.innerHTML = '';
 
-    data.batteries.forEach(battery => {
+    data.batteries.forEach(b => {
 
-      const percent = battery.soc || 0;
-
-      let state = 'Attente';
-
-      if(battery.direction === 'CHARGING')
-        state = 'Charge';
-
-      if(battery.direction === 'DISCHARGING')
-        state = 'Décharge';
-
-      if(battery.direction === 'STALE')
-        state = 'Données périmées';
+      const soc = Math.round(b.soc || 0);
 
       container.innerHTML += `
-        <div class="battery">
-          <h2>${battery.homeyName}</h2>
 
-          <div class="value">
-            ${percent}%
+        <div class="battery">
+
+          <div class="battery-title">
+            ${b.homeyName}
+          </div>
+
+          <div class="soc">
+            ${soc}%
           </div>
 
           <div class="bar">
-            <div class="fill" style="width:${percent}%"></div>
+            <div class="fill" style="width:${soc}%"></div>
           </div>
 
-          <div class="status">
-            ${state}
+          <div class="row">
+            <div>État</div>
+            <div>${batteryState(b.direction)}</div>
           </div>
 
-          <div class="small">
-            ${battery.powerW} W
+          <div class="row">
+            <div>Puissance</div>
+            <div>${b.powerW} W</div>
           </div>
 
-          <div class="small">
-            ${battery.temperatureC}°C
+          <div class="row">
+            <div>Température</div>
+            <div>${b.temperatureC}°C</div>
+          </div>
+
+          <div class="row">
+            <div>Âge données</div>
+            <div>${b.ageSec}s</div>
           </div>
 
         </div>
+
       `;
     });
 
   }catch(err){
+
     console.error(err);
+
   }
+
 }
 
 loadData();
