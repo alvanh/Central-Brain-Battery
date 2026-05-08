@@ -1,0 +1,398 @@
+# Fuveau Energie — Fichiers à uploader
+
+---
+
+# 1. index.html
+
+Créer un fichier nommé :
+
+```text
+index.html
+```
+
+Puis coller ce contenu :
+
+```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Homey Energy Dashboard</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+    }
+
+    body {
+      background: #0b0b0d;
+      color: white;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .card {
+      background: #17181c;
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+
+    .wide {
+      grid-column: span 2;
+    }
+
+    .label {
+      opacity: 0.7;
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .value {
+      font-size: 34px;
+      font-weight: 700;
+    }
+
+    .sub {
+      margin-top: 8px;
+      opacity: 0.8;
+      font-size: 13px;
+    }
+
+    .battery-bar {
+      width: 100%;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      overflow: hidden;
+      margin-top: 14px;
+    }
+
+    .battery-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg,#00ff88,#00b894);
+    }
+
+    .status {
+      margin-top: 10px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .weather {
+      font-size: 38px;
+      margin-bottom: 10px;
+      filter: grayscale(1) brightness(4);
+    }
+
+    @media (max-width: 700px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .wide {
+        grid-column: span 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Homey Energy Dashboard</h1>
+
+  <div class="grid">
+
+    <div class="card">
+      <div class="label">Aujourd’hui</div>
+      <div class="weather" id="weatherTodayIcon">☁</div>
+      <div class="value" id="tempoToday">BLEU</div>
+      <div class="sub" id="weatherTodayText">Partiellement nuageux</div>
+    </div>
+
+    <div class="card">
+      <div class="label">Demain</div>
+      <div class="weather" id="weatherTomorrowIcon">☀</div>
+      <div class="value" id="tempoTomorrow">BLEU</div>
+      <div class="sub" id="weatherTomorrowText">Ensoleillé</div>
+    </div>
+
+    <div class="card wide">
+      <div class="label">Production solaire</div>
+      <div class="value" id="solarPower">0 W</div>
+      <div class="sub">Production actuelle</div>
+    </div>
+
+    <div class="card wide">
+      <div class="label">Réseau</div>
+      <div class="value" id="gridPower">0 W</div>
+      <div class="sub">Shelly Pro 3EM</div>
+    </div>
+
+    <div class="card">
+      <div class="label">Batterie 1</div>
+      <div class="value" id="bat1soc">0%</div>
+      <div class="status" id="bat1status">IDLE</div>
+      <div class="battery-bar">
+        <div class="battery-fill" id="bat1fill" style="width:0%"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="label">Batterie 2</div>
+      <div class="value" id="bat2soc">0%</div>
+      <div class="status" id="bat2status">IDLE</div>
+      <div class="battery-bar">
+        <div class="battery-fill" id="bat2fill" style="width:0%"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="label">Batterie 3</div>
+      <div class="value" id="bat3soc">0%</div>
+      <div class="status" id="bat3status">IDLE</div>
+      <div class="battery-bar">
+        <div class="battery-fill" id="bat3fill" style="width:0%"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="label">Batterie 4</div>
+      <div class="value" id="bat4soc">0%</div>
+      <div class="status" id="bat4status">IDLE</div>
+      <div class="battery-bar">
+        <div class="battery-fill" id="bat4fill" style="width:0%"></div>
+      </div>
+    </div>
+
+  </div>
+
+<script>
+async function loadData() {
+
+  const response = await fetch('dashboard.json?t=' + Date.now());
+  const data = await response.json();
+
+  document.getElementById('tempoToday').innerText = data.tempo.today;
+  document.getElementById('tempoTomorrow').innerText = data.tempo.tomorrow;
+
+  document.getElementById('weatherTodayText').innerText = data.weather.today.description;
+  document.getElementById('weatherTomorrowText').innerText = data.weather.tomorrow.description;
+
+  document.getElementById('solarPower').innerText = data.solar + ' W';
+  document.getElementById('gridPower').innerText = data.grid + ' W';
+
+  data.batteries.forEach((bat, index) => {
+
+    const i = index + 1;
+
+    document.getElementById(`bat${i}soc`).innerText = bat.soc + '%';
+    document.getElementById(`bat${i}status`).innerText = bat.state;
+    document.getElementById(`bat${i}fill`).style.width = bat.soc + '%';
+  });
+}
+
+loadData();
+setInterval(loadData, 10000);
+</script>
+
+</body>
+</html>
+```
+
+---
+
+# 2. dashboard.json
+
+Créer un fichier nommé :
+
+```text
+dashboard.json
+```
+
+Puis coller ceci pour les premiers tests :
+
+```json
+{
+  "tempo": {
+    "today": "BLEU",
+    "tomorrow": "BLEU"
+  },
+  "weather": {
+    "today": {
+      "description": "Partiellement nuageux"
+    },
+    "tomorrow": {
+      "description": "Risque de pluie"
+    }
+  },
+  "solar": 900,
+  "grid": -300,
+  "batteries": [
+    {
+      "soc": 96,
+      "state": "CHARGE"
+    },
+    {
+      "soc": 93,
+      "state": "DECHARGE"
+    },
+    {
+      "soc": 100,
+      "state": "IDLE"
+    },
+    {
+      "soc": 94,
+      "state": "DECHARGE"
+    }
+  ]
+}
+```
+
+---
+
+# 3. homey dashboard.js
+
+Créer un HomeyScript nommé :
+
+```text
+homey dashboard.js
+```
+
+Puis coller :
+
+```javascript
+const devices = await Homey.devices.getDevices();
+const logic = await Homey.logic.getVariables();
+
+function getDevice(id) {
+  return devices[id];
+}
+
+function getBatteryState(power) {
+
+  if (power > 100) return 'CHARGE';
+  if (power < -100) return 'DECHARGE';
+
+  return 'IDLE';
+}
+
+const BATTERIES = [
+  {
+    id: 'b2302309-a297-4732-9f9f-54aed7cb311f',
+    name: 'Batterie_1'
+  },
+  {
+    id: '0d3db87e-f2e2-42ee-818e-fe1eda72ea31',
+    name: 'Batterie_2'
+  },
+  {
+    id: 'fe7d4c65-1650-463f-b417-5431fb35bf1d',
+    name: 'Batterie_3'
+  },
+  {
+    id: '7cae1822-f159-4d81-a071-c078589fb74b',
+    name: 'Batterie_4'
+  }
+];
+
+const batteries = [];
+
+for (const battery of BATTERIES) {
+
+  const device = getDevice(battery.id);
+
+  const soc = device.capabilitiesObj.measure_battery?.value || 0;
+  const power = device.capabilitiesObj.measure_power_ongrid?.value || 0;
+
+  batteries.push({
+    soc,
+    power,
+    state: getBatteryState(power)
+  });
+}
+
+const tempo = getDevice('9a4727a2-0c1f-46be-8d79-6a39a7a0960b');
+
+const weatherToday = getDevice('b70c3da4-9984-46b6-9a1d-573ba62b097f');
+const weatherTomorrow = getDevice('ce82a85d-ddc2-4579-b1fe-8bd3f2919993');
+
+const shelly = getDevice('ddfe018e-5628-4a32-8aeb-07a9d8cc8f9d');
+
+const solarVariable = Object.values(logic).find(v => v.name === 'Production Solaire');
+
+const payload = {
+  tempo: {
+    today: tempo.capabilitiesObj.tempo_today.value,
+    tomorrow: tempo.capabilitiesObj.tempo_tomorrow.value
+  },
+
+  weather: {
+    today: {
+      description: weatherToday.capabilitiesObj.description.value
+    },
+    tomorrow: {
+      description: 'Prévisions demain'
+    }
+  },
+
+  solar: Math.round((solarVariable.value || 0) * 1000),
+
+  grid: Math.round(
+    shelly.capabilitiesObj.measure_power.value || 0
+  ),
+
+  batteries
+};
+
+console.log(JSON.stringify(payload, null, 2));
+
+return true;
+```
+
+---
+
+# 4. Déploiement
+
+## GitHub
+
+Uploader :
+
+```text
+index.html
+dashboard.json
+```
+
+---
+
+## Homey
+
+Créer le script :
+
+```text
+homey dashboard.js
+```
+
+---
+
+# 5. URL finale souhaitée
+
+```text
+fuveau-energie.netlify.app
+```
