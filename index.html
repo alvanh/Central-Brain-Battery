@@ -851,17 +851,34 @@ const WMO_DESC = {
 
 let weatherFetched = false;
 
+function solarIcon(productionW) {
+  // Déduit l'ensoleillement réel depuis la production solaire (installation ~10kWc)
+  if (productionW > 6000) return { icon:'☀️',  desc:'Ensoleillé' };
+  if (productionW > 3500) return { icon:'🌤️', desc:'Peu nuageux' };
+  if (productionW > 1500) return { icon:'⛅',  desc:'Nuageux' };
+  if (productionW > 300)  return { icon:'☁️',  desc:'Couvert' };
+  // Nuit ou données absentes → API météo
+  return null;
+}
+
 function fetchOpenMeteo(lat, lon) {
-  fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&daily=weathercode,temperature_2m_max&timezone=auto&forecast_days=2`)
+  fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=weather_code&daily=weather_code,temperature_2m_max&timezone=Europe%2FParis&forecast_days=2`)
     .then(r => r.json())
     .then(d => {
-      // Aujourd'hui : code météo en temps réel (current_weather), temp max du jour
-      const currentCode = d.current_weather?.weathercode ?? d.daily.weathercode[0];
-      const todayTemp = d.daily.temperature_2m_max[0];
-      setWeather('Today', WMO[currentCode] || '🌡️', `${Math.round(todayTemp)}°C`, WMO_DESC[currentCode] || '');
-      // Demain : prévision journalière
-      const tomorrowCode = d.daily.weathercode[1];
-      const tomorrowTemp = d.daily.temperature_2m_max[1];
+      const todayTemp    = d.daily?.temperature_2m_max?.[0] ?? '--';
+      const tomorrowCode = d.daily?.weather_code?.[1] ?? 0;
+      const tomorrowTemp = d.daily?.temperature_2m_max?.[1] ?? '--';
+
+      // Aujourd'hui : icône déduite de la production solaire si dispo
+      const solarW = Number(document.getElementById('solarPower')?.textContent?.replace(/[^\d.-]/g,'') || 0) * (document.getElementById('solarPower')?.textContent?.includes('kW') ? 1000 : 1);
+      const solar  = solarIcon(solarW);
+      if (solar) {
+        setWeather('Today', solar.icon, `${Math.round(todayTemp)}°C`, solar.desc);
+      } else {
+        const todayCode = d.current?.weather_code ?? d.daily?.weather_code?.[0] ?? 0;
+        setWeather('Today', WMO[todayCode] || '🌡️', `${Math.round(todayTemp)}°C`, WMO_DESC[todayCode] || '');
+      }
+      // Demain : prévision API
       setWeather('Tomorrow', WMO[tomorrowCode] || '🌡️', `${Math.round(tomorrowTemp)}°C`, WMO_DESC[tomorrowCode] || '');
       weatherFetched = true;
     })
@@ -878,13 +895,16 @@ function setWeather(day, icon, temp, desc) {
 }
 
 function initWeather() {
+  // Coordonnées Fuveau (13, Bouches-du-Rhône) — fallback si géolocalisation refusée
+  const LAT_DEFAULT = 43.474, LON_DEFAULT = 5.567;
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
       p => fetchOpenMeteo(p.coords.latitude, p.coords.longitude),
-      () => fetchOpenMeteo(48.8566, 2.3522)
+      () => fetchOpenMeteo(LAT_DEFAULT, LON_DEFAULT),
+      { timeout: 5000 }
     );
   } else {
-    fetchOpenMeteo(48.8566, 2.3522);
+    fetchOpenMeteo(LAT_DEFAULT, LON_DEFAULT);
   }
 }
 
@@ -953,6 +973,17 @@ async function loadData() {
     const gridW  = data.grid?.powerW ?? data.grid ?? 0;
     document.getElementById('solarPower').innerHTML = fmtW(solarW);
     document.getElementById('gridPower').innerHTML = fmtW(gridW);
+
+    // Icône météo aujourd'hui déduite de la production solaire réelle
+    if (solarW > 0) {
+      const s = solarIcon(solarW);
+      if (s) {
+        const iconEl = document.getElementById('weatherToday');
+        const descEl = document.getElementById('descToday');
+        if (iconEl) iconEl.textContent = s.icon;
+        if (descEl) descEl.textContent = s.desc;
+      }
+    }
 
     // Batteries
     const bats = data.batteries || [];
