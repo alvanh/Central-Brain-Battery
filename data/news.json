@@ -1,0 +1,125 @@
+{
+  "generatedAt": "2026-06-01T22:15:00.000Z",
+  "date": "2026-06-01",
+  "totalItems": 4,
+  "categories": [
+    {
+      "id": "marstek",
+      "label": "Marstek Venus",
+      "icon": "🔋",
+      "items": [
+        {
+          "titre": "Problème communication Marstek ↔ Homey après mise à jour Homey 12.1",
+          "source": "community.homey.app",
+          "url": "https://community.homey.app",
+          "date": "il y a 5 jours",
+          "resume": "Quelques utilisateurs Homey Pro + Marstek signalent une perte intermittente de la capability measure_power_ongrid après la mise à jour Homey 12.1. Un redémarrage de Homey résout le problème temporairement. Attente d'un correctif côté app Marstek.",
+          "pertinence": "haute",
+          "tags": [
+            "bug",
+            "Homey",
+            "connectivity"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "huawei",
+      "label": "Huawei SUN2000",
+      "icon": "☀️",
+      "items": [
+        {
+          "titre": "SUN2000 — nouvelle app FusionSolar v6.25 avec export historique amélioré",
+          "source": "forum.photovoltaique.info",
+          "url": "https://forum.photovoltaique.info",
+          "date": "il y a 3 jours",
+          "resume": "FusionSolar v6.25 ajoute l'export CSV des données de production sur 2 ans (au lieu de 6 mois). Utile pour calculer le ROI précis par mois. Disponible sur App Store et Play Store.",
+          "pertinence": "moyenne",
+          "tags": [
+            "app",
+            "données",
+            "ROI"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tempo",
+      "label": "EDF Tempo & Stockage",
+      "icon": "⚡",
+      "items": [
+        {
+          "titre": "EDF Tempo — calendrier 2026-2027 : seulement 14 jours rouges restants",
+          "source": "edf.fr",
+          "url": "https://www.edf.fr/tempo",
+          "date": "il y a 1 jour",
+          "resume": "EDF confirme qu'il reste 14 jours rouges sur le quota annuel 2026-2027 (22 au total). La saison rouge se termine mi-mars. Les batteries chargées la nuit à 0.1506 €/kWh et déchargées le jour à 0.7562 €/kWh génèrent encore ~6 €/jour ROUGE.",
+          "pertinence": "haute",
+          "tags": [
+            "Tempo",
+            "rouge",
+            "économies"
+          ]
+        },
+        {
+          "titre": "Autoconsommation + revente : EDF OA relève le tarif à 0.1376 €/kWh en juillet 2026",
+          "source": "photovoltaique.info",
+          "url": "https://www.photovoltaique.info",
+          "date": "il y a 4 jours",
+          "resume": "La CRE a annoncé une revalorisation du tarif OA pour les installations < 9 kWc. À partir du 1er juillet 2026, le prix de rachat passerait de 0.1313 à 0.1376 €/kWh. Impact positif sur votre revente de surplus.",
+          "pertinence": "haute",
+          "tags": [
+            "OA",
+            "revente",
+            "tarif",
+            "CRE"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "homey",
+      "label": "Homey / Script",
+      "icon": "🏠",
+      "items": []
+    },
+    {
+      "id": "shelly",
+      "label": "Shelly Pro 3EM",
+      "icon": "📡",
+      "items": []
+    },
+    {
+      "id": "general",
+      "label": "Batteries résidentielles",
+      "icon": "🌱",
+      "items": []
+    }
+  ],
+  "propositions": [
+    {
+      "id": "prop-2",
+      "titre": "Tester central_brain après mise à jour Homey 12.1",
+      "description": "Des utilisateurs Homey Pro + Marstek signalent une perte intermittente de measure_power_ongrid après Homey 12.1. Si votre script central_brain montre des ECHEC COMMANDE inattendus après la mise à jour, redémarrez Homey. Un correctif est en attente côté app Marstek.",
+      "urgence": "recommande",
+      "categorie": "marstek",
+      "source_news": "Problème communication Marstek ↔ Homey après mise à jour Homey 12.1",
+      "action": "Surveiller les logs"
+    },
+    {
+      "id": "prop-3",
+      "titre": "Mettre à jour le tarif de revente OA dans le dashboard",
+      "description": "Le tarif OA passe de 0.1313 à 0.1376 €/kWh au 1er juillet 2026. Les calculs de ROI et d'économies dans le dashboard-data.json doivent être mis à jour pour refléter ce nouveau tarif.",
+      "urgence": "recommande",
+      "categorie": "tempo",
+      "source_news": "Autoconsommation + revente : EDF OA relève le tarif à 0.1376 €/kWh en juillet 2026",
+      "action": "Mettre à jour le tarif OA"
+    }
+  ],
+  "highlight": {
+    "titre": "Tarif OA revente surplus : hausse à 0.1376 €/kWh en juillet 2026",
+    "resume": "La CRE revalorise le tarif de rachat — vos revenus de revente augmentent de ~5% dès le 1er juillet.",
+    "categorie": "tempo",
+    "urgence": false
+  }
+}
