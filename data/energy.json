@@ -1,89 +1,14 @@
 {
-  "updatedAt": "2026-06-01T14:18:40.262Z",
-  "source": "Homey",
+  "updatedAt": "2026-06-01T14:18:42Z",
+  "source": "test_blobs",
   "solar": {
-    "productionKw": 5.92,
-    "productionW": 5920
-  },
-  "grid": {
-    "powerW": -2611
-  },
-  "tempo": {
-    "today": "BLEU",
-    "tomorrow": "BLEU"
-  },
-  "weather": {
-    "today": {
-      "description": "couvert",
-      "icon": "☁",
-      "cloudiness": 100,
-      "rainMm": 0,
-      "temperatureC": 30.3
-    },
-    "tomorrow": {
-      "description": "Prévision demain",
-      "icon": "🌧",
-      "cloudiness": 94,
-      "rainMm": 24.98,
-      "temperatureMinC": 8.6,
-      "temperatureMaxC": 16.8
-    }
+    "productionW": 6000
   },
   "batteries": [
     {
-      "key": "batterie1",
       "name": "Batterie_1",
-      "homeyName": "Batterie_1",
-      "online": true,
-      "stale": false,
       "soc": 100,
-      "powerW": 0,
-      "temperatureC": 25,
-      "ageSec": 10,
-      "direction": "IDLE",
-      "mode": "IDLE"
-    },
-    {
-      "key": "batterie2",
-      "name": "Batterie_2",
-      "homeyName": "Batterie_2",
-      "online": true,
-      "stale": false,
-      "soc": 100,
-      "powerW": 0,
-      "temperatureC": 37,
-      "ageSec": 10,
-      "direction": "IDLE",
-      "mode": "IDLE"
-    },
-    {
-      "key": "batterie3",
-      "name": "Batterie_3",
-      "homeyName": "Batterie_3",
-      "online": true,
-      "stale": false,
-      "soc": 100,
-      "powerW": 0,
-      "temperatureC": 36,
-      "ageSec": 10,
-      "direction": "IDLE",
-      "mode": "IDLE"
-    },
-    {
-      "key": "batterie4",
-      "name": "Batterie_4",
-      "homeyName": "Batterie_4",
-      "online": true,
-      "stale": false,
-      "soc": 100,
-      "powerW": 0,
-      "temperatureC": 34,
-      "ageSec": 10,
-      "direction": "IDLE",
-      "mode": "attente"
+      "direction": "IDLE"
     }
-  ],
-  "totals": {
-    "batteryPowerW": 0
-  }
+  ]
 }
