@@ -867,6 +867,26 @@ function initWeather() {
   }
 }
 
+// ── TEMPO (fetch client-side, API publique) ──
+const TEMPO_CODE_MAP = { 1: 'BLEU', 2: 'BLANC', 3: 'ROUGE' };
+
+async function fetchTempoLive() {
+  try {
+    const [r1, r2] = await Promise.all([
+      fetch('https://www.api-couleur-tempo.fr/api/jourTempo/today'),
+      fetch('https://www.api-couleur-tempo.fr/api/jourTempo/tomorrow')
+    ]);
+    const d1 = r1.ok ? await r1.json() : {};
+    const d2 = r2.ok ? await r2.json() : {};
+    return {
+      today:    TEMPO_CODE_MAP[d1.codeJourTempo] || 'INCONNU',
+      tomorrow: TEMPO_CODE_MAP[d2.codeJourTempo] || 'INCONNU'
+    };
+  } catch(e) {
+    return { today: 'INCONNU', tomorrow: 'INCONNU' };
+  }
+}
+
 // ── LOAD DATA ──
 const IS_NETLIFY = window.location.hostname.includes('netlify.app');
 const ENERGY_URL = IS_NETLIFY
@@ -878,9 +898,15 @@ const NEWS_URL = IS_NETLIFY
 
 async function loadData() {
   try {
-    const res = await fetch(ENERGY_URL, { cache:'no-store' });
+    const [res, tempoLive] = await Promise.all([
+      fetch(ENERGY_URL, { cache:'no-store' }),
+      fetchTempoLive()
+    ]);
     const json = await res.json();
     const data = IS_NETLIFY ? json : json.data;
+    // Toujours écraser Tempo avec la valeur live (API publique)
+    if (data.tempo) { data.tempo.today = tempoLive.today; data.tempo.tomorrow = tempoLive.tomorrow; }
+    else data.tempo = tempoLive;
 
     // Connexion OK
     const dot = document.getElementById('statusDot');
