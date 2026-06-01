@@ -1,57 +1,77 @@
 {
-  "updatedAt": "2026-06-01T14:19:47.000Z",
+  "updatedAt": "2026-05-31T18:00:00.195Z",
   "batteries": [
     {
       "name": "Batterie_1",
-      "online": true,
-      "soc": 100,
+      "soc": 98,
       "powerW": 0,
       "temp": 25,
+      "online": true,
       "direction": "IDLE",
       "blacklisted": false
     },
     {
       "name": "Batterie_2",
-      "online": true,
       "soc": 100,
       "powerW": 0,
-      "temp": 37,
+      "temp": 27,
+      "online": true,
       "direction": "IDLE",
       "blacklisted": false
     },
     {
       "name": "Batterie_3",
-      "online": true,
       "soc": 100,
       "powerW": 0,
-      "temp": 36,
+      "temp": 24,
+      "online": true,
       "direction": "IDLE",
       "blacklisted": false
     },
     {
       "name": "Batterie_4",
+      "soc": 30,
+      "powerW": -1343,
+      "temp": 32,
       "online": true,
-      "soc": 100,
-      "powerW": 0,
-      "temp": 34,
-      "direction": "IDLE",
+      "direction": "DISCHARGING",
       "blacklisted": false
     }
   ],
   "solar": {
-    "productionW": 5920
+    "productionW": 580
   },
   "grid": {
-    "powerW": -2652
+    "powerW": -1060
   },
   "shelly": {
-    "online": true,
-    "gridPower": -2651.5
+    "kwhImported": 1416.69,
+    "kwhExported": null,
+    "gridPower": -1.06,
+    "powerA": 347.4,
+    "powerB": 509.4,
+    "powerC": -857.9,
+    "voltageA": 234.8,
+    "voltageB": 239,
+    "voltageC": 242.7,
+    "currentA": 7.97,
+    "currentB": 2.73,
+    "currentC": 3.6,
+    "powerFactor": null
   },
   "tempo": {
-    "today": "BLEU",
+    "today": "INCONNU",
     "tomorrow": "INCONNU"
   },
-  "events": {},
-  "scriptVersion": "V50.3.576"
+  "events": {
+    "echecCount": 18,
+    "echecs": [],
+    "importAlarmes": 9,
+    "interdictions": 7,
+    "sessionResets": 0,
+    "blacklists": [],
+    "boostCount": 62,
+    "noBatteryEvents": 385
+  },
+  "scriptVersion": "inconnu"
 }
