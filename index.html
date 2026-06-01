@@ -889,12 +889,8 @@ async function fetchTempoLive() {
 
 // ── LOAD DATA ──
 const IS_NETLIFY = window.location.hostname.includes('netlify.app');
-const ENERGY_URL = IS_NETLIFY
-  ? 'https://raw.githubusercontent.com/alvanh/Central-Brain-Battery/main/data/energy.json'
-  : '/api/energy';
-const NEWS_URL = IS_NETLIFY
-  ? 'https://raw.githubusercontent.com/alvanh/Central-Brain-Battery/main/data/news.json'
-  : '/homey-audit/news';
+const ENERGY_URL = '/api/energy';  // local: homey-receiver | Netlify: function → GitHub raw
+const NEWS_URL = IS_NETLIFY ? 'https://raw.githubusercontent.com/alvanh/Central-Brain-Battery/main/data/news.json' : '/homey-audit/news';
 
 async function loadData() {
   try {
@@ -903,7 +899,7 @@ async function loadData() {
       fetchTempoLive()
     ]);
     const json = await res.json();
-    const data = IS_NETLIFY ? json : json.data;
+    const data = json.data;
     // Toujours écraser Tempo avec la valeur live (API publique)
     if (data.tempo) { data.tempo.today = tempoLive.today; data.tempo.tomorrow = tempoLive.tomorrow; }
     else data.tempo = tempoLive;
@@ -1221,7 +1217,7 @@ async function smartPoll() {
   try {
     const res = await fetch(ENERGY_URL, { cache:'no-store' });
     const json = await res.json();
-    const d = IS_NETLIFY ? json : json.data;
+    const d = json.data;
     const solarW = d?.solar?.productionW ?? (d?.solar?.productionKw ?? 0) * 1000;
     const ts = d?.updatedAt;
     // Redessine si : nouveau timestamp OU production solaire a changé de >20W
