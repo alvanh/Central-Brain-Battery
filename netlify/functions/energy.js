@@ -1,8 +1,4 @@
-// Netlify Function — energy.js
-// GET  : proxy GitHub raw (mis à jour par homey-receiver.js toutes les 5 min)
-// POST : accepté mais ignoré (pas de Blobs sans env vars)
-
-const RAW_URL = 'https://raw.githubusercontent.com/alvanh/Central-Brain-Battery/main/data/energy.json';
+const { getStore } = require('@netlify/blobs');
 
 const HEADERS = {
   'Content-Type': 'application/json',
@@ -11,20 +7,31 @@ const HEADERS = {
 };
 
 exports.handler = async (event) => {
+  const store = getStore({
+    name: 'energy-data',
+    siteID: process.env.NETLIFY_SITE_ID,
+    token:  process.env.NETLIFY_BLOBS_TOKEN || process.env.NETLIFY_AUTH_TOKEN
+  });
+
+  // POST : stocker les données live de Homey
+  if (event.httpMethod === 'POST') {
+    try {
+      const data = JSON.parse(event.body || '{}');
+      await store.set('latest', JSON.stringify(data));
+      return { statusCode: 200, headers: HEADERS, body: JSON.stringify({ ok: true, ts: new Date().toISOString() }) };
+    } catch (e) {
+      return { statusCode: 500, headers: HEADERS, body: JSON.stringify({ ok: false, error: e.message }) };
+    }
+  }
+
+  // GET : lire les dernières données Homey
   try {
-    const res = await fetch(RAW_URL + '?t=' + Date.now());
-    if (!res.ok) throw new Error('GitHub ' + res.status);
-    const data = await res.json();
-    return {
-      statusCode: 200,
-      headers: HEADERS,
-      body: JSON.stringify({ ok: true, data })
-    };
+    const raw = await store.get('latest');
+    if (!raw) {
+      return { statusCode: 200, headers: HEADERS, body: JSON.stringify({ ok: false, message: 'Aucune donnée' }) };
+    }
+    return { statusCode: 200, headers: HEADERS, body: JSON.stringify({ ok: true, data: JSON.parse(raw) }) };
   } catch (e) {
-    return {
-      statusCode: 500,
-      headers: HEADERS,
-      body: JSON.stringify({ ok: false, error: e.message })
-    };
+    return { statusCode: 500, headers: HEADERS, body: JSON.stringify({ ok: false, error: e.message }) };
   }
 };
