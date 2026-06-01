@@ -515,6 +515,27 @@ body{
     <!-- Batteries -->
     <div class="grid" id="batteriesContainer"></div>
 
+    <!-- Bilan Shelly du jour -->
+    <div id="bilanShelly" style="display:none;background:#fff;border-radius:20px;padding:16px;margin-bottom:12px;box-shadow:0 6px 20px rgba(0,0,0,.07);">
+      <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#6b7280;margin-bottom:12px;">⚡ BILAN SHELLY — AUJOURD'HUI</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;">
+        <div style="background:#fef9ec;border-radius:12px;padding:10px;text-align:center;">
+          <div style="font-size:10px;color:#92400e;font-weight:700;margin-bottom:4px;">IMPORTÉ RÉSEAU</div>
+          <div style="font-size:22px;font-weight:900;color:#d97706;" id="bilanImport">-- kWh</div>
+          <div style="font-size:11px;color:#d97706;font-weight:600;" id="bilanCout">-- €</div>
+        </div>
+        <div style="background:#f0fdf4;border-radius:12px;padding:10px;text-align:center;">
+          <div style="font-size:10px;color:#166534;font-weight:700;margin-bottom:4px;">EXPORTÉ RÉSEAU</div>
+          <div style="font-size:22px;font-weight:900;color:#16a34a;" id="bilanExport">-- kWh</div>
+          <div style="font-size:11px;color:#16a34a;font-weight:600;" id="bilanRevenu">-- €</div>
+        </div>
+      </div>
+      <div style="border-top:1px solid #f0f0f0;padding-top:10px;display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:12px;color:#6b7280;" id="bilanTarif"></span>
+        <span style="font-size:18px;font-weight:900;" id="bilanNet">--</span>
+      </div>
+    </div>
+
     <!-- Footer -->
     <div class="footer">
       <div class="refresh" onclick="loadData()">↻</div>
@@ -879,8 +900,8 @@ async function fetchTempoLive() {
     const d1 = r1.ok ? await r1.json() : {};
     const d2 = r2.ok ? await r2.json() : {};
     return {
-      today:    TEMPO_CODE_MAP[d1.codeJourTempo] || 'INCONNU',
-      tomorrow: TEMPO_CODE_MAP[d2.codeJourTempo] || 'INCONNU'
+      today:    TEMPO_CODE_MAP[d1.codeJourTempo || d1.codeJour] || (d1.libCouleur||'').toUpperCase() || 'INCONNU',
+      tomorrow: TEMPO_CODE_MAP[d2.codeJourTempo || d2.codeJour] || (d2.libCouleur||'').toUpperCase() || 'INCONNU'
     };
   } catch(e) {
     return { today: 'INCONNU', tomorrow: 'INCONNU' };
@@ -998,6 +1019,22 @@ async function loadData() {
       document.getElementById('roi-dyn-saving').textContent = `${savingMonthly} €/mois (facture estimée : ~${newMonthly} €)`;
       document.getElementById('roi-dyn-reste').textContent  = resteApresAujourdHui.toLocaleString('fr-FR') + ' €';
     })();
+
+    // Bilan Shelly
+    const eco = data.economie;
+    if (eco && (eco.kwhImport > 0 || eco.kwhExport > 0)) {
+      document.getElementById('bilanShelly').style.display = 'block';
+      document.getElementById('bilanImport').textContent  = (eco.kwhImport||0).toFixed(2) + ' kWh';
+      document.getElementById('bilanCout').textContent    = '−' + (eco.coutImport||0).toFixed(2) + ' €';
+      document.getElementById('bilanExport').textContent  = (eco.kwhExport||0).toFixed(2) + ' kWh';
+      document.getElementById('bilanRevenu').textContent  = '+' + (eco.revenuExport||0).toFixed(2) + ' €';
+      const bilan = eco.bilanJour || 0;
+      const bilanEl = document.getElementById('bilanNet');
+      bilanEl.textContent = (bilan >= 0 ? '+' : '') + bilan.toFixed(2) + ' €';
+      bilanEl.style.color = bilan >= 0 ? '#16a34a' : '#dc2626';
+      document.getElementById('bilanTarif').textContent =
+        `Tempo ${eco.tempoCouleur||'--'} · HP ${(eco.tarifHP||0).toFixed(4)}€ · OA ${(eco.tarifOA||0).toFixed(4)}€`;
+    }
 
     // Timestamp
     document.getElementById('updatedAt').textContent =
