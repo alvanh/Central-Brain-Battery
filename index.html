@@ -1082,6 +1082,32 @@ async function loadData() {
   });
 })();
 
+// ── ACTIONS DASHBOARD ──
+async function triggerAction(action, label) {
+  const btn = event.target;
+  btn.disabled = true;
+  btn.textContent = '⏳ En cours...';
+  try {
+    const res = await fetch('/api/action', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action })
+    });
+    const data = await res.json();
+    if (data.ok) {
+      btn.textContent = '✅ Demandé — résultat sur Telegram';
+      btn.style.background = '#16a34a';
+      setTimeout(() => { btn.textContent = label; btn.style.background = ''; btn.disabled = false; }, 5000);
+    } else {
+      btn.textContent = '❌ Erreur';
+      btn.disabled = false;
+    }
+  } catch(e) {
+    btn.textContent = '❌ ' + e.message;
+    btn.disabled = false;
+  }
+}
+
 // ── VEILLE ──
 let _veilleLoaded = false;
 let _veilleData   = null;
@@ -1157,7 +1183,7 @@ function renderVeille(data) {
             </div>
             <div style="font-size:13px;color:#374151;line-height:1.5;margin-bottom:10px;">${p.description}</div>
             <div style="font-size:11px;color:#9ca3af;margin-bottom:8px;">Basé sur : <em>${p.source_news || ''}</em></div>
-            ${p.action ? `<button style="background:${c.btn};color:#fff;border:none;border-radius:99px;padding:7px 16px;font-size:12px;font-weight:700;cursor:pointer;">${p.action}</button>` : ''}
+            ${p.action ? `<button onclick="triggerAction('${p.id}','${p.action}')" style="background:${c.btn};color:#fff;border:none;border-radius:99px;padding:7px 16px;font-size:12px;font-weight:700;cursor:pointer;">${p.action}</button>` : ''}
           </div>`;
       }).join('')}
     `;
