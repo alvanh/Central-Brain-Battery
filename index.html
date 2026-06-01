@@ -3,226 +3,454 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Marstek" />
+<meta name="theme-color" content="#0f2744" />
 <title>Homey Energy Dashboard</title>
 
 <style>
-*{
-  box-sizing:border-box;
-}
+*{ box-sizing:border-box; margin:0; padding:0; }
 
 body{
-  margin:0;
   background:#f6f7fb;
   color:#050816;
   font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
+  min-height:100vh;
 }
 
 .app{
   max-width:430px;
   margin:0 auto;
-  padding:18px 14px 34px;
+  padding:20px 14px 40px;
+}
+
+/* ── HEADER ── */
+.header{
+  text-align:center;
+  margin-bottom:18px;
 }
 
 .title{
-  font-size:24px;
+  font-size:28px;
   font-weight:900;
-  margin:6px 0 16px;
+  letter-spacing:-0.5px;
+  margin-bottom:4px;
 }
 
+.status-row{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  font-size:12px;
+  color:#6b7280;
+  margin-bottom:14px;
+}
+
+.dot{
+  width:8px; height:8px;
+  border-radius:50%;
+  background:#e00000;
+}
+.dot.connected{ background:#10a51a; animation:pulse 2s infinite; }
+
+@keyframes pulse{
+  0%,100%{ opacity:1; }
+  50%{ opacity:.4; }
+}
+
+/* ── TABS ── */
+.tabs{
+  display:flex;
+  gap:8px;
+  margin-bottom:16px;
+}
+
+.tab{
+  flex:1;
+  padding:10px 6px;
+  border-radius:12px;
+  border:1.5px solid #e5e7eb;
+  background:#fff;
+  font-size:13px;
+  font-weight:700;
+  color:#6b7280;
+  text-align:center;
+  cursor:pointer;
+  transition:all .2s;
+}
+
+.tab.active{
+  background:#0066ff;
+  color:#fff;
+  border-color:#0066ff;
+}
+
+/* ── PAGES ── */
+.page{ display:none; }
+.page.active{ display:block; }
+
+/* ── GRID ── */
 .grid{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:12px;
+  margin-bottom:12px;
 }
 
 .card{
   background:#fff;
-  border-radius:18px;
+  border-radius:20px;
   padding:16px;
-  box-shadow:0 8px 22px rgba(0,0,0,.08);
-  border:1px solid rgba(0,0,0,.06);
+  box-shadow:0 6px 20px rgba(0,0,0,.07);
+  border:1px solid rgba(0,0,0,.05);
+  text-align:center;
 }
 
+/* ── TEMPO CARDS ── */
 .tempo{
-  height:116px;
+  min-height:140px;
   color:#fff;
   display:flex;
+  flex-direction:column;
   align-items:center;
-  justify-content:space-between;
+  justify-content:center;
+  gap:2px;
 }
 
-.tempo .label{
-  font-size:14px;
+.tempo .day-label{
+  font-size:11px;
   font-weight:800;
   text-transform:uppercase;
+  letter-spacing:.08em;
+  opacity:.85;
 }
 
-.tempo .value{
-  font-size:34px;
+.tempo .day-color{
+  font-size:30px;
   font-weight:950;
-  margin-top:6px;
+  letter-spacing:1px;
+  line-height:1;
 }
 
-.weather{
-  font-size:34px;
+.tempo .w-icon{
+  font-size:36px;
+  line-height:1;
+  margin-top:4px;
   filter:grayscale(1) brightness(0) invert(1);
 }
 
-.blue{background:linear-gradient(135deg,#0066ff,#003eb7);}
-.red{background:linear-gradient(135deg,#ff1a1a,#d80000);}
-.white{
+.tempo .w-temp{
+  font-size:22px;
+  font-weight:700;
+  opacity:.95;
+}
+
+.tempo .w-desc{
+  font-size:11px;
+  opacity:.75;
+  font-weight:600;
+}
+
+.blue{ background:linear-gradient(145deg,#0066ff,#003eb7); }
+.red{ background:linear-gradient(145deg,#ff1a1a,#d80000); }
+.white-tempo{
   background:#fff;
   color:#111;
   border:2px solid #ddd;
 }
-.white .weather{
-  filter:grayscale(1) brightness(0);
-}
+.white-tempo .w-icon{ filter:grayscale(1) brightness(0); }
+.white-tempo .w-temp{ color:#333; }
+.white-tempo .w-desc{ color:#666; }
+.white-tempo .day-label{ color:#555; opacity:1; }
 
+/* ── METRIC CARDS ── */
 .metric{
-  height:120px;
+  min-height:120px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
 }
 
 .metric-title{
-  font-size:13px;
+  font-size:12px;
   font-weight:900;
   text-transform:uppercase;
+  letter-spacing:.06em;
+  color:#6b7280;
+  margin-bottom:10px;
 }
 
 .metric-value{
-  margin-top:24px;
-  font-size:36px;
+  font-size:40px;
   font-weight:950;
-  letter-spacing:-1px;
+  letter-spacing:-1.5px;
+  line-height:1;
 }
 
+.metric-unit{
+  font-size:16px;
+  font-weight:600;
+  color:#9ca3af;
+  margin-left:2px;
+}
+
+/* ── BATTERY CARDS ── */
 .battery{
-  min-height:205px;
+  min-height:210px;
+  text-align:center;
 }
 
 .battery-title{
-  font-size:15px;
-  font-weight:950;
+  font-size:13px;
+  font-weight:900;
   text-transform:uppercase;
+  letter-spacing:.06em;
+  color:#6b7280;
+  margin-bottom:14px;
 }
 
 .battery-main{
   display:flex;
   align-items:center;
+  justify-content:center;
   gap:12px;
-  margin-top:18px;
+  margin-bottom:14px;
 }
 
 .icon{
-  width:48px;
-  height:48px;
+  width:48px; height:48px;
   border-radius:50%;
   color:#fff;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:28px;
+  font-size:26px;
   font-weight:900;
   flex-shrink:0;
 }
 
-.icon.charge{background:#0a9f23;}
-.icon.decharge{background:#e00000;}
-.icon.attente{background:#ff7a00;}
-.icon.stale{background:#8b8b8b;}
+.icon.charge{ background:#0a9f23; }
+.icon.decharge{ background:#e00000; }
+.icon.attente{ background:#9ca3af; }
+.icon.attente::before{
+  content:'';
+  display:block;
+  width:6px; height:18px;
+  background:#fff;
+  border-radius:2px;
+  margin-right:5px;
+}
+.icon.attente::after{
+  content:'';
+  display:block;
+  width:6px; height:18px;
+  background:#fff;
+  border-radius:2px;
+}
+.icon.stale{ background:#8b8b8b; }
 
 .soc{
-  font-size:36px;
+  font-size:38px;
   font-weight:950;
   line-height:1;
+  font-variant-numeric:tabular-nums;
+}
+.soc sup{
+  font-size:16px;
+  font-weight:700;
+  vertical-align:top;
+  line-height:1.6;
 }
 
 .state{
-  margin-top:5px;
-  font-size:13px;
+  margin-top:4px;
+  font-size:12px;
   font-weight:900;
   text-transform:uppercase;
 }
 
-.green{color:#0a9f23;}
-.redText{color:#e00000;}
-.orange{color:#ff7a00;}
-.gray{color:#777;}
+.green{ color:#0a9f23; }
+.redText{ color:#e00000; }
+.orange{ color:#ff7a00; }
+.gray{ color:#777; }
 
 .power{
-  margin-top:20px;
-  font-size:24px;
+  font-size:26px;
   font-weight:900;
+  margin-bottom:2px;
 }
 
 .power-label{
-  font-size:13px;
+  font-size:12px;
   color:#6b7280;
-  margin-top:2px;
+  margin-bottom:12px;
 }
 
 .gauge{
   position:relative;
-  height:14px;
+  height:12px;
   border-radius:999px;
-  margin-top:14px;
+  overflow:visible;
 }
 
-.gauge-gradient{
+.gauge-bg{
   height:100%;
   border-radius:999px;
-
-  background:linear-gradient(
-    90deg,
-    #d60000 0%,
-    #ff7a00 50%,
-    #10a51a 100%
-  );
+  background:linear-gradient(90deg,#d60000 0%,#ff7a00 50%,#10a51a 100%);
 }
 
 .gauge-cursor{
   position:absolute;
   top:50%;
-  width:18px;
-  height:18px;
+  width:18px; height:18px;
   border-radius:50%;
   background:#fff;
   border:3px solid #111827;
   transform:translate(-50%,-50%);
   box-shadow:0 2px 8px rgba(0,0,0,.28);
 }
+
+/* ── ALERTES PAGE ── */
+.alert-item{
+  background:#fff;
+  border-radius:16px;
+  padding:16px;
+  margin-bottom:12px;
+  box-shadow:0 4px 14px rgba(0,0,0,.06);
+  border-left:4px solid #ff7a00;
+  text-align:left;
+}
+
+.alert-item.ok{
+  border-left-color:#10a51a;
+}
+
+.alert-item.critical{
+  border-left-color:#e00000;
+}
+
+.alert-title{
+  font-size:15px;
+  font-weight:900;
+  margin-bottom:4px;
+}
+
+.alert-desc{
+  font-size:13px;
+  color:#6b7280;
+}
+
+/* ── ROI PAGE ── */
+.roi-hero{
+  background:linear-gradient(145deg,#1e3a5f,#0f2744);
+  border-radius:24px;
+  padding:22px 20px 18px;
+  color:#fff;
+  text-align:center;
+  margin-bottom:14px;
+}
+.roi-hero-label{font-size:12px;opacity:.7;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;}
+.roi-hero-amount{font-size:42px;font-weight:950;letter-spacing:-1px;margin-bottom:2px;}
+.roi-hero-sub{font-size:13px;opacity:.75;}
+
+.roi-progress-wrap{
+  background:#fff;
+  border-radius:20px;
+  padding:18px;
+  margin-bottom:12px;
+  box-shadow:0 4px 14px rgba(0,0,0,.06);
+}
+.roi-progress-title{font-size:13px;font-weight:800;color:#374151;margin-bottom:10px;}
+.roi-bar-bg{background:#f0f0f0;border-radius:10px;height:14px;overflow:hidden;margin-bottom:6px;}
+.roi-bar-fill{height:100%;border-radius:10px;background:linear-gradient(90deg,#10b981,#059669);transition:width .8s;}
+.roi-bar-labels{display:flex;justify-content:space-between;font-size:11px;color:#6b7280;}
+
+.roi-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-bottom:12px;
+}
+.roi-card{
+  background:#fff;
+  border-radius:18px;
+  padding:16px;
+  text-align:center;
+  box-shadow:0 4px 14px rgba(0,0,0,.06);
+  border-top:3px solid #6366f1;
+}
+.roi-card.green{border-top-color:#10b981;}
+.roi-card.orange{border-top-color:#f59e0b;}
+.roi-card.red{border-top-color:#ef4444;}
+.roi-label{font-size:11px;opacity:.7;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;color:#374151;}
+.roi-value{font-size:24px;font-weight:950;letter-spacing:-0.5px;color:#111827;}
+.roi-sub{font-size:11px;color:#6b7280;margin-top:2px;}
+
+.roi-section-title{font-size:13px;font-weight:800;color:#374151;margin:14px 0 8px;}
+.roi-compare{
+  background:#fff;
+  border-radius:18px;
+  padding:16px;
+  box-shadow:0 4px 14px rgba(0,0,0,.06);
+  margin-bottom:12px;
+}
+.roi-compare-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #f3f4f6;font-size:13px;}
+.roi-compare-row:last-child{border-bottom:none;}
+.roi-compare-label{color:#6b7280;font-weight:600;}
+.roi-compare-before{color:#ef4444;font-weight:700;}
+.roi-compare-after{color:#10b981;font-weight:700;}
+
+.roi-detail{
+  background:#fff;
+  border-radius:18px;
+  padding:16px;
+  box-shadow:0 4px 14px rgba(0,0,0,.06);
+  margin-bottom:12px;
+}
+.roi-detail-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #f3f4f6;font-size:13px;}
+.roi-detail-row:last-child{border-bottom:none;font-weight:800;color:#111827;}
+.roi-detail-item{color:#374151;}
+.roi-detail-gain{color:#10b981;font-weight:700;}
+
+/* ── FOOTER ── */
 .footer{
   text-align:center;
-  color:#7b7f89;
-  margin-top:22px;
-  font-size:14px;
-  line-height:1.45;
+  color:#9ca3af;
+  margin-top:20px;
+  font-size:13px;
+  line-height:1.5;
 }
 
 .refresh{
-  font-size:26px;
+  font-size:28px;
   cursor:pointer;
   user-select:none;
   margin-bottom:4px;
 }
 
+/* ── ROUGE BANNER ── */
+.rouge-banner{
+  display:none;
+  background:linear-gradient(135deg,#ff1a1a,#d80000);
+  color:#fff;
+  border-radius:16px;
+  padding:16px;
+  margin-bottom:14px;
+  text-align:center;
+}
+
+.rouge-banner.active{ display:block; }
+.rouge-banner-title{ font-size:18px; font-weight:900; margin-bottom:6px; }
+.rouge-banner-text{ font-size:13px; opacity:.9; }
+
 @media(max-width:370px){
-  .app{
-    padding:12px 10px 28px;
-  }
-  .grid{
-    gap:10px;
-  }
-  .card{
-    padding:13px;
-    border-radius:16px;
-  }
-  .metric-value{
-    font-size:31px;
-  }
-  .soc{
-    font-size:31px;
-  }
+  .app{ padding:14px 10px 30px; }
+  .metric-value{ font-size:34px; }
+  .soc{ font-size:32px; }
+  .tab{ font-size:12px; padding:9px 4px; }
 }
 </style>
 </head>
@@ -230,179 +458,749 @@ body{
 <body>
 <div class="app">
 
-  <div class="title">Homey Energy Dashboard</div>
+  <!-- HEADER -->
+  <div class="status-row" style="justify-content:center;margin-bottom:10px;">
+    <div class="dot" id="statusDot"></div>
+    <span id="statusText">Connexion...</span>
+  </div>
 
-  <section class="grid">
-    <div class="card tempo blue" id="tempoTodayCard">
-      <div>
-        <div class="label">Aujourd’hui</div>
-        <div class="value" id="tempoToday">--</div>
+  <!-- TABS -->
+  <div class="tabs">
+    <div class="tab active" onclick="showTab('energie')">⚡ Énergie</div>
+    <div class="tab" onclick="showTab('alertes')">🚨 Alertes</div>
+    <div class="tab" onclick="showTab('roi')">💰 ROI</div>
+    <div class="tab" onclick="showTab('veille');loadVeille()">📡 Veille</div>
+  </div>
+
+  <!-- PAGE ÉNERGIE -->
+  <div class="page active" id="page-energie">
+
+    <!-- Bannière Jour Rouge -->
+    <div class="rouge-banner" id="rougeBanner">
+      <div class="rouge-banner-title">🔴 JOUR ROUGE — TARIF ÉLEVÉ EDF</div>
+      <div class="rouge-banner-text">Maximisez l'autoconsommation · Utilisez vos batteries</div>
+    </div>
+
+    <!-- EDF Tempo -->
+    <div class="grid">
+      <div class="card tempo blue" id="tempoTodayCard">
+        <div class="day-label">Aujourd'hui</div>
+        <div class="day-color" id="tempoToday">--</div>
+        <div class="w-icon" id="weatherToday">⏳</div>
+        <div class="w-temp" id="weatherTodayTemp"></div>
+        <div class="w-desc" id="weatherTodayDesc"></div>
       </div>
-      <div class="weather" id="weatherToday">☀</div>
-    </div>
 
-    <div class="card tempo blue" id="tempoTomorrowCard">
-      <div>
-        <div class="label">Demain</div>
-        <div class="value" id="tempoTomorrow">--</div>
+      <div class="card tempo blue" id="tempoTomorrowCard">
+        <div class="day-label">Demain</div>
+        <div class="day-color" id="tempoTomorrow">--</div>
+        <div class="w-icon" id="weatherTomorrow">⏳</div>
+        <div class="w-temp" id="weatherTomorrowTemp"></div>
+        <div class="w-desc" id="weatherTomorrowDesc"></div>
       </div>
-      <div class="weather" id="weatherTomorrow">☁</div>
-    </div>
-  </section>
-
-  <section class="grid" style="margin-top:12px">
-    <div class="card metric">
-      <div class="metric-title">Production solaire</div>
-      <div class="metric-value" id="solarPower">--</div>
     </div>
 
-    <div class="card metric">
-      <div class="metric-title">Sortie Shelly / Réseau</div>
-      <div class="metric-value" id="gridPower">--</div>
+    <!-- Métriques -->
+    <div class="grid">
+      <div class="card metric">
+        <div class="metric-title">Production solaire</div>
+        <div class="metric-value" id="solarPower">--</div>
+      </div>
+      <div class="card metric">
+        <div class="metric-title">Réseau / Shelly</div>
+        <div class="metric-value" id="gridPower">--</div>
+      </div>
     </div>
-  </section>
 
-  <section class="grid" id="batteriesContainer" style="margin-top:12px"></section>
+    <!-- Batteries -->
+    <div class="grid" id="batteriesContainer"></div>
 
-  <div class="footer">
-    <div class="refresh" onclick="loadData()">↻</div>
-    <div>Dernière mise à jour :</div>
-    <div id="updatedAt">--</div>
+    <!-- Footer -->
+    <div class="footer">
+      <div class="refresh" onclick="loadData()">↻</div>
+      <div>Dernière mise à jour</div>
+      <div id="updatedAt">--</div>
+    </div>
+  </div>
+
+  <!-- PAGE ALERTES -->
+  <div class="page" id="page-alertes">
+    <div id="alertesContainer">
+      <div class="alert-item ok">
+        <div class="alert-title">✅ Chargement...</div>
+        <div class="alert-desc">Récupération des données en cours</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE ROI -->
+  <div class="page" id="page-roi">
+
+    <!-- HERO : investissement -->
+    <div class="roi-hero">
+      <div class="roi-hero-label">Investissement total</div>
+      <div class="roi-hero-amount">26 209 €</div>
+      <div class="roi-hero-sub">Panneaux (2023) + Batteries (2026) + Domotique</div>
+    </div>
+
+    <!-- BARRE DE PROGRESSION ROI -->
+    <div class="roi-progress-wrap">
+      <div class="roi-progress-title">🎯 Progression vers le ROI (estimé 2035)</div>
+      <div class="roi-bar-bg"><div class="roi-bar-fill" id="roi-bar" style="width:0%"></div></div>
+      <div class="roi-bar-labels">
+        <span>2023</span>
+        <span id="roi-pct-label">--</span>
+        <span>2035</span>
+      </div>
+    </div>
+
+    <!-- CHIFFRES CLÉS -->
+    <div class="roi-grid">
+      <div class="roi-card green">
+        <div class="roi-label">Gains cumulés</div>
+        <div class="roi-value" id="roi-cumul">--</div>
+        <div class="roi-sub">depuis mars 2023</div>
+      </div>
+      <div class="roi-card">
+        <div class="roi-label">Reste à amortir</div>
+        <div class="roi-value" id="roi-reste">--</div>
+        <div class="roi-sub">sur 26 209 €</div>
+      </div>
+      <div class="roi-card orange">
+        <div class="roi-label">Gains / an</div>
+        <div class="roi-value">2 304 €</div>
+        <div class="roi-sub">autoconso + batterie + Tempo</div>
+      </div>
+      <div class="roi-card green">
+        <div class="roi-label">Économie / mois</div>
+        <div class="roi-value">192 €</div>
+        <div class="roi-sub">vs ancienne facture</div>
+      </div>
+    </div>
+
+    <!-- AVANT / APRÈS -->
+    <div class="roi-section-title">📊 Avant / Après installation</div>
+    <div class="roi-compare">
+      <div class="roi-compare-row">
+        <span class="roi-compare-label">Facture EDF mensuelle</span>
+        <span class="roi-compare-before">300 €</span>
+        <span>→</span>
+        <span class="roi-compare-after">~108 €</span>
+      </div>
+      <div class="roi-compare-row">
+        <span class="roi-compare-label">Reversement réseau / an</span>
+        <span class="roi-compare-before">400 €</span>
+        <span>→</span>
+        <span class="roi-compare-after">~704 €</span>
+      </div>
+      <div class="roi-compare-row">
+        <span class="roi-compare-label">Production solaire / an</span>
+        <span class="roi-compare-before">–</span>
+        <span>→</span>
+        <span class="roi-compare-after">10 705 kWh</span>
+      </div>
+    </div>
+
+    <!-- DÉTAIL DES GAINS -->
+    <div class="roi-section-title">💶 Détail des gains annuels</div>
+    <div class="roi-detail">
+      <div class="roi-detail-row">
+        <span class="roi-detail-item">Autoconsommation solaire</span>
+        <span class="roi-detail-gain">+ 1 400 €</span>
+      </div>
+      <div class="roi-detail-row">
+        <span class="roi-detail-item">Récupération injection (batteries)</span>
+        <span class="roi-detail-gain">+ 704 €</span>
+      </div>
+      <div class="roi-detail-row">
+        <span class="roi-detail-item">Optimisation Tempo Rouge (22j)</span>
+        <span class="roi-detail-gain">+ 200 €</span>
+      </div>
+      <div class="roi-detail-row">
+        <span class="roi-detail-item">TOTAL ESTIMÉ</span>
+        <span class="roi-detail-gain">2 304 € / an</span>
+      </div>
+    </div>
+
+    <!-- DÉTAIL INVESTISSEMENT -->
+    <div class="roi-section-title">🏗️ Détail de l'investissement</div>
+    <div class="roi-detail">
+      <div class="roi-detail-row">
+        <span class="roi-detail-item">Panneaux + onduleur Huawei (2023)</span>
+        <span style="color:#374151;font-weight:700;">19 218 €</span>
+      </div>
+      <div class="roi-detail-row">
+        <span class="roi-detail-item">4× Batteries Marstek + pose (2026)</span>
+        <span style="color:#374151;font-weight:700;">6 596 €</span>
+      </div>
+      <div class="roi-detail-row">
+        <span class="roi-detail-item">Homey + Shelly + domotique</span>
+        <span style="color:#374151;font-weight:700;">395 €</span>
+      </div>
+      <div class="roi-detail-row">
+        <span class="roi-detail-item">TOTAL TTC</span>
+        <span style="color:#374151;font-weight:800;">26 209 €</span>
+      </div>
+    </div>
+
+    <!-- ESTIMATION DYNAMIQUE BASÉE SUR CONSO ACTUELLE -->
+    <div class="roi-section-title">⚡ Estimation selon votre consommation actuelle</div>
+    <div style="background:linear-gradient(135deg,#0f4c81,#1a6eb5);border-radius:20px;padding:20px;color:#fff;text-align:center;margin-bottom:12px;">
+      <div style="font-size:12px;opacity:.75;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;">Avec votre consommation actuelle, votre ROI sera atteint en</div>
+      <div style="font-size:36px;font-weight:950;letter-spacing:-0.5px;margin-bottom:4px;" id="roi-dyn-date">--</div>
+      <div style="font-size:13px;opacity:.8;" id="roi-dyn-sub">Calcul en cours...</div>
+    </div>
+    <div class="roi-detail" id="roi-dyn-detail">
+      <div class="roi-detail-row">
+        <span class="roi-detail-item">Taux de couverture solaire actuel</span>
+        <span class="roi-detail-gain" id="roi-dyn-cover">--</span>
+      </div>
+      <div class="roi-detail-row">
+        <span class="roi-detail-item">Gain annuel projeté</span>
+        <span class="roi-detail-gain" id="roi-dyn-gain">--</span>
+      </div>
+      <div class="roi-detail-row">
+        <span class="roi-detail-item">Économie mensuelle estimée</span>
+        <span class="roi-detail-gain" id="roi-dyn-saving">--</span>
+      </div>
+      <div class="roi-detail-row">
+        <span class="roi-detail-item">Reste à amortir</span>
+        <span style="color:#374151;font-weight:700;" id="roi-dyn-reste">--</span>
+      </div>
+    </div>
+    <div style="font-size:11px;color:#9ca3af;text-align:center;margin-bottom:8px;">
+      Basé sur la production instantanée · Données Shelly temps réel
+    </div>
+
+  </div>
+
+  <!-- ════════════════════════════ PAGE VEILLE ════════════════════════════ -->
+  <div class="page" id="page-veille">
+
+    <!-- Highlight -->
+    <div id="veille-highlight" style="display:none;border-radius:20px;padding:18px 16px;margin-bottom:14px;color:#fff;background:linear-gradient(135deg,#1a1a2e,#16213e);">
+      <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;opacity:.7;margin-bottom:6px;">📌 À RETENIR AUJOURD'HUI</div>
+      <div id="veille-highlight-titre" style="font-size:16px;font-weight:800;margin-bottom:6px;line-height:1.3;"></div>
+      <div id="veille-highlight-resume" style="font-size:13px;opacity:.85;line-height:1.5;"></div>
+    </div>
+
+    <!-- Statut / dernière mise à jour -->
+    <div style="text-align:center;font-size:11px;color:#9ca3af;margin-bottom:14px;" id="veille-meta">
+      Chargement de la veille…
+    </div>
+
+    <!-- Propositions d'action -->
+    <div id="veille-propositions" style="display:none;margin-bottom:16px;"></div>
+
+    <!-- Catégories -->
+    <div id="veille-categories"></div>
+
   </div>
 
 </div>
 
 <script>
-function fmtW(value){
-  if(value === null || value === undefined || isNaN(value)) return '--';
-  return Math.round(value).toLocaleString('fr-FR') + ' W';
+// ── TABS ──
+function showTab(tab) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById('page-' + tab).classList.add('active');
 }
 
-function tempoClass(color){
+// ── FORMAT ──
+function fmtW(v) {
+  if (v === null || v === undefined || isNaN(v)) return '--';
+  const n = Math.round(v);
+  if (Math.abs(n) >= 1000) return (n / 1000).toFixed(1) + ' kW';
+  return n.toLocaleString('fr-FR') + ' W';
+}
+
+function tempoCardClass(color) {
   const c = String(color || '').toUpperCase();
-  if(c === 'ROUGE') return 'tempo red';
-  if(c === 'BLANC') return 'tempo white';
-  return 'tempo blue';
+  if (c === 'ROUGE') return 'card tempo red';
+  if (c === 'BLANC') return 'card tempo white-tempo';
+  return 'card tempo blue';
 }
 
-function batteryVisual(direction){
-  if(direction === 'CHARGING'){
-    return {
-      icon:'⚡',
-      iconClass:'charge',
-      state:'EN CHARGE',
-      color:'green',
-      label:'Puissance de charge'
-    };
+// ── BATTERIES ──
+// Couleur interpolée sur le gradient rouge→orange→vert (identique à la gauge-bg)
+function socColor(soc) {
+  const t = Math.max(0, Math.min(100, soc)) / 100;
+  let r, g, b;
+  if (t <= 0.5) {
+    const u = t / 0.5;
+    r = Math.round(0xd6 + (0xff - 0xd6) * u);
+    g = Math.round(0x00 + (0x7a - 0x00) * u);
+    b = 0;
+  } else {
+    const u = (t - 0.5) / 0.5;
+    r = Math.round(0xff + (0x10 - 0xff) * u);
+    g = Math.round(0x7a + (0xa5 - 0x7a) * u);
+    b = Math.round(0x00 + (0x1a - 0x00) * u);
   }
-
-  if(direction === 'DISCHARGING'){
-    return {
-      icon:'↓',
-      iconClass:'decharge',
-      state:'EN DÉCHARGE',
-      color:'redText',
-      label:'Puissance de décharge'
-    };
-  }
-
-  if(direction === 'STALE'){
-    return {
-      icon:'!',
-      iconClass:'stale',
-      state:'PÉRIMÉE',
-      color:'gray',
-      label:'Donnée ancienne'
-    };
-  }
-
-  return {
-    icon:'Ⅱ',
-    iconClass:'attente',
-    state:'EN ATTENTE',
-    color:'orange',
-    label:'Puissance'
-  };
+  return `rgb(${r},${g},${b})`;
 }
 
-function renderBattery(b, index){
+function batteryVisual(direction) {
+  if (direction === 'CHARGING')    return { icon:'⚡', cls:'charge',  state:'EN CHARGE',   color:'green',   label:'Puissance de charge' };
+  if (direction === 'DISCHARGING') return { icon:'↓',  cls:'decharge', state:'EN DÉCHARGE', color:'redText', label:'Puissance de décharge' };
+  if (direction === 'STALE')       return { icon:'!',  cls:'stale',   state:'PÉRIMÉE',      color:'gray',    label:'Donnée ancienne' };
+  return                                   { icon:'',   cls:'attente',      state:'EN ATTENTE',  color:'orange',  label:'Puissance' };
+}
+
+function renderBattery(b, i) {
   const soc = Math.round(Number(b.soc || 0));
   const v = batteryVisual(b.direction);
-  const power = Math.abs(Number(b.powerW || 0));
-
+  const power = fmtW(Math.abs(Number(b.powerW || 0)));
   return `
     <div class="card battery">
-      <div class="battery-title">Batterie ${index + 1}</div>
-
+      <div class="battery-title">Batterie ${i + 1}</div>
       <div class="battery-main">
-        <div class="icon ${v.iconClass}">${v.icon}</div>
-
+        <div class="icon ${v.cls}">${v.icon}</div>
         <div>
-          <div class="soc ${v.color}">${soc}%</div>
-          <div class="state ${v.color}">${v.state}</div>
+          <div class="soc" style="color:${socColor(soc)}">${soc}<sup>%</sup></div>
+          <div class="state" style="color:${socColor(soc)}">${v.state}</div>
         </div>
       </div>
-
-      <div class="power">${fmtW(power)}</div>
+      <div class="power">${power}</div>
       <div class="power-label">${v.label}</div>
-
       <div class="gauge">
-        <div class="gauge-gradient"></div>
-
-        <div
-          class="gauge-cursor"
-          style="left:${Math.max(0, Math.min(100, soc))}%">
-        </div>
+        <div class="gauge-bg"></div>
+        <div class="gauge-cursor" style="left:${Math.max(0,Math.min(100,soc))}%"></div>
       </div>
-
-    </div>
-  `;
+    </div>`;
 }
 
-async function loadData(){
-  try{
-    const response = await fetch('/.netlify/functions/energy', { cache:'no-store' });
-    const json = await response.json();
-    const data = json.data;
+// ── ALERTES ──
+function buildAlertes(data) {
+  const alerts = [];
 
-    document.getElementById('solarPower').innerText =
-      fmtW(data.solar.productionW);
+  // ── EDF Tempo ──
+  if ((data.tempo?.today || '').toUpperCase() === 'ROUGE') {
+    alerts.push({ level:'critical', title:'🔴 Jour Rouge EDF', desc:'Tarif maximal. Évitez le réseau, utilisez vos batteries.' });
+  }
+  if ((data.tempo?.tomorrow || '').toUpperCase() === 'ROUGE') {
+    alerts.push({ level:'warning', title:'⚠️ Demain Jour Rouge', desc:'Anticipez : chargez les batteries au maximum ce soir.' });
+  }
 
-    document.getElementById('gridPower').innerText =
-      fmtW(data.grid.powerW);
+  // ── Température Shelly ──
+  // Supporte data.shelly.temperature (°C) ou data.shellyTemp
+  const shellyTemp = data.shelly?.temperature ?? data.shellyTemp ?? null;
+  if (shellyTemp !== null) {
+    const t = Number(shellyTemp);
+    if (t > 55) {
+      alerts.push({ level:'critical', title:`🌡️ Température Shelly critique : ${t.toFixed(1)}°C`, desc:'Seuil critique dépassé (>55 °C). Vérifiez la ventilation du tableau.' });
+    } else if (t > 45) {
+      alerts.push({ level:'warning', title:`🌡️ Température Shelly élevée : ${t.toFixed(1)}°C`, desc:'Température au-dessus du seuil normal (>45 °C). Surveillez le tableau.' });
+    }
+  }
 
-    document.getElementById('tempoToday').innerText =
-      data.tempo.today || '--';
-
-    document.getElementById('tempoTomorrow').innerText =
-      data.tempo.tomorrow || '--';
-
-    document.getElementById('tempoTodayCard').className =
-      'card ' + tempoClass(data.tempo.today);
-
-    document.getElementById('tempoTomorrowCard').className =
-      'card ' + tempoClass(data.tempo.tomorrow);
-
-    document.getElementById('weatherToday').innerText =
-      data.weather?.today?.icon || '☀';
-
-    document.getElementById('weatherTomorrow').innerText =
-      data.weather?.tomorrow?.icon || '☁';
-
-    document.getElementById('batteriesContainer').innerHTML =
-      data.batteries.map((b, i) => renderBattery(b, i)).join('');
-
-    document.getElementById('updatedAt').innerText =
-      new Date(data.updatedAt).toLocaleString('fr-FR');
-
-  }catch(err){
-    document.getElementById('updatedAt').innerText =
-      'Erreur : ' + err.message;
+  const container = document.getElementById('alertesContainer');
+  if (alerts.length === 0) {
+    container.innerHTML = '<div class="alert-item ok"><div class="alert-title">✅ Tous les systèmes nominaux</div><div class="alert-desc">Aucune alerte active</div></div>';
+  } else {
+    container.innerHTML = alerts.map(a =>
+      `<div class="alert-item ${a.level === 'critical' ? 'critical' : ''}">
+        <div class="alert-title">${a.title}</div>
+        <div class="alert-desc">${a.desc}</div>
+      </div>`).join('');
   }
 }
 
+// ── MÉTÉO OPEN-METEO (fallback si pas dans les données Homey) ──
+const WMO = {
+  0:'☀️', 1:'🌤️', 2:'⛅', 3:'☁️',
+  45:'🌫️', 48:'🌫️',
+  51:'🌦️', 53:'🌦️', 55:'🌧️',
+  61:'🌧️', 63:'🌧️', 65:'🌧️',
+  71:'❄️', 73:'❄️', 75:'❄️',
+  80:'🌨️', 81:'🌨️', 82:'🌨️',
+  95:'⛈️', 96:'⛈️', 99:'⛈️'
+};
+const WMO_DESC = {
+  0:'Dégagé', 1:'Peu nuageux', 2:'Nuageux', 3:'Couvert',
+  45:'Brouillard', 48:'Brouillard',
+  51:'Bruine', 53:'Bruine', 55:'Pluie',
+  61:'Pluie', 63:'Pluie', 65:'Pluie forte',
+  71:'Neige', 73:'Neige', 75:'Neige forte',
+  80:'Averses', 81:'Averses', 82:'Averses fortes',
+  95:'Orage', 96:'Orage', 99:'Orage fort'
+};
+
+let weatherFetched = false;
+
+function fetchOpenMeteo(lat, lon) {
+  fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&daily=weathercode,temperature_2m_max&timezone=auto&forecast_days=2`)
+    .then(r => r.json())
+    .then(d => {
+      // Aujourd'hui : code météo en temps réel (current_weather), temp max du jour
+      const currentCode = d.current_weather?.weathercode ?? d.daily.weathercode[0];
+      const todayTemp = d.daily.temperature_2m_max[0];
+      setWeather('Today', WMO[currentCode] || '🌡️', `${Math.round(todayTemp)}°C`, WMO_DESC[currentCode] || '');
+      // Demain : prévision journalière
+      const tomorrowCode = d.daily.weathercode[1];
+      const tomorrowTemp = d.daily.temperature_2m_max[1];
+      setWeather('Tomorrow', WMO[tomorrowCode] || '🌡️', `${Math.round(tomorrowTemp)}°C`, WMO_DESC[tomorrowCode] || '');
+      weatherFetched = true;
+    })
+    .catch(() => {});
+}
+
+function setWeather(day, icon, temp, desc) {
+  const iconEl = document.getElementById('weather' + day);
+  const tempEl = document.getElementById('weather' + day + 'Temp');
+  const descEl = document.getElementById('weather' + day + 'Desc');
+  if (iconEl) iconEl.textContent = icon;
+  if (tempEl) tempEl.textContent = temp;
+  if (descEl) descEl.textContent = desc;
+}
+
+function initWeather() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      p => fetchOpenMeteo(p.coords.latitude, p.coords.longitude),
+      () => fetchOpenMeteo(48.8566, 2.3522)
+    );
+  } else {
+    fetchOpenMeteo(48.8566, 2.3522);
+  }
+}
+
+// ── LOAD DATA ──
+async function loadData() {
+  try {
+    const res = await fetch('/api/energy', { cache:'no-store' });
+    const json = await res.json();
+    const data = json.data;
+
+    // Connexion OK
+    const dot = document.getElementById('statusDot');
+    const txt = document.getElementById('statusText');
+    dot.classList.add('connected');
+    txt.textContent = 'En direct · ' + new Date(data.updatedAt).toLocaleTimeString('fr-FR');
+
+    // Tempo
+    const todayColor = data.tempo?.today || '--';
+    const tomorrowColor = data.tempo?.tomorrow || '--';
+    document.getElementById('tempoToday').textContent = todayColor;
+    document.getElementById('tempoTomorrow').textContent = tomorrowColor;
+    document.getElementById('tempoTodayCard').className = tempoCardClass(todayColor);
+    document.getElementById('tempoTomorrowCard').className = tempoCardClass(tomorrowColor);
+
+    // Bannière rouge
+    document.getElementById('rougeBanner').classList.toggle('active', todayColor.toUpperCase() === 'ROUGE');
+
+    // Météo depuis Homey si disponible, sinon Open-Meteo
+    if (data.weather?.today?.icon && !weatherFetched) {
+      setWeather('Today', data.weather.today.icon, data.weather.today.temp || '', data.weather.today.desc || '');
+      setWeather('Tomorrow', data.weather?.tomorrow?.icon || '🌡️', data.weather?.tomorrow?.temp || '', data.weather?.tomorrow?.desc || '');
+    }
+
+    // Métriques solaire / réseau
+    const solarW = data.solar?.productionW ?? data.solar ?? 0;
+    const gridW  = data.grid?.powerW ?? data.grid ?? 0;
+    document.getElementById('solarPower').innerHTML = fmtW(solarW);
+    document.getElementById('gridPower').innerHTML = fmtW(gridW);
+
+    // Batteries
+    const bats = data.batteries || [];
+    document.getElementById('batteriesContainer').innerHTML = bats.map((b, i) => renderBattery(b, i)).join('');
+
+    // Alertes
+    buildAlertes(data);
+
+    // ── ROI dynamique ──
+    (function buildROI() {
+      const INVEST = 26209;
+      const GAIN_PHASE1_AN = 1400;  // solaire seul (2023-2026)
+      const GAIN_PHASE2_AN = 2304;  // solaire + batteries (2026+)
+      const START_SOLAR = new Date('2023-03-13');
+      const START_BATT  = new Date('2026-03-04');
+      const now = new Date();
+      const msYear = 365.25 * 24 * 3600 * 1000;
+      const yr1 = Math.max(0, (Math.min(START_BATT, now) - START_SOLAR) / msYear);
+      const yr2 = Math.max(0, (now - START_BATT) / msYear);
+      const cumul = Math.round(yr1 * GAIN_PHASE1_AN + yr2 * GAIN_PHASE2_AN);
+      const reste = Math.max(0, INVEST - cumul);
+      const pct   = Math.min(100, Math.round(cumul / INVEST * 100));
+      document.getElementById('roi-cumul').textContent = cumul.toLocaleString('fr-FR') + ' €';
+      document.getElementById('roi-reste').textContent = reste.toLocaleString('fr-FR') + ' €';
+      document.getElementById('roi-bar').style.width = pct + '%';
+      document.getElementById('roi-pct-label').textContent = pct + '% amorti';
+
+      // ── ESTIMATION DYNAMIQUE basée sur production instantanée ──
+      const solarW  = data.solar?.productionW ?? (data.solar?.productionKw ?? 0) * 1000;
+      const gridW   = data.grid?.powerW ?? 0; // positif = import réseau
+      const totalW  = solarW + Math.max(0, gridW);
+      // Taux de couverture solaire instantané
+      const cover = totalW > 50 ? Math.min(100, Math.round(solarW / totalW * 100)) : 0;
+
+      // Production mensuelle réelle par mois (kWh, FusionSolar 2024-2025)
+      const MONTHLY_KWH = [550,620,920,980,1100,1150,1180,1050,850,720,480,425];
+      const m = now.getMonth(); // 0-11
+      const avgMonthly = 10705 / 12;
+      const seasonRatio = MONTHLY_KWH[m] / avgMonthly; // ce mois vs moyenne
+
+      // Gain annuel projeté = gain phase2 ajusté par ratio saison et couverture actuelle
+      // On pondère : 60% basé sur le mois (fiable), 40% basé sur l'instantané
+      const coverRatio = cover / 100;
+      const instantWeight = 0.4;
+      const seasonWeight  = 0.6;
+      const gainProj = Math.round(GAIN_PHASE2_AN * (seasonWeight * seasonRatio + instantWeight * coverRatio));
+
+      // Reste dynamique = même cumul historique (on garde le passé fixe) mais projection future au taux actuel
+      const resteApresAujourdHui = Math.max(0, INVEST - cumul);
+      const moisRestants = resteApresAujourdHui / (gainProj / 12);
+      const roiDate = new Date(now.getTime() + moisRestants * 30.44 * 24 * 3600 * 1000);
+      const roiStr = roiDate.toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' });
+
+      // Facture mensuelle estimée = ancienne - économie mensuelle
+      const OLD_MONTHLY = 300;
+      const savingMonthly = Math.round(gainProj / 12);
+      const newMonthly = Math.max(0, OLD_MONTHLY - savingMonthly);
+
+      // Affichage bloc dynamique
+      document.getElementById('roi-dyn-date').textContent   = roiStr;
+      document.getElementById('roi-dyn-sub').textContent    = `Gain projeté : ${gainProj.toLocaleString('fr-FR')} €/an (mois de ${['jan','fév','mar','avr','mai','juin','juil','août','sep','oct','nov','déc'][m]})`;
+      document.getElementById('roi-dyn-cover').textContent  = cover + '%';
+      document.getElementById('roi-dyn-gain').textContent   = gainProj.toLocaleString('fr-FR') + ' €/an';
+      document.getElementById('roi-dyn-saving').textContent = `${savingMonthly} €/mois (facture estimée : ~${newMonthly} €)`;
+      document.getElementById('roi-dyn-reste').textContent  = resteApresAujourdHui.toLocaleString('fr-FR') + ' €';
+    })();
+
+    // Timestamp
+    document.getElementById('updatedAt').textContent =
+      new Date(data.updatedAt).toLocaleString('fr-FR');
+
+  } catch(err) {
+    const dot = document.getElementById('statusDot');
+    dot.classList.remove('connected');
+    document.getElementById('statusText').textContent = 'Hors ligne';
+    document.getElementById('updatedAt').textContent = 'Erreur : ' + err.message;
+  }
+}
+
+// ── ICÔNE BATTERIE (favicon + Apple Touch Icon) ──
+(function generateBatteryIcon() {
+  const S = 180;
+  const c = document.createElement('canvas');
+  c.width = c.height = S;
+  const ctx = c.getContext('2d');
+
+  // Fond bleu foncé arrondi
+  ctx.beginPath();
+  const r = 34;
+  ctx.moveTo(r, 0); ctx.lineTo(S-r, 0);
+  ctx.quadraticCurveTo(S, 0, S, r);
+  ctx.lineTo(S, S-r);
+  ctx.quadraticCurveTo(S, S, S-r, S);
+  ctx.lineTo(r, S);
+  ctx.quadraticCurveTo(0, S, 0, S-r);
+  ctx.lineTo(0, r);
+  ctx.quadraticCurveTo(0, 0, r, 0);
+  ctx.closePath();
+  ctx.fillStyle = '#0f2744';
+  ctx.fill();
+
+  // Corps batterie (rectangle arrondi)
+  const bx=18, by=58, bw=124, bh=64, br=10;
+  ctx.beginPath();
+  ctx.moveTo(bx+br, by);
+  ctx.lineTo(bx+bw-br, by); ctx.quadraticCurveTo(bx+bw, by, bx+bw, by+br);
+  ctx.lineTo(bx+bw, by+bh-br); ctx.quadraticCurveTo(bx+bw, by+bh, bx+bw-br, by+bh);
+  ctx.lineTo(bx+br, by+bh); ctx.quadraticCurveTo(bx, by+bh, bx, by+bh-br);
+  ctx.lineTo(bx, by+br); ctx.quadraticCurveTo(bx, by, bx+br, by);
+  ctx.closePath();
+  ctx.strokeStyle = '#10b981';
+  ctx.lineWidth = 6;
+  ctx.stroke();
+
+  // Borne + (bout droite)
+  ctx.fillStyle = '#10b981';
+  ctx.beginPath();
+  ctx.roundRect ? ctx.roundRect(142, 75, 18, 30, 4) : (()=>{ctx.rect(142,75,18,30);})();
+  ctx.fill();
+
+  // Remplissage batterie (75%)
+  ctx.beginPath();
+  const fw = Math.round(bw * 0.78);
+  ctx.moveTo(bx+br+3, by+6);
+  ctx.lineTo(bx+fw-6, by+6); ctx.quadraticCurveTo(bx+fw, by+6, bx+fw, by+br+2);
+  ctx.lineTo(bx+fw, by+bh-br-2); ctx.quadraticCurveTo(bx+fw, by+bh-6, bx+fw-6, by+bh-6);
+  ctx.lineTo(bx+br+3, by+bh-6); ctx.quadraticCurveTo(bx+6, by+bh-6, bx+6, by+bh-br-2);
+  ctx.lineTo(bx+6, by+br+2); ctx.quadraticCurveTo(bx+6, by+6, bx+br+3, by+6);
+  ctx.closePath();
+  ctx.fillStyle = '#10b981';
+  ctx.fill();
+
+  // Lettre M blanche centrée
+  ctx.fillStyle = '#fff';
+  ctx.font = 'bold 38px -apple-system, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('M', S/2 - 8, S/2 + 1);
+
+  // Injecter dans le <head>
+  const png = c.toDataURL('image/png');
+  ['apple-touch-icon','icon','shortcut icon'].forEach((rel,i) => {
+    const lk = document.createElement('link');
+    lk.rel = rel;
+    if (i === 1) lk.type = 'image/png';
+    lk.href = png;
+    document.head.appendChild(lk);
+  });
+})();
+
+// ── VEILLE ──
+let _veilleLoaded = false;
+let _veilleData   = null;
+let _veilleFilter = 'all'; // 'venus' = Marstek uniquement | 'all' = tout l'équipement
+
+async function loadVeille() {
+  if (_veilleLoaded) return;
+  try {
+    const res = await fetch('/homey-audit/news', { cache:'no-store' });
+    if (!res.ok) throw new Error('Fichier absent');
+    _veilleData = await res.json();
+    renderVeille(_veilleData);
+    _veilleLoaded = true;
+  } catch(e) {
+    document.getElementById('veille-meta').innerHTML =
+      '⏳ Pas encore de données — l\'agent tourne à 22h15 chaque soir.<br><span style="color:#d1d5db">Clique "Run now" sur la tâche <b>marstek-news-curation</b> pour lancer maintenant.</span>';
+  }
+}
+
+function toggleVeilleFilter() {
+  _veilleFilter = _veilleFilter === 'venus' ? 'all' : 'venus';
+  if (_veilleData) renderVeille(_veilleData);
+}
+
+function pertinenceBadge(p) {
+  if (p === 'haute')  return '<span style="background:#fef2f2;color:#dc2626;font-size:10px;font-weight:700;padding:2px 7px;border-radius:99px;">HAUTE</span>';
+  if (p === 'moyenne') return '<span style="background:#fffbeb;color:#d97706;font-size:10px;font-weight:700;padding:2px 7px;border-radius:99px;">MOYEN</span>';
+  return '<span style="background:#f3f4f6;color:#6b7280;font-size:10px;font-weight:700;padding:2px 7px;border-radius:99px;">FAIBLE</span>';
+}
+
+function renderVeille(data) {
+  // Highlight
+  if (data.highlight && data.highlight.titre) {
+    const hl = document.getElementById('veille-highlight');
+    hl.style.display = 'block';
+    if (data.highlight.urgence) hl.style.background = 'linear-gradient(135deg,#7f1d1d,#991b1b)';
+    document.getElementById('veille-highlight-titre').textContent =
+      (data.highlight.urgence ? '🚨 ' : '') + data.highlight.titre;
+    document.getElementById('veille-highlight-resume').textContent = data.highlight.resume;
+  }
+
+  // Meta + bouton filtre
+  const date = data.date ? new Date(data.date).toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'}) : '';
+  const isVenus = _veilleFilter === 'venus';
+  document.getElementById('veille-meta').innerHTML =
+    `Veille du ${date} · ${data.totalItems || 0} résultat(s)
+    <br><button onclick="toggleVeilleFilter()" style="margin-top:8px;background:${isVenus?'#0066ff':'#e5e7eb'};color:${isVenus?'#fff':'#374151'};border:none;border-radius:99px;padding:5px 14px;font-size:12px;font-weight:700;cursor:pointer;">
+      ${isVenus ? '🔋 Venus E uniquement' : '🌐 Toutes les catégories'}
+    </button>`;
+
+  // Propositions
+  const props = data.propositions || [];
+  const propContainer = document.getElementById('veille-propositions');
+  if (props.length > 0) {
+    propContainer.style.display = 'block';
+    propContainer.innerHTML = `
+      <div style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#374151;margin-bottom:10px;">
+        💡 PROPOSITIONS D'ACTION
+      </div>
+      ${props.map(p => {
+        const colors = {
+          urgent:     { bg:'#fef2f2', border:'#fca5a5', badge:'#dc2626', badgeBg:'#fee2e2', btn:'#dc2626' },
+          recommande: { bg:'#fffbeb', border:'#fcd34d', badge:'#d97706', badgeBg:'#fef3c7', btn:'#d97706' },
+          optionnel:  { bg:'#f0fdf4', border:'#86efac', badge:'#16a34a', badgeBg:'#dcfce7', btn:'#16a34a' }
+        };
+        const c = colors[p.urgence] || colors.optionnel;
+        const label = { urgent:'🔴 URGENT', recommande:'🟡 RECOMMANDÉ', optionnel:'🟢 OPTIONNEL' }[p.urgence] || p.urgence;
+        return `
+          <div style="background:${c.bg};border:1.5px solid ${c.border};border-radius:16px;padding:14px;margin-bottom:10px;">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:6px;">
+              <div style="font-size:14px;font-weight:800;color:#111;line-height:1.3;flex:1;">${p.titre}</div>
+              <span style="background:${c.badgeBg};color:${c.badge};font-size:10px;font-weight:700;padding:2px 8px;border-radius:99px;white-space:nowrap;">${label}</span>
+            </div>
+            <div style="font-size:13px;color:#374151;line-height:1.5;margin-bottom:10px;">${p.description}</div>
+            <div style="font-size:11px;color:#9ca3af;margin-bottom:8px;">Basé sur : <em>${p.source_news || ''}</em></div>
+            ${p.action ? `<button style="background:${c.btn};color:#fff;border:none;border-radius:99px;padding:7px 16px;font-size:12px;font-weight:700;cursor:pointer;">${p.action}</button>` : ''}
+          </div>`;
+      }).join('')}
+    `;
+  } else {
+    propContainer.style.display = 'none';
+  }
+
+  // Catégories filtrées
+  const cats = isVenus
+    ? (data.categories || []).filter(c => c.id === 'marstek')
+    : (data.categories || []);
+
+  const container = document.getElementById('veille-categories');
+  if (!cats.length || !cats.some(c => c.items && c.items.length > 0)) {
+    container.innerHTML = '<div style="text-align:center;padding:40px 20px;color:#9ca3af;font-size:14px;">Aucune actualité récente trouvée.<br>Prochaine veille ce soir à 22h15.</div>';
+    return;
+  }
+
+  container.innerHTML = cats
+    .filter(cat => cat.items && cat.items.length > 0)
+    .map(cat => `
+      <div style="margin-bottom:20px;">
+        <div style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#374151;margin-bottom:10px;display:flex;align-items:center;gap:6px;">
+          <span>${cat.icon}</span><span>${cat.label}</span>
+          <span style="background:#e5e7eb;color:#6b7280;font-size:10px;padding:2px 7px;border-radius:99px;font-weight:700;">${cat.items.length}</span>
+        </div>
+        ${cat.items.map(item => `
+          <div style="background:#fff;border-radius:16px;padding:14px;margin-bottom:8px;box-shadow:0 2px 10px rgba(0,0,0,.06);border:1px solid #f0f0f0;">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:6px;">
+              <div style="font-size:14px;font-weight:700;color:#111;line-height:1.3;flex:1;">${item.titre}</div>
+              ${pertinenceBadge(item.pertinence)}
+            </div>
+            <div style="font-size:12px;color:#6b7280;margin-bottom:8px;line-height:1.5;">${item.resume}</div>
+            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:4px;">
+              <div style="font-size:11px;color:#9ca3af;">
+                <b style="color:#374151;">${item.source}</b> · ${item.date}
+              </div>
+              ${item.url ? `<a href="${item.url}" target="_blank" rel="noopener" style="font-size:11px;color:#0066ff;font-weight:700;text-decoration:none;">Voir →</a>` : ''}
+            </div>
+            ${item.tags && item.tags.length ? `<div style="margin-top:8px;display:flex;gap:4px;flex-wrap:wrap;">
+              ${item.tags.map(t => `<span style="background:#f3f4f6;color:#374151;font-size:10px;padding:2px 7px;border-radius:99px;font-weight:600;">${t}</span>`).join('')}
+            </div>` : ''}
+          </div>
+        `).join('')}
+      </div>
+    `).join('');
+}
+
+// ── INIT ──
+initWeather();
 loadData();
-setInterval(loadData, 10000);
+// Polling rapide 3s — redessine seulement si les données ont changé
+let _lastSolarW = null;
+let _lastUpdatedAt = null;
+
+async function smartPoll() {
+  try {
+    const res = await fetch('/api/energy', { cache:'no-store' });
+    const json = await res.json();
+    const d = json.data;
+    const solarW = d?.solar?.productionW ?? (d?.solar?.productionKw ?? 0) * 1000;
+    const ts = d?.updatedAt;
+    // Redessine si : nouveau timestamp OU production solaire a changé de >20W
+    const solarChanged = _lastSolarW === null || Math.abs(solarW - _lastSolarW) > 20;
+    const tsChanged = ts !== _lastUpdatedAt;
+    if (solarChanged || tsChanged) {
+      _lastSolarW = solarW;
+      _lastUpdatedAt = ts;
+      loadData(); // déclenche le rendu complet
+    }
+  } catch(e) { /* silencieux, loadData gère les erreurs */ }
+}
+setInterval(smartPoll, 3000);
 </script>
 
 </body>
