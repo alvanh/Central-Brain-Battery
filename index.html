@@ -851,13 +851,17 @@ const WMO_DESC = {
 
 let weatherFetched = false;
 
-function solarIcon(productionW) {
-  // Déduit l'ensoleillement réel depuis la production solaire (installation ~10kWc)
+function solarIcon(productionW, apiCode) {
+  // N'utilise la production solaire QUE pour confirmer le beau temps
+  // (pas fiable pour mauvais temps, nuit, jour rouge)
+  // Si l'API indique pluie/orage/brouillard → toujours croire l'API
+  const BAD_WEATHER = [45,48,51,53,55,61,63,65,71,73,75,80,81,82,95,96,99];
+  if (BAD_WEATHER.includes(apiCode)) return null; // laisser l'API gérer
+
+  // Beau temps confirmé par production élevée (installation ~10kWc)
   if (productionW > 6000) return { icon:'☀️',  desc:'Ensoleillé' };
   if (productionW > 3500) return { icon:'🌤️', desc:'Peu nuageux' };
-  if (productionW > 1500) return { icon:'⛅',  desc:'Nuageux' };
-  if (productionW > 300)  return { icon:'☁️',  desc:'Couvert' };
-  // Nuit ou données absentes → API météo
+  // En dessous, laisser l'API décider (peut être nuageux, pluie fine, nuit…)
   return null;
 }
 
