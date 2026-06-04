@@ -299,26 +299,17 @@ body{
 
 .gauge{
   position:relative;
-  height:12px;
+  height:6px;
   border-radius:999px;
-  overflow:visible;
+  background:#f0f0f3;
+  overflow:hidden;
 }
 
-.gauge-bg{
+.gauge-fill{
   height:100%;
   border-radius:999px;
-  background:linear-gradient(90deg,#d60000 0%,#ff7a00 50%,#10a51a 100%);
-}
-
-.gauge-cursor{
-  position:absolute;
-  top:50%;
-  width:18px; height:18px;
-  border-radius:50%;
-  background:#fff;
-  border:3px solid #111827;
-  transform:translate(-50%,-50%);
-  box-shadow:0 2px 8px rgba(0,0,0,.28);
+  background:#d1d5db;
+  transition:width .6s cubic-bezier(.4,0,.2,1), background .3s;
 }
 
 /* ── ALERTES PAGE ── */
@@ -807,8 +798,7 @@ function renderBattery(b, i) {
       <div class="power">${power}</div>
       <div class="power-label">${v.label}</div>
       <div class="gauge">
-        <div class="gauge-bg"></div>
-        <div class="gauge-cursor" style="left:${Math.max(0,Math.min(100,soc))}%"></div>
+        <div class="gauge-fill" style="width:${soc}%;background:${c};opacity:${soc===0?0.3:1};"></div>
       </div>
     </div>`;
 }
@@ -818,12 +808,16 @@ function renderTotalSoc(batteries) {
   if (!valids.length) return '';
   const avgRaw = valids.reduce((s,b) => s + Number(b.soc), 0) / valids.length;
   const avg = socDisplay(Math.round(avgRaw));
-  const color = socColor(avg);
+  // Couleur Apple : vert >60%, orange 20-60%, rouge <20%
+  const fillColor = avg >= 60 ? '#34c759' : avg >= 20 ? '#ff9f0a' : '#ff3b30';
   return `
-    <div style="background:#fff;border-radius:14px;padding:12px 16px;margin-bottom:10px;box-shadow:0 1px 4px rgba(0,0,0,.06);">
-      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#111827;margin-bottom:8px;">SoC Total — ${avg}%</div>
-      <div style="position:relative;height:12px;border-radius:6px;background:linear-gradient(90deg,#ef4444 0%,#f59e0b 40%,#10b981 80%,#059669 100%);overflow:hidden;">
-        <div style="position:absolute;left:${avg}%;top:-2px;transform:translateX(-50%);width:16px;height:16px;background:#fff;border:3px solid ${color};border-radius:50%;box-shadow:0 1px 4px rgba(0,0,0,.2);"></div>
+    <div style="background:#fff;border-radius:14px;padding:14px 16px;margin-bottom:10px;box-shadow:0 1px 4px rgba(0,0,0,.06);">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;">
+        <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:#8e8e93;">Charge totale</span>
+        <span style="font-size:17px;font-weight:700;color:${fillColor};">${avg}%</span>
+      </div>
+      <div style="height:6px;border-radius:999px;background:#f0f0f3;overflow:hidden;">
+        <div style="height:100%;width:${avg}%;border-radius:999px;background:${fillColor};transition:width .6s cubic-bezier(.4,0,.2,1);"></div>
       </div>
     </div>`;
 }
