@@ -203,13 +203,13 @@ body{
 .battery{
   min-height:210px;
   text-align:center;
-  border-top:4px solid #e5e7eb;
-  transition:border-color .3s;
+  border:3px solid #d1d5db;
+  transition:border-color .3s, box-shadow .3s;
 }
-.battery.border-charge    { border-top-color:#10b981; }
-.battery.border-decharge  { border-top-color:#ef4444; }
-.battery.border-stale     { border-top-color:#9ca3af; }
-.battery.border-attente   { border-top-color:#f59e0b; }
+.battery.border-charge   { border-color:#10b981; box-shadow:0 0 0 1px #10b981, 0 6px 20px rgba(16,185,129,.15); }
+.battery.border-decharge { border-color:#ef4444; box-shadow:0 0 0 1px #ef4444, 0 6px 20px rgba(239,68,68,.15); }
+.battery.border-stale    { border-color:#9ca3af; box-shadow:0 6px 20px rgba(0,0,0,.07); }
+.battery.border-attente  { border-color:#d1d5db; box-shadow:0 6px 20px rgba(0,0,0,.07); }
 
 .battery-title{
   font-size:13px;
@@ -773,10 +773,10 @@ function socColor(soc) {
 }
 
 function batteryVisual(direction) {
-  if (direction === 'CHARGING')    return { icon:'⚡', cls:'charge',  state:'EN CHARGE',   color:'green',   label:'Puissance de charge' };
-  if (direction === 'DISCHARGING') return { icon:'↓',  cls:'decharge', state:'EN DÉCHARGE', color:'redText', label:'Puissance de décharge' };
-  if (direction === 'STALE')       return { icon:'!',  cls:'stale',   state:'PÉRIMÉE',      color:'gray',    label:'Donnée ancienne' };
-  return                                   { icon:'',   cls:'attente',      state:'EN ATTENTE',  color:'orange',  label:'Puissance' };
+  if (direction === 'CHARGING')    return { icon:'⚡', cls:'charge',   state:'EN CHARGE',   borderColor:'#10b981', label:'Puissance de charge' };
+  if (direction === 'DISCHARGING') return { icon:'↓',  cls:'decharge', state:'EN DÉCHARGE', borderColor:'#ef4444', label:'Puissance de décharge' };
+  if (direction === 'STALE')       return { icon:'!',  cls:'stale',    state:'PÉRIMÉE',     borderColor:'#9ca3af', label:'Donnée ancienne' };
+  return                                   { icon:'',   cls:'attente',  state:'EN ATTENTE',  borderColor:'#d1d5db', label:'Puissance' };
 }
 
 const SOC_MIN_REAL = 12; // En dessous = batterie vide en réalité
@@ -793,14 +793,15 @@ function renderBattery(b, i) {
   const soc = socDisplay(socRaw);
   const v = batteryVisual(b.direction);
   const power = fmtW(Math.abs(Number(b.powerW || 0)));
+  const c = v.borderColor; // couleur unique = statut
   return `
     <div class="card battery border-${v.cls}">
       <div class="battery-title">Batterie ${i + 1}</div>
       <div class="battery-main">
         <div class="icon ${v.cls}">${v.icon}</div>
         <div>
-          <div class="soc" style="color:${socColor(soc)}">${soc}<sup>%</sup></div>
-          <div class="state" style="color:${socColor(soc)}">${v.state}</div>
+          <div class="soc" style="color:${c}">${soc}<sup>%</sup></div>
+          <div class="state" style="color:${c}">${v.state}</div>
         </div>
       </div>
       <div class="power">${power}</div>
