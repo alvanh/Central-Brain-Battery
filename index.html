@@ -764,10 +764,10 @@ function socColor(soc) {
 }
 
 function batteryVisual(direction) {
-  if (direction === 'CHARGING')    return { icon:'⚡', cls:'charge',   state:'EN CHARGE',   borderColor:'#10b981', label:'Puissance de charge' };
-  if (direction === 'DISCHARGING') return { icon:'↓',  cls:'decharge', state:'EN DÉCHARGE', borderColor:'#ef4444', label:'Puissance de décharge' };
-  if (direction === 'STALE')       return { icon:'!',  cls:'stale',    state:'PÉRIMÉE',     borderColor:'#9ca3af', label:'Donnée ancienne' };
-  return                                   { icon:'',   cls:'attente',  state:'EN ATTENTE',  borderColor:'#d1d5db', label:'Puissance' };
+  if (direction === 'CHARGING')    return { icon:'⚡', cls:'charge',   state:'EN CHARGE',   borderColor:'#10b981', gaugeColor:'#34c759', label:'Puissance de charge' };
+  if (direction === 'DISCHARGING') return { icon:'↓',  cls:'decharge', state:'EN DÉCHARGE', borderColor:'#ef4444', gaugeColor:'#ff3b30', label:'Puissance de décharge' };
+  if (direction === 'STALE')       return { icon:'!',  cls:'stale',    state:'PÉRIMÉE',     borderColor:'#9ca3af', gaugeColor:'#8e8e93', label:'Donnée ancienne' };
+  return                                   { icon:'',   cls:'attente',  state:'EN ATTENTE',  borderColor:'#d1d5db', gaugeColor:'#8e8e93', label:'Puissance' };
 }
 
 const SOC_MIN_REAL = 12; // En dessous = batterie vide en réalité
@@ -784,7 +784,8 @@ function renderBattery(b, i) {
   const soc = socDisplay(socRaw);
   const v = batteryVisual(b.direction);
   const power = fmtW(Math.abs(Number(b.powerW || 0)));
-  const c = v.borderColor; // couleur unique = statut
+  const c  = v.gaugeColor;   // couleur texte + jauge (visible)
+  const bc = v.borderColor;  // couleur liseré (peut être plus clair)
   return `
     <div class="card battery border-${v.cls}">
       <div class="battery-title">Batterie ${i + 1}</div>
@@ -798,7 +799,7 @@ function renderBattery(b, i) {
       <div class="power">${power}</div>
       <div class="power-label">${v.label}</div>
       <div class="gauge">
-        <div class="gauge-fill" style="width:${soc}%;background:${c};opacity:${soc===0?0.3:1};"></div>
+        <div class="gauge-fill" style="width:${Math.max(soc,3)}%;background:${c};opacity:${soc===0?0.4:1};"></div>
       </div>
     </div>`;
 }
