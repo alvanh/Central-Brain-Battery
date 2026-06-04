@@ -1,33 +1,51 @@
-const { getStore } = require('@netlify/blobs');
+const fs = require("fs");
+const path = require("path");
 
-const HEADERS = {
-  'Content-Type': 'application/json',
-  'Cache-Control': 'no-store',
-  'Access-Control-Allow-Origin': '*'
-};
+exports.handler = async (event, context) => {
+  const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+  const method = event.httpMethod;
 
-exports.handler = async (event) => {
-  const store = getStore({
-    name: 'energy-data',
-    siteID: process.env.NETLIFY_SITE_ID,
-    token:  process.env.NETLIFY_BLOBS_TOKEN || process.env.NETLIFY_AUTH_TOKEN
-  });
-
-  if (event.httpMethod === 'POST') {
-    try {
-      const data = JSON.parse(event.body || '{}');
-      await store.set('latest', JSON.stringify(data));
-      return { statusCode: 200, headers: HEADERS, body: JSON.stringify({ ok: true, ts: new Date().toISOString() }) };
-    } catch (e) {
-      return { statusCode: 500, headers: HEADERS, body: JSON.stringify({ ok: false, error: e.message }) };
-    }
-  }
+  // Utiliser Octokit via require (plus simple)
+  const { Octokit } = require("@octokit/rest");
+  const octokit = new Octokit({ auth: GITHUB_TOKEN });
 
   try {
-    const raw = await store.get('latest');
-    if (!raw) return { statusCode: 200, headers: HEADERS, body: JSON.stringify({ ok: false, message: 'Aucune donnee' }) };
-    return { statusCode: 200, headers: HEADERS, body: JSON.stringify({ ok: true, data: JSON.parse(raw) }) };
-  } catch (e) {
-    return { statusCode: 500, headers: HEADERS, body: JSON.stringify({ ok: false, error: e.message }) };
+    if (method === "GET") {
+      // Lire depuis GitHub data/energy.json
+      const { data } = await octokit.repos.getContent({
+        owner: "alvanh",
+        repo: "Central-Brain-Battery",
+        path: "data/energy.json",
+      });
+      const content = Buffer.from(data.content, "base64").toString("utf-8");
+      const json = JSON.parse(content);
+      return { statusCode: 200, body: JSON.stringify(json) };
+    } else if (method === "POST") {
+      const payload = JSON.parse(event.body);
+      const { data: fileData } = await octokit.repos
+        .getContent({
+          owner: "alvanh",
+          repo: "Central-Brain-Battery",
+          path: "data/energy.json",
+        })
+        .catch(() => ({ data: { sha: "" } }));
+
+      const content = Buffer.from(
+        JSON.stringify(payload)
+      ).toString("base64");
+      await octokit.repos.createOrUpdateFileContents({
+        owner: "alvanh",
+        repo: "Central-Brain-Battery",
+        path: "data/energy.json",
+        message: "[auto] energy data update",
+        content: content,
+        sha: fileData?.sha,
+      });
+
+      return { statusCode: 200, body: JSON.stringify({ ok: true }) };
+    }
+  } catch (err) {
+    console.error("Error:", err);
+    return { statusCode: 500, body: JSON.stringify({ error: err.message }) };
   }
 };
