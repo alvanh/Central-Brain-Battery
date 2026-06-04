@@ -1,77 +1,72 @@
 {
-  "updatedAt": "2026-05-31T18:00:00.195Z",
+  "updatedAt": "2026-06-04T06:51:25.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
-      "soc": 98,
-      "powerW": 0,
-      "temp": 25,
       "online": true,
+      "soc": 85,
+      "powerW": 0,
+      "temp": 20,
       "direction": "IDLE",
       "blacklisted": false
     },
     {
       "name": "Batterie_2",
-      "soc": 100,
-      "powerW": 0,
-      "temp": 27,
       "online": true,
+      "soc": 12,
+      "powerW": 0,
+      "temp": 24,
       "direction": "IDLE",
       "blacklisted": false
     },
     {
       "name": "Batterie_3",
-      "soc": 100,
-      "powerW": 0,
-      "temp": 24,
       "online": true,
+      "soc": 13,
+      "powerW": 0,
+      "temp": 26,
       "direction": "IDLE",
       "blacklisted": false
     },
     {
       "name": "Batterie_4",
-      "soc": 30,
-      "powerW": -1343,
-      "temp": 32,
       "online": true,
-      "direction": "DISCHARGING",
+      "soc": 32,
+      "powerW": 0,
+      "temp": 25,
+      "direction": "IDLE",
       "blacklisted": false
     }
   ],
   "solar": {
-    "productionW": 580
+    "productionW": 940
   },
   "grid": {
-    "powerW": -1060
+    "powerW": 424
   },
   "shelly": {
-    "kwhImported": 1416.69,
-    "kwhExported": null,
-    "gridPower": -1.06,
-    "powerA": 347.4,
-    "powerB": 509.4,
-    "powerC": -857.9,
-    "voltageA": 234.8,
-    "voltageB": 239,
-    "voltageC": 242.7,
-    "currentA": 7.97,
-    "currentB": 2.73,
-    "currentC": 3.6,
-    "powerFactor": null
+    "online": true,
+    "gridPower": 424.4,
+    "kwhImported": 1481.03,
+    "kwhExported": 1325.6,
+    "temperature": 43.6,
+    "kwhImportedToday": 0.0,
+    "kwhExportedToday": 0.0
+  },
+  "economie": {
+    "tarifOA": 0.1313,
+    "tarifHP": 0.1609,
+    "tempoCouleur": "BLEU",
+    "coutImport": 0.0,
+    "revenuExport": 0.0,
+    "bilanJour": 0.0,
+    "kwhImport": 0.0,
+    "kwhExport": 0.0
   },
   "tempo": {
-    "today": "INCONNU",
+    "today": "BLEU",
     "tomorrow": "INCONNU"
   },
-  "events": {
-    "echecCount": 18,
-    "echecs": [],
-    "importAlarmes": 9,
-    "interdictions": 7,
-    "sessionResets": 0,
-    "blacklists": [],
-    "boostCount": 62,
-    "noBatteryEvents": 385
-  },
-  "scriptVersion": "inconnu"
+  "events": {},
+  "scriptVersion": "V50.3.8319"
 }
