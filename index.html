@@ -933,11 +933,11 @@ async function fetchTempoLive() {
 }
 
 // ── LOAD DATA ──
-const IS_NETLIFY = window.location.hostname.includes('netlify.app');
-const ENERGY_URL = IS_NETLIFY
+const IS_REMOTE = window.location.hostname.includes('netlify.app') || window.location.hostname.includes('github.io');
+const ENERGY_URL = IS_REMOTE
   ? 'https://raw.githubusercontent.com/alvanh/Central-Brain-Battery/main/data/energy.json'
   : '/api/energy';
-const NEWS_URL = IS_NETLIFY ? 'https://raw.githubusercontent.com/alvanh/Central-Brain-Battery/main/data/news.json' : '/homey-audit/news';
+const NEWS_URL = IS_REMOTE ? 'https://raw.githubusercontent.com/alvanh/Central-Brain-Battery/main/data/news.json' : '/homey-audit/news';
 
 async function loadData() {
   try {
