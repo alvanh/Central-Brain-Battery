@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-06T12:52:41.000Z",
+  "updatedAt": "2026-06-06T12:57:44.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
@@ -13,28 +13,28 @@
     {
       "name": "Batterie_2",
       "online": true,
-      "soc": 73,
-      "powerW": 1028,
+      "soc": 75,
+      "powerW": 0,
       "temp": 32,
-      "direction": "CHARGING",
+      "direction": "IDLE",
       "blacklisted": false
     },
     {
       "name": "Batterie_3",
       "online": true,
-      "soc": 86,
-      "powerW": 2466,
-      "temp": 33,
+      "soc": 87,
+      "powerW": 1846,
+      "temp": 34,
       "direction": "CHARGING",
       "blacklisted": false
     },
     {
       "name": "Batterie_4",
       "online": true,
-      "soc": 83,
-      "powerW": 0,
+      "soc": 85,
+      "powerW": 1358,
       "temp": 29,
-      "direction": "IDLE",
+      "direction": "CHARGING",
       "blacklisted": false
     }
   ],
@@ -42,14 +42,14 @@
     "productionW": 6910
   },
   "grid": {
-    "powerW": 34
+    "powerW": 78
   },
   "shelly": {
     "online": true,
-    "gridPower": 34.1,
-    "kwhImported": 1534.14,
-    "kwhExported": 1380.77,
-    "temperature": 54.6,
+    "gridPower": 77.5,
+    "kwhImported": 1534.36,
+    "kwhExported": 1381.01,
+    "temperature": 55,
     "kwhImportedToday": 0,
     "kwhExportedToday": 0
   },
@@ -68,5 +68,5 @@
     "tomorrow": "INCONNU"
   },
   "events": {},
-  "scriptVersion": "V50.3.1.14803"
+  "scriptVersion": "V50.3.1.14813"
 }
