@@ -792,13 +792,11 @@ function batteryVisual(direction) {
   return                                   { icon:'',   cls:'attente',  state:'EN ATTENTE',  borderColor:'#d1d5db', gaugeColor:'#8e8e93', label:'Puissance' };
 }
 
-const SOC_MIN_REAL = 12; // En dessous = batterie vide en réalité
+const SOC_MIN_REAL = 12; // info : sous 12% la batterie est réellement vide
 
 function socDisplay(soc) {
-  // 12% ou moins = 0% réel (batterie vide)
-  if (soc <= SOC_MIN_REAL) return 0;
-  // Remapper 12–100% → 0–100%
-  return Math.round((soc - SOC_MIN_REAL) / (100 - SOC_MIN_REAL) * 100);
+  // SoC réel, identique à l'app Marstek et au Shelly (pas de remappage)
+  return Math.max(0, Math.min(100, Math.round(Number(soc) || 0)));
 }
 
 function renderBattery(b, i) {
@@ -1052,11 +1050,14 @@ async function loadData() {
     if (data.tempo) { data.tempo.today = tempoLive.today; data.tempo.tomorrow = tempoLive.tomorrow; }
     else data.tempo = tempoLive;
 
-    // Connexion OK
+    // Connexion OK — âge réel de la donnée (GitHub met en cache ~5 min)
     const dot = document.getElementById('statusDot');
     const txt = document.getElementById('statusText');
-    dot.classList.add('connected');
-    txt.textContent = 'En direct · ' + new Date(data.updatedAt).toLocaleTimeString('fr-FR');
+    const ageMin = Math.round((Date.now() - new Date(data.updatedAt).getTime()) / 60000);
+    const heure = new Date(data.updatedAt).toLocaleTimeString('fr-FR');
+    if (ageMin <= 2)      { dot.classList.add('connected'); txt.textContent = 'À jour · ' + heure; txt.style.color = ''; }
+    else if (ageMin <= 8) { dot.classList.add('connected'); txt.textContent = 'Il y a ' + ageMin + ' min · ' + heure; txt.style.color = '#ff9f0a'; }
+    else                  { dot.classList.remove('connected'); txt.textContent = 'Ancien (' + ageMin + ' min) · ' + heure; txt.style.color = '#ff3b30'; }
 
     // Tempo
     const todayColor = data.tempo?.today || '--';
