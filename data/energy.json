@@ -1,40 +1,40 @@
 {
-  "updatedAt": "2026-06-09T14:50:41.000Z",
+  "updatedAt": "2026-06-09T14:55:29.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
       "online": true,
-      "soc": 80,
-      "powerW": 0,
+      "soc": 82,
+      "powerW": 1940,
       "temp": 32,
-      "direction": "IDLE",
+      "direction": "CHARGING",
       "blacklisted": false
     },
     {
       "name": "Batterie_2",
       "online": true,
-      "soc": 75,
-      "powerW": 0,
+      "soc": 77,
+      "powerW": 2484,
       "temp": 33,
-      "direction": "IDLE",
+      "direction": "CHARGING",
       "blacklisted": false
     },
     {
       "name": "Batterie_3",
       "online": true,
-      "soc": 86,
-      "powerW": 1987,
+      "soc": 100,
+      "powerW": -72,
       "temp": 33,
-      "direction": "CHARGING",
+      "direction": "DISCHARGING",
       "blacklisted": false
     },
     {
       "name": "Batterie_4",
       "online": true,
-      "soc": 86,
-      "powerW": 2239,
-      "temp": 33,
-      "direction": "CHARGING",
+      "soc": 100,
+      "powerW": -174,
+      "temp": 34,
+      "direction": "DISCHARGING",
       "blacklisted": false
     }
   ],
@@ -42,31 +42,31 @@
     "productionW": 6100
   },
   "grid": {
-    "powerW": -294
+    "powerW": 302
   },
   "shelly": {
     "online": true,
-    "gridPower": -293.9,
-    "kwhImported": 1608.92,
-    "kwhExported": 1441.55,
+    "gridPower": 301.8,
+    "kwhImported": 1609.02,
+    "kwhExported": 1441.76,
     "temperature": 60.3,
-    "kwhImportedToday": 15.53,
-    "kwhExportedToday": 15.7
+    "kwhImportedToday": 15.63,
+    "kwhExportedToday": 15.91
   },
   "economie": {
     "tarifOA": 0.1313,
     "tarifHP": 0.1609,
     "tempoCouleur": "BLEU",
-    "coutImport": 2.5,
-    "revenuExport": 2.06,
-    "bilanJour": -0.44,
-    "kwhImport": 15.53,
-    "kwhExport": 15.7
+    "coutImport": 2.51,
+    "revenuExport": 2.09,
+    "bilanJour": -0.42,
+    "kwhImport": 15.63,
+    "kwhExport": 15.91
   },
   "tempo": {
     "today": "BLEU",
     "tomorrow": "BLEU"
   },
   "events": {},
-  "scriptVersion": "V50.4.1.23679"
+  "scriptVersion": "V50.4.1.23688"
 }
