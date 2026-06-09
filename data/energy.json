@@ -1,38 +1,38 @@
 {
-  "updatedAt": "2026-06-09T14:20:38.000Z",
+  "updatedAt": "2026-06-09T14:25:54.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
       "online": true,
-      "soc": 68,
-      "powerW": 0,
+      "soc": 71,
+      "powerW": 2441,
       "temp": 31,
-      "direction": "IDLE",
+      "direction": "CHARGING",
       "blacklisted": false
     },
     {
       "name": "Batterie_2",
       "online": true,
-      "soc": 71,
-      "powerW": 0,
+      "soc": 74,
+      "powerW": 2442,
       "temp": 33,
-      "direction": "IDLE",
+      "direction": "CHARGING",
       "blacklisted": false
     },
     {
       "name": "Batterie_3",
       "online": true,
-      "soc": 72,
-      "powerW": 2108,
+      "soc": 73,
+      "powerW": 0,
       "temp": 32,
-      "direction": "CHARGING",
+      "direction": "IDLE",
       "blacklisted": false
     },
     {
       "name": "Batterie_4",
       "online": true,
-      "soc": 77,
-      "powerW": 1561,
+      "soc": 79,
+      "powerW": 269,
       "temp": 32,
       "direction": "CHARGING",
       "blacklisted": false
@@ -42,31 +42,31 @@
     "productionW": 6030
   },
   "grid": {
-    "powerW": -156
+    "powerW": -2
   },
   "shelly": {
     "online": true,
-    "gridPower": -156.2,
-    "kwhImported": 1608.2,
-    "kwhExported": 1440.81,
+    "gridPower": -2,
+    "kwhImported": 1608.32,
+    "kwhExported": 1440.94,
     "temperature": 55.2,
-    "kwhImportedToday": 14.81,
-    "kwhExportedToday": 14.96
+    "kwhImportedToday": 14.93,
+    "kwhExportedToday": 15.09
   },
   "economie": {
     "tarifOA": 0.1313,
     "tarifHP": 0.1609,
     "tempoCouleur": "BLEU",
-    "coutImport": 2.38,
-    "revenuExport": 1.96,
+    "coutImport": 2.4,
+    "revenuExport": 1.98,
     "bilanJour": -0.42,
-    "kwhImport": 14.81,
-    "kwhExport": 14.96
+    "kwhImport": 14.93,
+    "kwhExport": 15.09
   },
   "tempo": {
     "today": "BLEU",
     "tomorrow": "BLEU"
   },
   "events": {},
-  "scriptVersion": "V50.4.1.23619"
+  "scriptVersion": "V50.4.1.23629"
 }
