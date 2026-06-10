@@ -1,39 +1,39 @@
 {
-  "updatedAt": "2026-06-10T09:35:30.000Z",
+  "updatedAt": "2026-06-10T09:40:48.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
       "online": true,
       "soc": 36,
-      "powerW": -885,
+      "powerW": 0,
       "temp": 25,
-      "direction": "DISCHARGING",
+      "direction": "IDLE",
       "blacklisted": false
     },
     {
       "name": "Batterie_2",
       "online": true,
-      "soc": 27,
-      "powerW": 2441,
-      "temp": 23,
-      "direction": "CHARGING",
+      "soc": 28,
+      "powerW": 0,
+      "temp": 24,
+      "direction": "IDLE",
       "blacklisted": false
     },
     {
       "name": "Batterie_3",
       "online": true,
       "soc": 82,
-      "powerW": 0,
+      "powerW": 328,
       "temp": 23,
-      "direction": "IDLE",
+      "direction": "CHARGING",
       "blacklisted": false
     },
     {
       "name": "Batterie_4",
       "online": true,
-      "soc": 54,
-      "powerW": 106,
-      "temp": 28,
+      "soc": 55,
+      "powerW": 1493,
+      "temp": 29,
       "direction": "CHARGING",
       "blacklisted": false
     }
@@ -42,31 +42,31 @@
     "productionW": 6020
   },
   "grid": {
-    "powerW": -22
+    "powerW": -65
   },
   "shelly": {
     "online": true,
-    "gridPower": -22.1,
-    "kwhImported": 1622.42,
-    "kwhExported": 1453.32,
+    "gridPower": -65.2,
+    "kwhImported": 1622.57,
+    "kwhExported": 1453.48,
     "temperature": 45.2,
-    "kwhImportedToday": 8.52,
-    "kwhExportedToday": 5.29
+    "kwhImportedToday": 8.67,
+    "kwhExportedToday": 5.45
   },
   "economie": {
     "tarifOA": 0.1313,
     "tarifHP": 0.1609,
     "tempoCouleur": "BLEU",
-    "coutImport": 1.37,
-    "revenuExport": 0.69,
+    "coutImport": 1.4,
+    "revenuExport": 0.72,
     "bilanJour": -0.68,
-    "kwhImport": 8.52,
-    "kwhExport": 5.29
+    "kwhImport": 8.67,
+    "kwhExport": 5.45
   },
   "tempo": {
     "today": "BLEU",
     "tomorrow": "INCONNU"
   },
   "events": {},
-  "scriptVersion": "V50.4.25929"
+  "scriptVersion": "V50.4.25939"
 }
