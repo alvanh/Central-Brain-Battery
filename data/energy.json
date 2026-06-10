@@ -1,72 +1,72 @@
 {
-  "updatedAt": "2026-06-10T11:00:54.000Z",
+  "updatedAt": "2026-06-10T11:05:39.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
       "online": true,
-      "soc": 47,
-      "powerW": -127,
+      "soc": 48,
+      "powerW": 1337,
       "temp": 28,
-      "direction": "DISCHARGING",
+      "direction": "CHARGING",
       "blacklisted": false
     },
     {
       "name": "Batterie_2",
       "online": true,
-      "soc": 50,
-      "powerW": -134,
+      "soc": 53,
+      "powerW": 2183,
       "temp": 28,
-      "direction": "DISCHARGING",
+      "direction": "CHARGING",
       "blacklisted": false
     },
     {
       "name": "Batterie_3",
       "online": true,
       "soc": 82,
-      "powerW": 0,
+      "powerW": -1419,
       "temp": 23,
-      "direction": "IDLE",
+      "direction": "DISCHARGING",
       "blacklisted": false
     },
     {
       "name": "Batterie_4",
       "online": true,
       "soc": 66,
-      "powerW": 2441,
+      "powerW": 0,
       "temp": 30,
-      "direction": "CHARGING",
+      "direction": "IDLE",
       "blacklisted": false
     }
   ],
   "solar": {
-    "productionW": 6900
+    "productionW": 3840
   },
   "grid": {
-    "powerW": 247
+    "powerW": 1490
   },
   "shelly": {
     "online": true,
-    "gridPower": 247.3,
-    "kwhImported": 1624.64,
-    "kwhExported": 1455.89,
+    "gridPower": 1490,
+    "kwhImported": 1624.75,
+    "kwhExported": 1456.01,
     "temperature": 50.3,
-    "kwhImportedToday": 10.74,
-    "kwhExportedToday": 7.86
+    "kwhImportedToday": 10.85,
+    "kwhExportedToday": 7.98
   },
   "economie": {
     "tarifOA": 0.1313,
     "tarifHP": 0.1609,
     "tempoCouleur": "BLEU",
-    "coutImport": 1.73,
-    "revenuExport": 1.03,
+    "coutImport": 1.75,
+    "revenuExport": 1.05,
     "bilanJour": -0.7,
-    "kwhImport": 10.74,
-    "kwhExport": 7.86
+    "kwhImport": 10.85,
+    "kwhExport": 7.98
   },
   "tempo": {
     "today": "BLEU",
     "tomorrow": "BLEU"
   },
   "events": {},
-  "scriptVersion": "V50.4.26099"
+  "scriptVersion": "V50.4.26109"
 }
