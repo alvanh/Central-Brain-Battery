@@ -1,40 +1,40 @@
 {
-  "updatedAt": "2026-06-12T11:15:36.000Z",
+  "updatedAt": "2026-06-12T11:20:52.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
       "online": true,
-      "soc": 52,
-      "powerW": -577,
+      "soc": 53,
+      "powerW": 1680,
       "temp": 29,
-      "direction": "DISCHARGING",
+      "direction": "CHARGING",
       "blacklisted": false
     },
     {
       "name": "Batterie_2",
       "online": true,
       "soc": 30,
-      "powerW": 2441,
-      "temp": 25,
-      "direction": "CHARGING",
+      "powerW": 0,
+      "temp": 26,
+      "direction": "IDLE",
       "blacklisted": false
     },
     {
       "name": "Batterie_3",
       "online": true,
-      "soc": 90,
-      "powerW": 0,
+      "soc": 92,
+      "powerW": 2449,
       "temp": 37,
-      "direction": "IDLE",
+      "direction": "CHARGING",
       "blacklisted": false
     },
     {
       "name": "Batterie_4",
       "online": true,
       "soc": 31,
-      "powerW": 2441,
-      "temp": 25,
-      "direction": "CHARGING",
+      "powerW": 0,
+      "temp": 26,
+      "direction": "IDLE",
       "blacklisted": false
     }
   ],
@@ -42,31 +42,31 @@
     "productionW": 6720
   },
   "grid": {
-    "powerW": -4907
+    "powerW": -43
   },
   "shelly": {
     "online": true,
-    "gridPower": -4906.8,
-    "kwhImported": 1674.02,
-    "kwhExported": 1502.24,
+    "gridPower": -43,
+    "kwhImported": 1674.11,
+    "kwhExported": 1502.48,
     "temperature": 55.6,
-    "kwhImportedToday": 11.63,
-    "kwhExportedToday": 8.73
+    "kwhImportedToday": 11.72,
+    "kwhExportedToday": 8.97
   },
   "economie": {
     "tarifOA": 0.1313,
     "tarifHP": 0.1609,
     "tempoCouleur": "BLEU",
-    "coutImport": 1.87,
-    "revenuExport": 1.15,
-    "bilanJour": -0.72,
-    "kwhImport": 11.63,
-    "kwhExport": 8.73
+    "coutImport": 1.89,
+    "revenuExport": 1.18,
+    "bilanJour": -0.71,
+    "kwhImport": 11.72,
+    "kwhExport": 8.97
   },
   "tempo": {
     "today": "BLEU",
     "tomorrow": "BLEU"
   },
   "events": {},
-  "scriptVersion": "V50.4.2.31889"
+  "scriptVersion": "V50.4.2.31899"
 }
