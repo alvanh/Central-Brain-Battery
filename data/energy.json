@@ -1,29 +1,29 @@
 {
-  "updatedAt": "2026-06-15T10:05:43.000Z",
+  "updatedAt": "2026-06-15T10:10:28.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
       "online": true,
       "soc": 40,
-      "powerW": 341,
+      "powerW": -583,
       "temp": 27,
-      "direction": "CHARGING",
+      "direction": "DISCHARGING",
       "blacklisted": false
     },
     {
       "name": "Batterie_2",
       "online": true,
       "soc": 52,
-      "powerW": 0,
+      "powerW": 2440,
       "temp": 25,
-      "direction": "IDLE",
+      "direction": "CHARGING",
       "blacklisted": false
     },
     {
       "name": "Batterie_3",
       "online": true,
-      "soc": 50,
-      "powerW": 2441,
+      "soc": 53,
+      "powerW": 2440,
       "temp": 29,
       "direction": "CHARGING",
       "blacklisted": false
@@ -31,10 +31,10 @@
     {
       "name": "Batterie_4",
       "online": true,
-      "soc": 52,
-      "powerW": 1124,
-      "temp": 30,
-      "direction": "CHARGING",
+      "soc": 53,
+      "powerW": -2363,
+      "temp": 31,
+      "direction": "DISCHARGING",
       "blacklisted": false
     }
   ],
@@ -42,31 +42,31 @@
     "productionW": 6130
   },
   "grid": {
-    "powerW": 36
+    "powerW": 62
   },
   "shelly": {
     "online": true,
-    "gridPower": 36.1,
-    "kwhImported": 1729.75,
-    "kwhExported": 1561.34,
+    "gridPower": 61.9,
+    "kwhImported": 1729.85,
+    "kwhExported": 1561.44,
     "temperature": 55.8,
-    "kwhImportedToday": 7.62,
-    "kwhExportedToday": 6.63
+    "kwhImportedToday": 7.72,
+    "kwhExportedToday": 6.73
   },
   "economie": {
     "tarifOA": 0.1313,
     "tarifHP": 0.1609,
     "tempoCouleur": "BLEU",
-    "coutImport": 1.23,
-    "revenuExport": 0.87,
+    "coutImport": 1.24,
+    "revenuExport": 0.88,
     "bilanJour": -0.36,
-    "kwhImport": 7.62,
-    "kwhExport": 6.63
+    "kwhImport": 7.72,
+    "kwhExport": 6.73
   },
   "tempo": {
     "today": "BLEU",
     "tomorrow": "INCONNU"
   },
   "events": {},
-  "scriptVersion": "V50.4.2.40389"
+  "scriptVersion": "V50.4.2.40398"
 }
