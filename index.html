@@ -509,6 +509,14 @@ body{
         <div class="metric-title">Réseau / Shelly</div>
         <div class="metric-value" id="gridPower">--</div>
       </div>
+      <div class="card metric" style="border:2px solid #6366f1;background:linear-gradient(145deg,#fafafa,#f5f3ff);">
+        <div class="metric-title" style="color:#6366f1;">Conso maison</div>
+        <div class="metric-value" style="color:#6366f1;" id="consoMaison">--</div>
+      </div>
+      <div class="card metric">
+        <div class="metric-title">Charge batteries</div>
+        <div class="metric-value" id="chargeBatteries">--</div>
+      </div>
     </div>
 
     <!-- Batteries -->
@@ -793,6 +801,37 @@ function batteryVisual(direction) {
 }
 
 const SOC_MIN_REAL = 12; // info : sous 12% la batterie est réellement vide
+const BATTERY_CAPACITY_WH = 5120; // Marstek Venus E
+
+function formatDuration(hours) {
+  if (!isFinite(hours) || hours < 0) return '--';
+  const totalMin = Math.round(hours * 60);
+  if (totalMin < 1) return '< 1min';
+  if (totalMin < 60) return totalMin + 'min';
+  const h = Math.floor(totalMin / 60);
+  const m = totalMin % 60;
+  return m > 0 ? h + 'h' + String(m).padStart(2, '0') : h + 'h';
+}
+
+function etaClock(hours) {
+  if (!isFinite(hours) || hours < 0) return '';
+  const eta = new Date(Date.now() + hours * 3600 * 1000);
+  return eta.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+}
+
+function batteryETA(soc, powerW, direction) {
+  const absPower = Math.abs(Number(powerW) || 0);
+  if (absPower < 30) return null;
+  if (direction === 'CHARGING') {
+    const hours = (100 - soc) / 100 * BATTERY_CAPACITY_WH / absPower;
+    return { label: 'Pleine dans', duration: formatDuration(hours), clock: etaClock(hours), color: '#0a9f23' };
+  }
+  if (direction === 'DISCHARGING') {
+    const hours = Math.max(0, soc - SOC_MIN_REAL) / 100 * BATTERY_CAPACITY_WH / absPower;
+    return { label: 'Vide dans', duration: formatDuration(hours), clock: etaClock(hours), color: '#e00000' };
+  }
+  return null;
+}
 
 function socDisplay(soc) {
   // SoC réel, identique à l'app Marstek et au Shelly (pas de remappage)
@@ -804,8 +843,17 @@ function renderBattery(b, i) {
   const soc = socDisplay(socRaw);
   const v = batteryVisual(b.direction);
   const power = fmtW(Math.abs(Number(b.powerW || 0)));
-  const c  = v.gaugeColor;   // couleur texte + jauge (visible)
-  const bc = v.borderColor;  // couleur liseré (peut être plus clair)
+  const c  = v.gaugeColor;
+  const bc = v.borderColor;
+  const eta = batteryETA(soc, b.powerW, b.direction);
+  const etaHtml = eta
+    ? `<div style="display:flex;align-items:center;justify-content:center;gap:5px;margin-bottom:10px;background:#f8fafc;border-radius:10px;padding:5px 8px;">
+        <span style="font-size:12px;">🕐</span>
+        <span style="font-size:11px;font-weight:600;color:#6b7280;">${eta.label}</span>
+        <span style="font-size:13px;font-weight:900;color:${eta.color};">${eta.duration}</span>
+        <span style="font-size:11px;color:#9ca3af;font-weight:600;">→ ${eta.clock}</span>
+      </div>`
+    : '<div style="height:34px;"></div>';
   return `
     <div class="card battery border-${v.cls}">
       <div class="battery-title">Batterie ${i + 1}</div>
@@ -818,6 +866,16 @@ function renderBattery(b, i) {
       </div>
       <div class="power">${power}</div>
       <div class="power-label">${v.label}</div>
+      ${etaHtml}
+      ${(() => {
+        const t = Number(b.temp);
+        if (!b.temp && b.temp !== 0) return '';
+        const tColor = t > 50 ? '#dc2626' : t > 40 ? '#d97706' : '#16a34a';
+        const tBg    = t > 50 ? '#fef2f2' : t > 40 ? '#fffbeb' : '#f0fdf4';
+        return `<div style="display:flex;justify-content:center;margin-bottom:8px;">
+          <span style="background:${tBg};color:${tColor};font-size:11px;font-weight:700;padding:3px 9px;border-radius:99px;">🌡️ ${t}°C</span>
+        </div>`;
+      })()}
       <div class="gauge">
         <div class="gauge-fill" style="width:${Math.max(soc,3)}%;background:${c};opacity:${soc===0?0.4:1};"></div>
       </div>
@@ -1081,6 +1139,20 @@ async function loadData() {
     const gridW  = data.grid?.powerW ?? data.grid ?? 0;
     document.getElementById('solarPower').innerHTML = fmtW(solarW);
     document.getElementById('gridPower').innerHTML = fmtW(gridW);
+
+    // Conso maison & charge totale batteries
+    const batsEarly = data.batteries || [];
+    const totalChargeW    = batsEarly.filter(b => b.direction === 'CHARGING').reduce((s,b) => s + Math.abs(Number(b.powerW)||0), 0);
+    const totalDischargeW = batsEarly.filter(b => b.direction === 'DISCHARGING').reduce((s,b) => s + Math.abs(Number(b.powerW)||0), 0);
+    const consoW = Math.max(0, solarW + gridW + totalDischargeW - totalChargeW);
+    const consoEl = document.getElementById('consoMaison');
+    const chargeEl = document.getElementById('chargeBatteries');
+    if (consoEl) consoEl.innerHTML = fmtW(consoW);
+    if (chargeEl) {
+      const netBattW = totalChargeW - totalDischargeW;
+      chargeEl.innerHTML = fmtW(Math.abs(netBattW));
+      chargeEl.style.color = netBattW > 0 ? '#10b981' : netBattW < 0 ? '#ef4444' : '';
+    }
 
     // Icône météo aujourd'hui déduite de la production solaire réelle
     if (solarW > 0) {
