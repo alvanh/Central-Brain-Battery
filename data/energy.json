@@ -1,20 +1,20 @@
 {
-  "updatedAt": "2026-06-16T09:15:33.000Z",
+  "updatedAt": "2026-06-16T09:20:49.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
       "online": true,
       "soc": 44,
-      "powerW": 0,
+      "powerW": -662,
       "temp": 23,
-      "direction": "IDLE",
+      "direction": "DISCHARGING",
       "blacklisted": false
     },
     {
       "name": "Batterie_2",
       "online": true,
       "soc": 30,
-      "powerW": -2019,
+      "powerW": -1028,
       "temp": 25,
       "direction": "DISCHARGING",
       "blacklisted": false
@@ -42,31 +42,31 @@
     "productionW": 3750
   },
   "grid": {
-    "powerW": -216
+    "powerW": -6465
   },
   "shelly": {
     "online": true,
-    "gridPower": -215.6,
-    "kwhImported": 1748.61,
-    "kwhExported": 1579.85,
+    "gridPower": -6465.2,
+    "kwhImported": 1748.79,
+    "kwhExported": 1580.02,
     "temperature": 51,
-    "kwhImportedToday": 7.35,
-    "kwhExportedToday": 3.79
+    "kwhImportedToday": 7.53,
+    "kwhExportedToday": 3.96
   },
   "economie": {
     "tarifOA": 0.1313,
     "tarifHP": 0.1609,
     "tempoCouleur": "BLEU",
-    "coutImport": 1.18,
-    "revenuExport": 0.5,
-    "bilanJour": -0.68,
-    "kwhImport": 7.35,
-    "kwhExport": 3.79
+    "coutImport": 1.21,
+    "revenuExport": 0.52,
+    "bilanJour": -0.69,
+    "kwhImport": 7.53,
+    "kwhExport": 3.96
   },
   "tempo": {
     "today": "BLEU",
     "tomorrow": "INCONNU"
   },
   "events": {},
-  "scriptVersion": "V50.4.2.43169"
+  "scriptVersion": "V50.4.2.43179"
 }
