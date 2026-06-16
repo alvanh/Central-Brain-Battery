@@ -793,6 +793,37 @@ function batteryVisual(direction) {
 }
 
 const SOC_MIN_REAL = 12; // info : sous 12% la batterie est réellement vide
+const BATTERY_CAPACITY_WH = 5120; // Marstek Venus E
+
+function formatDuration(hours) {
+  if (!isFinite(hours) || hours < 0) return '--';
+  const totalMin = Math.round(hours * 60);
+  if (totalMin < 1) return '< 1min';
+  if (totalMin < 60) return totalMin + 'min';
+  const h = Math.floor(totalMin / 60);
+  const m = totalMin % 60;
+  return m > 0 ? h + 'h' + String(m).padStart(2, '0') : h + 'h';
+}
+
+function etaClock(hours) {
+  if (!isFinite(hours) || hours < 0) return '';
+  const eta = new Date(Date.now() + hours * 3600 * 1000);
+  return eta.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+}
+
+function batteryETA(soc, powerW, direction) {
+  const absPower = Math.abs(Number(powerW) || 0);
+  if (absPower < 30) return null;
+  if (direction === 'CHARGING') {
+    const hours = (100 - soc) / 100 * BATTERY_CAPACITY_WH / absPower;
+    return { label: 'Pleine dans', duration: formatDuration(hours), clock: etaClock(hours), color: '#0a9f23' };
+  }
+  if (direction === 'DISCHARGING') {
+    const hours = Math.max(0, soc - SOC_MIN_REAL) / 100 * BATTERY_CAPACITY_WH / absPower;
+    return { label: 'Vide dans', duration: formatDuration(hours), clock: etaClock(hours), color: '#e00000' };
+  }
+  return null;
+}
 
 function socDisplay(soc) {
   // SoC réel, identique à l'app Marstek et au Shelly (pas de remappage)
@@ -804,8 +835,17 @@ function renderBattery(b, i) {
   const soc = socDisplay(socRaw);
   const v = batteryVisual(b.direction);
   const power = fmtW(Math.abs(Number(b.powerW || 0)));
-  const c  = v.gaugeColor;   // couleur texte + jauge (visible)
-  const bc = v.borderColor;  // couleur liseré (peut être plus clair)
+  const c  = v.gaugeColor;
+  const bc = v.borderColor;
+  const eta = batteryETA(soc, b.powerW, b.direction);
+  const etaHtml = eta
+    ? `<div style="display:flex;align-items:center;justify-content:center;gap:5px;margin-bottom:10px;background:#f8fafc;border-radius:10px;padding:5px 8px;">
+        <span style="font-size:12px;">🕐</span>
+        <span style="font-size:11px;font-weight:600;color:#6b7280;">${eta.label}</span>
+        <span style="font-size:13px;font-weight:900;color:${eta.color};">${eta.duration}</span>
+        <span style="font-size:11px;color:#9ca3af;font-weight:600;">→ ${eta.clock}</span>
+      </div>`
+    : '<div style="height:34px;"></div>';
   return `
     <div class="card battery border-${v.cls}">
       <div class="battery-title">Batterie ${i + 1}</div>
@@ -818,6 +858,7 @@ function renderBattery(b, i) {
       </div>
       <div class="power">${power}</div>
       <div class="power-label">${v.label}</div>
+      ${etaHtml}
       <div class="gauge">
         <div class="gauge-fill" style="width:${Math.max(soc,3)}%;background:${c};opacity:${soc===0?0.4:1};"></div>
       </div>
