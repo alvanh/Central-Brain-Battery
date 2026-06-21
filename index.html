@@ -1089,12 +1089,10 @@ async function loadEconomicHistory() {
 }
 
 // ── LOAD DATA ──
-const IS_REMOTE = window.location.hostname.includes('netlify.app') || window.location.hostname.includes('github.io');
-const ENERGY_URL = IS_REMOTE
-  ? 'https://raw.githubusercontent.com/alvanh/Central-Brain-Battery/main/data/energy.json'
-  : '/api/energy';
-const NEWS_URL    = IS_REMOTE ? 'https://raw.githubusercontent.com/alvanh/Central-Brain-Battery/main/data/news.json'            : '/homey-audit/news';
-const HISTORY_URL = IS_REMOTE ? 'https://raw.githubusercontent.com/alvanh/Central-Brain-Battery/main/data/economic-history.json' : null;
+const GITHUB_RAW = 'https://raw.githubusercontent.com/alvanh/Central-Brain-Battery/main';
+const ENERGY_URL  = GITHUB_RAW + '/data/energy.json';
+const NEWS_URL    = GITHUB_RAW + '/data/news.json';
+const HISTORY_URL = GITHUB_RAW + '/data/economic-history.json';
 
 async function loadData() {
   try {
