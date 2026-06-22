@@ -1,20 +1,20 @@
 {
-  "updatedAt": "2026-06-22T12:26:33.000Z",
+  "updatedAt": "2026-06-22T12:31:35.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
       "online": true,
-      "soc": 38,
-      "powerW": 1597,
-      "temp": 29,
+      "soc": 40,
+      "powerW": 337,
+      "temp": 30,
       "direction": "CHARGING",
       "blacklisted": false
     },
     {
       "name": "Batterie_2",
       "online": true,
-      "soc": 28,
-      "powerW": 2441,
+      "soc": 32,
+      "powerW": 2439,
       "temp": 28,
       "direction": "CHARGING",
       "blacklisted": false
@@ -22,8 +22,8 @@
     {
       "name": "Batterie_3",
       "online": true,
-      "soc": 95,
-      "powerW": 149,
+      "soc": 96,
+      "powerW": 1701,
       "temp": 40,
       "direction": "CHARGING",
       "blacklisted": false
@@ -32,41 +32,41 @@
       "name": "Batterie_4",
       "online": true,
       "soc": 19,
-      "powerW": 0,
+      "powerW": 2443,
       "temp": 26,
-      "direction": "IDLE",
-      "blacklisted": true
+      "direction": "CHARGING",
+      "blacklisted": false
     }
   ],
   "solar": {
-    "productionW": 6270
+    "productionW": 6230
   },
   "grid": {
-    "powerW": 14
+    "powerW": -2415
   },
   "shelly": {
     "online": true,
-    "gridPower": 13.7,
-    "kwhImported": 1885.38,
-    "kwhExported": 1696.43,
+    "gridPower": -2414.9,
+    "kwhImported": 1885.58,
+    "kwhExported": 1696.63,
     "temperature": 66,
-    "kwhImportedToday": 15.17,
-    "kwhExportedToday": 10.08
+    "kwhImportedToday": 15.37,
+    "kwhExportedToday": 10.28
   },
   "economie": {
     "tarifOA": 0.1313,
     "tarifHP": 0.1609,
     "tempoCouleur": "BLEU",
-    "coutImport": 2.44,
-    "revenuExport": 1.32,
+    "coutImport": 2.47,
+    "revenuExport": 1.35,
     "bilanJour": -1.12,
-    "kwhImport": 15.17,
-    "kwhExport": 10.08
+    "kwhImport": 15.37,
+    "kwhExport": 10.28
   },
   "tempo": {
     "today": "BLEU",
     "tomorrow": "BLEU"
   },
   "events": {},
-  "scriptVersion": "V50.5.1.60831"
+  "scriptVersion": "V50.5.1.60841"
 }
