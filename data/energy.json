@@ -1,37 +1,37 @@
 {
-  "updatedAt": "2026-06-23T12:26:33.000Z",
+  "updatedAt": "2026-06-23T12:31:38.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
       "online": true,
-      "soc": 70,
-      "powerW": 0,
+      "soc": 69,
+      "powerW": 507,
       "temp": 35,
-      "direction": "IDLE",
+      "direction": "CHARGING",
       "blacklisted": false
     },
     {
       "name": "Batterie_2",
       "online": true,
-      "soc": 71,
-      "powerW": 764,
+      "soc": 72,
+      "powerW": -38,
       "temp": 36,
-      "direction": "CHARGING",
+      "direction": "DISCHARGING",
       "blacklisted": false
     },
     {
       "name": "Batterie_3",
       "online": true,
       "soc": 51,
-      "powerW": 0,
+      "powerW": 2441,
       "temp": 34,
-      "direction": "IDLE",
+      "direction": "CHARGING",
       "blacklisted": false
     },
     {
       "name": "Batterie_4",
       "online": true,
-      "soc": 56,
+      "soc": 60,
       "powerW": 2442,
       "temp": 33,
       "direction": "CHARGING",
@@ -39,34 +39,34 @@
     }
   ],
   "solar": {
-    "productionW": 6240
+    "productionW": 6120
   },
   "grid": {
-    "powerW": 8
+    "powerW": 127
   },
   "shelly": {
     "online": true,
-    "gridPower": 8.2,
-    "kwhImported": 1903.96,
-    "kwhExported": 1712.86,
+    "gridPower": 127.4,
+    "kwhImported": 1904.1,
+    "kwhExported": 1713,
     "temperature": 66,
-    "kwhImportedToday": 11.83,
-    "kwhExportedToday": 8.16
+    "kwhImportedToday": 11.97,
+    "kwhExportedToday": 8.3
   },
   "economie": {
     "tarifOA": 0.1313,
     "tarifHP": 0.1609,
     "tempoCouleur": "BLEU",
-    "coutImport": 1.9,
-    "revenuExport": 1.07,
-    "bilanJour": -0.83,
-    "kwhImport": 11.83,
-    "kwhExport": 8.16
+    "coutImport": 1.93,
+    "revenuExport": 1.09,
+    "bilanJour": -0.84,
+    "kwhImport": 11.97,
+    "kwhExport": 8.3
   },
   "tempo": {
     "today": "BLEU",
     "tomorrow": "BLEU"
   },
   "events": {},
-  "scriptVersion": "V50.5.1.63711"
+  "scriptVersion": "V50.5.1.63721"
 }
