@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-29T22:32:41.000Z",
+  "updatedAt": "2026-06-29T22:37:43.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
@@ -46,25 +46,25 @@
     "productionW": 0
   },
   "grid": {
-    "powerW": 566
+    "powerW": 2803
   },
   "shelly": {
     "online": true,
-    "gridPower": 566,
-    "kwhImported": 2108.37,
+    "gridPower": 2802.6,
+    "kwhImported": 2108.47,
     "kwhExported": 1808.48,
-    "temperature": 45.4,
-    "kwhImportedToday": 0.65,
+    "temperature": 45,
+    "kwhImportedToday": 0.77,
     "kwhExportedToday": 0
   },
   "economie": {
     "tarifOA": 0.1313,
     "tarifHP": 0.1271,
     "tempoCouleur": "BLEU",
-    "coutImport": 0.08,
+    "coutImport": 0.1,
     "revenuExport": 0,
-    "bilanJour": -0.08,
-    "kwhImport": 0.65,
+    "bilanJour": -0.1,
+    "kwhImport": 0.77,
     "kwhExport": 0
   },
   "tempo": {
@@ -72,13 +72,13 @@
     "tomorrow": "BLEU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.81698",
+  "scriptVersion": "V50.5.3.81708",
   "brain": {
     "session": [],
     "manual": [],
     "failed": [
       "batterie3"
     ],
-    "logTail": "10:30:31 PM | !!! IMPORT ANORMAL 581.56W : fallback -> Batterie_3\n10:30:31 PM | AUTO -> Batterie_3 | fallback import anormal\n10:30:31 PM | ACTION -> AUTO Batterie_3\n10:31:30 PM | !!! ECHEC COMMANDE : Batterie_3 | attendu=DISCHARGE | reel=IDLE | tentative 2/3\n10:31:30 PM | → Réessai 2/3 pour Batterie_3\n10:31:31 PM | !!! IMPORT ANORMAL 574.54W : fallback -> Batterie_3\n10:31:31 PM | AUTO -> Batterie_3 | fallback import anormal\n10:31:31 PM | ACTION -> AUTO Batterie_3\n10:32:30 PM | !!! ECHEC COMMANDE : Batterie_3 | attendu=DISCHARGE | reel=IDLE | tentative 3/3\n10:32:30 PM | !!! BATTERIE EXCLUE 30min : Batterie_3\n10:32:30 PM | → BLACKLIST 30min après 3 échecs : Batterie_3\n10:32:31 PM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge"
+    "logTail": "10:32:30 PM | → BLACKLIST 30min après 3 échecs : Batterie_3\n10:32:31 PM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n10:33:01 PM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n10:33:30 PM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n10:34:01 PM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n10:34:31 PM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n10:35:01 PM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n10:35:31 PM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n10:36:01 PM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n10:36:30 PM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n10:37:01 PM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n10:37:30 PM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge"
   }
 }
