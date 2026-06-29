@@ -1,72 +1,76 @@
 {
-  "updatedAt": "2026-06-29T13:22:41.000Z",
+  "updatedAt": "2026-06-29T13:27:41.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
       "online": true,
-      "soc": 20,
-      "powerW": 0,
+      "soc": 22,
+      "powerW": 2126,
       "temp": 2.6,
-      "direction": "IDLE",
-      "blacklisted": false
+      "direction": "CHARGING",
+      "blacklisted": false,
+      "lastMsg": 0
     },
     {
       "name": "Batterie_2",
       "online": true,
-      "soc": 14,
+      "soc": 15,
       "powerW": 0,
-      "temp": 3.1,
+      "temp": 2.6,
       "direction": "IDLE",
-      "blacklisted": true
+      "blacklisted": false,
+      "lastMsg": 0
     },
     {
       "name": "Batterie_3",
       "online": true,
-      "soc": 20,
-      "powerW": 0,
+      "soc": 21,
+      "powerW": 1666,
       "temp": 2.7,
-      "direction": "IDLE",
-      "blacklisted": false
+      "direction": "CHARGING",
+      "blacklisted": false,
+      "lastMsg": 0
     },
     {
       "name": "Batterie_4",
       "online": true,
       "soc": 75,
-      "powerW": 2361,
-      "temp": 3.7,
-      "direction": "CHARGING",
-      "blacklisted": true
+      "powerW": 0,
+      "temp": 3.3,
+      "direction": "IDLE",
+      "blacklisted": false,
+      "lastMsg": 0
     }
   ],
   "solar": {
     "productionW": 5920
   },
   "grid": {
-    "powerW": -3420
+    "powerW": -22
   },
   "shelly": {
     "online": true,
-    "gridPower": -3419.8,
-    "kwhImported": 2086.79,
-    "kwhExported": 1801.99,
-    "temperature": 55.8,
+    "gridPower": -21.5,
+    "kwhImported": 2086.85,
+    "kwhExported": 1802.21,
+    "temperature": 57.3,
     "kwhImportedToday": 7.81,
-    "kwhExportedToday": 6.87
+    "kwhExportedToday": 6.99
   },
   "economie": {
     "tarifOA": 0.1313,
     "tarifHP": 0.1609,
     "tempoCouleur": "BLEU",
     "coutImport": 1.05,
-    "revenuExport": 0.9,
-    "bilanJour": -0.15,
+    "revenuExport": 0.92,
+    "bilanJour": -0.13,
     "kwhImport": 7.81,
-    "kwhExport": 6.87
+    "kwhExport": 6.99
   },
   "tempo": {
     "today": "BLEU",
     "tomorrow": "BLEU"
   },
   "events": {},
-  "scriptVersion": "V50.5.2.80598"
+  "scriptVersion": "V50.5.2.80608"
 }
