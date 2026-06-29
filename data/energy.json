@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-29T18:52:43.000Z",
+  "updatedAt": "2026-06-29T18:57:45.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
@@ -34,10 +34,10 @@
     {
       "name": "Batterie_4",
       "online": true,
-      "soc": 34,
-      "powerW": -1892,
+      "soc": 32,
+      "powerW": 0,
       "temp": 3.2,
-      "direction": "DISCHARGING",
+      "direction": "IDLE",
       "blacklisted": false,
       "lastMsg": 16
     }
@@ -46,25 +46,25 @@
     "productionW": 350
   },
   "grid": {
-    "powerW": 39
+    "powerW": 691
   },
   "shelly": {
     "online": true,
-    "gridPower": 38.9,
-    "kwhImported": 2099.09,
-    "kwhExported": 1807.92,
-    "temperature": 52.5,
-    "kwhImportedToday": 14.82,
+    "gridPower": 691.3,
+    "kwhImported": 2099.28,
+    "kwhExported": 1808,
+    "temperature": 52.6,
+    "kwhImportedToday": 14.95,
     "kwhExportedToday": 7.52
   },
   "economie": {
     "tarifOA": 0.1313,
     "tarifHP": 0.1609,
     "tempoCouleur": "BLEU",
-    "coutImport": 2.18,
+    "coutImport": 2.2,
     "revenuExport": 0.99,
-    "bilanJour": -1.19,
-    "kwhImport": 14.82,
+    "bilanJour": -1.21,
+    "kwhImport": 14.95,
     "kwhExport": 7.52
   },
   "tempo": {
@@ -72,7 +72,7 @@
     "tomorrow": "BLEU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.81258",
+  "scriptVersion": "V50.5.3.81268",
   "brain": {
     "session": [
       "batterie1",
@@ -80,6 +80,6 @@
     ],
     "manual": [],
     "failed": [],
-    "logTail": "6:48:01 PM | AUTO -> Batterie_4 | fallback import anormal\n6:48:01 PM | ACTION -> AUTO Batterie_4\n6:49:01 PM | STOP -> Batterie_4 | jour - decharge hors session\n6:49:01 PM | ACTION -> STOP Batterie_4\n6:50:01 PM | !!! IMPORT ANORMAL 1909.57W : fallback -> Batterie_4\n6:50:01 PM | AUTO -> Batterie_4 | fallback import anormal\n6:50:01 PM | ACTION -> AUTO Batterie_4\n6:51:01 PM | STOP -> Batterie_4 | jour - decharge hors session\n6:51:01 PM | ACTION -> STOP Batterie_4\n6:52:01 PM | !!! IMPORT ANORMAL 1928.63W : fallback -> Batterie_4\n6:52:01 PM | AUTO -> Batterie_4 | fallback import anormal\n6:52:01 PM | ACTION -> AUTO Batterie_4"
+    "logTail": "6:53:01 PM | STOP -> Batterie_4 | jour - decharge hors session\n6:53:01 PM | ACTION -> STOP Batterie_4\n6:54:01 PM | !!! IMPORT ANORMAL 1941.36W : fallback -> Batterie_4\n6:54:01 PM | AUTO -> Batterie_4 | fallback import anormal\n6:54:01 PM | ACTION -> AUTO Batterie_4\n6:55:01 PM | STOP -> Batterie_4 | jour - decharge hors session\n6:55:01 PM | ACTION -> STOP Batterie_4\n6:56:01 PM | !!! IMPORT ANORMAL 4204.66W : fallback -> Batterie_4\n6:56:01 PM | AUTO -> Batterie_4 | fallback import anormal\n6:56:01 PM | ACTION -> AUTO Batterie_4\n6:57:01 PM | STOP -> Batterie_4 | jour - decharge hors session\n6:57:01 PM | ACTION -> STOP Batterie_4"
   }
 }
