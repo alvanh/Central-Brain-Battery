@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-30T13:27:46.000Z",
+  "updatedAt": "2026-06-30T13:32:37.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
@@ -11,7 +11,7 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 10
+      "lastMsg": 0
     },
     {
       "name": "Batterie_2",
@@ -23,64 +23,64 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 10
+      "lastMsg": 0
     },
     {
       "name": "Batterie_3",
       "online": true,
-      "soc": 50,
+      "soc": 54,
       "powerW": 2491,
       "temp": 3.5,
       "direction": "CHARGING",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 10
+      "lastMsg": 0
     },
     {
       "name": "Batterie_4",
       "online": true,
-      "soc": 67,
+      "soc": 71,
       "powerW": 2491,
       "temp": 3.6,
       "direction": "CHARGING",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 10
+      "lastMsg": 0
     }
   ],
   "solar": {
-    "productionW": 6060
+    "productionW": 5870
   },
   "grid": {
-    "powerW": -145
+    "powerW": -134
   },
   "shelly": {
     "online": true,
-    "gridPower": -145.2,
-    "kwhImported": 2123.23,
-    "kwhExported": 1815.5,
+    "gridPower": -134.2,
+    "kwhImported": 2123.37,
+    "kwhExported": 1815.65,
     "temperature": 56.5,
     "kwhImportedToday": 9.82,
-    "kwhExportedToday": 1.41
+    "kwhExportedToday": 1.42
   },
   "economie": {
     "tarifOA": 0.1313,
     "tarifHP": 0.1609,
     "tempoCouleur": "BLEU",
     "coutImport": 1.39,
-    "revenuExport": 0.18,
-    "bilanJour": -1.21,
+    "revenuExport": 0.19,
+    "bilanJour": -1.2,
     "kwhImport": 9.82,
-    "kwhExport": 1.41
+    "kwhExport": 1.42
   },
   "tempo": {
     "today": "BLEU",
     "tomorrow": "BLEU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.83488",
+  "scriptVersion": "V50.5.3.83498",
   "brain": {
     "session": [
       "batterie4",
