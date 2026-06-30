@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-30T17:42:37.000Z",
+  "updatedAt": "2026-06-30T17:47:39.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
@@ -11,19 +11,19 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 22
+      "lastMsg": 28
     },
     {
       "name": "Batterie_2",
       "online": true,
-      "soc": 81,
-      "powerW": -494,
+      "soc": 80,
+      "powerW": 35,
       "temp": 3.8,
-      "direction": "DISCHARGING",
+      "direction": "CHARGING",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 22
+      "lastMsg": 27
     },
     {
       "name": "Batterie_3",
@@ -35,7 +35,7 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 22
+      "lastMsg": 28
     },
     {
       "name": "Batterie_4",
@@ -47,40 +47,40 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 52
+      "lastMsg": 28
     }
   ],
   "solar": {
     "productionW": 270
   },
   "grid": {
-    "powerW": 11
+    "powerW": -27
   },
   "shelly": {
     "online": true,
-    "gridPower": 11.3,
-    "kwhImported": 2128.13,
-    "kwhExported": 1822.24,
-    "temperature": 51.1,
-    "kwhImportedToday": 10.78,
-    "kwhExportedToday": 4.17
+    "gridPower": -26.6,
+    "kwhImported": 2128.16,
+    "kwhExported": 1822.26,
+    "temperature": 51.2,
+    "kwhImportedToday": 10.8,
+    "kwhExportedToday": 4.18
   },
   "economie": {
     "tarifOA": 0.1313,
     "tarifHP": 0.1609,
     "tempoCouleur": "BLEU",
-    "coutImport": 1.54,
+    "coutImport": 1.55,
     "revenuExport": 0.55,
-    "bilanJour": -0.99,
-    "kwhImport": 10.78,
-    "kwhExport": 4.17
+    "bilanJour": -1,
+    "kwhImport": 10.8,
+    "kwhExport": 4.18
   },
   "tempo": {
     "today": "BLEU",
     "tomorrow": "BLEU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.83998",
+  "scriptVersion": "V50.5.3.84008",
   "brain": {
     "session": [],
     "manual": [],
