@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-30T14:27:39.000Z",
+  "updatedAt": "2026-06-30T14:32:43.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
@@ -10,8 +10,8 @@
       "direction": "IDLE",
       "blacklisted": false,
       "excluded": true,
-      "excludedMin": 23,
-      "lastMsg": 25
+      "excludedMin": 18,
+      "lastMsg": 26
     },
     {
       "name": "Batterie_2",
@@ -28,10 +28,10 @@
     {
       "name": "Batterie_3",
       "online": true,
-      "soc": 100,
-      "powerW": 0,
+      "soc": 98,
+      "powerW": -1252,
       "temp": 3.9,
-      "direction": "IDLE",
+      "direction": "DISCHARGING",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
@@ -40,47 +40,47 @@
     {
       "name": "Batterie_4",
       "online": true,
-      "soc": 84,
-      "powerW": 2491,
+      "soc": 87,
+      "powerW": -2333,
       "temp": 3.8,
-      "direction": "CHARGING",
+      "direction": "DISCHARGING",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 25
+      "lastMsg": 26
     }
   ],
   "solar": {
-    "productionW": 5870
+    "productionW": 2370
   },
   "grid": {
-    "powerW": -1350
+    "powerW": 1544
   },
   "shelly": {
     "online": true,
-    "gridPower": -1349.8,
-    "kwhImported": 2125.37,
-    "kwhExported": 1817.74,
-    "temperature": 59.8,
-    "kwhImportedToday": 9.96,
-    "kwhExportedToday": 1.7
+    "gridPower": 1543.5,
+    "kwhImported": 2125.47,
+    "kwhExported": 1817.91,
+    "temperature": 60,
+    "kwhImportedToday": 9.99,
+    "kwhExportedToday": 1.77
   },
   "economie": {
     "tarifOA": 0.1313,
     "tarifHP": 0.1609,
     "tempoCouleur": "BLEU",
-    "coutImport": 1.41,
-    "revenuExport": 0.22,
+    "coutImport": 1.42,
+    "revenuExport": 0.23,
     "bilanJour": -1.19,
-    "kwhImport": 9.96,
-    "kwhExport": 1.7
+    "kwhImport": 9.99,
+    "kwhExport": 1.77
   },
   "tempo": {
     "today": "BLEU",
     "tomorrow": "BLEU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.83608",
+  "scriptVersion": "V50.5.3.83618",
   "brain": {
     "session": [
       "batterie4",
