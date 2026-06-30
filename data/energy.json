@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-06-30T23:02:43.000Z",
+  "updatedAt": "2026-06-30T23:07:45.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
       "online": true,
-      "soc": 58,
-      "powerW": -378,
+      "soc": 57,
+      "powerW": -493,
       "temp": 3,
       "direction": "DISCHARGING",
       "blacklisted": false,
@@ -22,7 +22,7 @@
       "direction": "IDLE",
       "blacklisted": false,
       "excluded": true,
-      "excludedMin": 29,
+      "excludedMin": 24,
       "lastMsg": 15
     },
     {
@@ -54,14 +54,14 @@
     "productionW": 0
   },
   "grid": {
-    "powerW": 15
+    "powerW": -3
   },
   "shelly": {
     "online": true,
-    "gridPower": 14.8,
-    "kwhImported": 2137.79,
-    "kwhExported": 1827.16,
-    "temperature": 46.3,
+    "gridPower": -3.3,
+    "kwhImported": 2137.83,
+    "kwhExported": 1827.2,
+    "temperature": 45.5,
     "kwhImportedToday": 0.39,
     "kwhExportedToday": 0.05
   },
@@ -80,13 +80,13 @@
     "tomorrow": "BLEU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.84638",
+  "scriptVersion": "V50.5.3.84648",
   "brain": {
     "session": [],
     "manual": [],
     "failed": [
       "batterie2"
     ],
-    "logTail": "11:00:01 PM | ACTION -> STOP Batterie_2\n11:01:00 PM | !!! ECHEC COMMANDE : Batterie_2 | attendu=DISCHARGE | reel=IDLE | tentative 2/3\n11:01:00 PM | → Réessai 2/3 pour Batterie_2\n11:01:01 PM | STOP -> Batterie_1 | night single\n11:01:01 PM | ACTION -> STOP Batterie_1\n11:02:00 PM | !!! ECHEC COMMANDE : Batterie_2 | attendu=DISCHARGE | reel=IDLE | tentative 3/3\n11:02:01 PM | !!! BATTERIE EXCLUE 30min : Batterie_2\n11:02:01 PM | → BLACKLIST 30min après 3 échecs : Batterie_2\n11:02:01 PM | NIGHT MASTER reset -> prochaine batterie disponible\n11:02:01 PM | !!! IMPORT ANORMAL 602.99W : fallback -> Batterie_1\n11:02:01 PM | AUTO -> Batterie_1 | fallback import anormal\n11:02:01 PM | ACTION -> AUTO Batterie_1"
+    "logTail": "11:01:00 PM | !!! ECHEC COMMANDE : Batterie_2 | attendu=DISCHARGE | reel=IDLE | tentative 2/3\n11:01:00 PM | → Réessai 2/3 pour Batterie_2\n11:01:01 PM | STOP -> Batterie_1 | night single\n11:01:01 PM | ACTION -> STOP Batterie_1\n11:02:00 PM | !!! ECHEC COMMANDE : Batterie_2 | attendu=DISCHARGE | reel=IDLE | tentative 3/3\n11:02:01 PM | !!! BATTERIE EXCLUE 30min : Batterie_2\n11:02:01 PM | → BLACKLIST 30min après 3 échecs : Batterie_2\n11:02:01 PM | NIGHT MASTER reset -> prochaine batterie disponible\n11:02:01 PM | !!! IMPORT ANORMAL 602.99W : fallback -> Batterie_1\n11:02:01 PM | AUTO -> Batterie_1 | fallback import anormal\n11:02:01 PM | ACTION -> AUTO Batterie_1\n11:03:01 PM | NIGHT MASTER -> Batterie_1 (SoC=58%)"
   }
 }
