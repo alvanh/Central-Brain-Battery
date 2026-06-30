@@ -1,17 +1,17 @@
 {
-  "updatedAt": "2026-06-30T15:57:38.000Z",
+  "updatedAt": "2026-06-30T16:02:42.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
       "online": true,
-      "soc": 81,
-      "powerW": 887,
+      "soc": 82,
+      "powerW": -260,
       "temp": 3.5,
-      "direction": "CHARGING",
+      "direction": "DISCHARGING",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 9
+      "lastMsg": 14
     },
     {
       "name": "Batterie_2",
@@ -23,7 +23,7 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 9
+      "lastMsg": 14
     },
     {
       "name": "Batterie_3",
@@ -35,7 +35,7 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 9
+      "lastMsg": 14
     },
     {
       "name": "Batterie_4",
@@ -47,21 +47,21 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 9
+      "lastMsg": 14
     }
   ],
   "solar": {
-    "productionW": 4400
+    "productionW": 3940
   },
   "grid": {
-    "powerW": 609
+    "powerW": 33
   },
   "shelly": {
     "online": true,
-    "gridPower": 608.8,
-    "kwhImported": 2126.43,
-    "kwhExported": 1821.04,
-    "temperature": 55.8,
+    "gridPower": 32.6,
+    "kwhImported": 2126.45,
+    "kwhExported": 1821.07,
+    "temperature": 56.1,
     "kwhImportedToday": 10.05,
     "kwhExportedToday": 3.99
   },
@@ -80,13 +80,13 @@
     "tomorrow": "BLEU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.83788",
+  "scriptVersion": "V50.5.3.83798",
   "brain": {
     "session": [
       "batterie1"
     ],
     "manual": [],
     "failed": [],
-    "logTail": "3:53:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1\n3:53:30 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1\n3:54:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1\n3:54:31 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1\n3:55:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1\n3:55:30 PM | !!! IMPORT ANORMAL 901.52W : fallback -> Batterie_2\n3:55:31 PM | STOP -> Batterie_1 | fallback import : stop charges\n3:55:31 PM | ACTION -> STOP Batterie_1\n3:56:30 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1\n3:57:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1\n3:57:01 PM | AUTO -> Batterie_1 | session AUTO (Shelly-driven)\n3:57:01 PM | ACTION -> AUTO Batterie_1"
+    "logTail": "3:57:01 PM | ACTION -> AUTO Batterie_1\n3:58:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1\n3:58:31 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1\n3:59:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1\n3:59:31 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1\n4:00:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1\n4:00:31 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1\n4:01:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1\n4:01:30 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1\n4:01:31 PM | AUTO -> Batterie_1 | session AUTO (Shelly-driven)\n4:01:31 PM | ACTION -> AUTO Batterie_1\n4:02:30 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1"
   }
 }
