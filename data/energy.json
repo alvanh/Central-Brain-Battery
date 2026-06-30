@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-06-30T16:02:42.000Z",
+  "updatedAt": "2026-06-30T16:07:44.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
       "online": true,
-      "soc": 82,
-      "powerW": -260,
+      "soc": 80,
+      "powerW": -1095,
       "temp": 3.5,
       "direction": "DISCHARGING",
       "blacklisted": false,
@@ -54,15 +54,15 @@
     "productionW": 3940
   },
   "grid": {
-    "powerW": 33
+    "powerW": 12
   },
   "shelly": {
     "online": true,
-    "gridPower": 32.6,
-    "kwhImported": 2126.45,
-    "kwhExported": 1821.07,
-    "temperature": 56.1,
-    "kwhImportedToday": 10.05,
+    "gridPower": 12.3,
+    "kwhImported": 2126.51,
+    "kwhExported": 1821.12,
+    "temperature": 55.1,
+    "kwhImportedToday": 10.07,
     "kwhExportedToday": 3.99
   },
   "economie": {
@@ -72,7 +72,7 @@
     "coutImport": 1.43,
     "revenuExport": 0.52,
     "bilanJour": -0.91,
-    "kwhImport": 10.05,
+    "kwhImport": 10.07,
     "kwhExport": 3.99
   },
   "tempo": {
@@ -80,13 +80,13 @@
     "tomorrow": "BLEU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.83798",
+  "scriptVersion": "V50.5.3.83808",
   "brain": {
     "session": [
       "batterie1"
     ],
     "manual": [],
     "failed": [],
-    "logTail": "3:57:01 PM | ACTION -> AUTO Batterie_1\n3:58:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1\n3:58:31 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1\n3:59:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1\n3:59:31 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1\n4:00:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1\n4:00:31 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1\n4:01:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1\n4:01:30 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1\n4:01:31 PM | AUTO -> Batterie_1 | session AUTO (Shelly-driven)\n4:01:31 PM | ACTION -> AUTO Batterie_1\n4:02:30 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1"
+    "logTail": "4:02:30 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1\n4:03:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1\n4:03:30 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1\n4:04:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1\n4:04:30 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1\n4:05:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1\n4:05:31 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1\n4:06:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1\n4:06:31 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1\n4:06:31 PM | AUTO -> Batterie_1 | session AUTO (Shelly-driven)\n4:06:31 PM | ACTION -> AUTO Batterie_1\n4:07:30 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1"
   }
 }
