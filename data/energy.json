@@ -1,17 +1,17 @@
 {
-  "updatedAt": "2026-06-30T23:37:40.000Z",
+  "updatedAt": "2026-06-30T23:42:43.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
       "online": true,
-      "soc": 52,
-      "powerW": -2492,
-      "temp": 2.9,
+      "soc": 51,
+      "powerW": -490,
+      "temp": 3,
       "direction": "DISCHARGING",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 5
+      "lastMsg": 11
     },
     {
       "name": "Batterie_2",
@@ -23,19 +23,19 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 5
+      "lastMsg": 11
     },
     {
       "name": "Batterie_3",
       "online": true,
       "soc": 14,
       "powerW": 0,
-      "temp": 3.6,
+      "temp": 3.5,
       "direction": "IDLE",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 5
+      "lastMsg": 11
     },
     {
       "name": "Batterie_4",
@@ -47,40 +47,40 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 6
+      "lastMsg": 11
     }
   ],
   "solar": {
     "productionW": 0
   },
   "grid": {
-    "powerW": 277
+    "powerW": 0
   },
   "shelly": {
     "online": true,
-    "gridPower": 276.6,
-    "kwhImported": 2138.04,
-    "kwhExported": 1827.38,
-    "temperature": 44.6,
+    "gridPower": -0.4,
+    "kwhImported": 2138.09,
+    "kwhExported": 1827.43,
+    "temperature": 44.9,
     "kwhImportedToday": 0.43,
-    "kwhExportedToday": 0.06
+    "kwhExportedToday": 0.07
   },
   "economie": {
     "tarifOA": 0.1376,
     "tarifHP": 0.1271,
     "tempoCouleur": "BLEU",
-    "coutImport": 0.05,
+    "coutImport": 0.06,
     "revenuExport": 0.01,
-    "bilanJour": -0.04,
+    "bilanJour": -0.05,
     "kwhImport": 0.43,
-    "kwhExport": 0.06
+    "kwhExport": 0.07
   },
   "tempo": {
     "today": "BLEU",
     "tomorrow": "BLEU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.84708",
+  "scriptVersion": "V50.5.3.84718",
   "brain": {
     "session": [],
     "manual": [],
