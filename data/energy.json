@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-30T19:32:47.000Z",
+  "updatedAt": "2026-06-30T19:37:38.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
@@ -11,31 +11,31 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 16
+      "lastMsg": 7
     },
     {
       "name": "Batterie_2",
       "online": true,
       "soc": 79,
       "powerW": 0,
-      "temp": 3.6,
+      "temp": 3.5,
       "direction": "IDLE",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 16
+      "lastMsg": 7
     },
     {
       "name": "Batterie_3",
       "online": true,
-      "soc": 67,
+      "soc": 62,
       "powerW": -2492,
       "temp": 3.6,
       "direction": "DISCHARGING",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 16
+      "lastMsg": 7
     },
     {
       "name": "Batterie_4",
@@ -47,32 +47,32 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 16
+      "lastMsg": 7
     }
   ],
   "solar": {
     "productionW": 0
   },
   "grid": {
-    "powerW": 4284
+    "powerW": 4226
   },
   "shelly": {
     "online": true,
-    "gridPower": 4283.5,
-    "kwhImported": 2130.92,
-    "kwhExported": 1822.92,
-    "temperature": 49.5,
-    "kwhImportedToday": 13.06,
+    "gridPower": 4226.1,
+    "kwhImported": 2131.32,
+    "kwhExported": 1822.96,
+    "temperature": 49.6,
+    "kwhImportedToday": 13.41,
     "kwhExportedToday": 4.31
   },
   "economie": {
     "tarifOA": 0.1313,
     "tarifHP": 0.1609,
     "tempoCouleur": "BLEU",
-    "coutImport": 1.91,
+    "coutImport": 1.96,
     "revenuExport": 0.57,
-    "bilanJour": -1.34,
-    "kwhImport": 13.06,
+    "bilanJour": -1.39,
+    "kwhImport": 13.41,
     "kwhExport": 4.31
   },
   "tempo": {
@@ -80,7 +80,7 @@
     "tomorrow": "BLEU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.84218",
+  "scriptVersion": "V50.5.3.84228",
   "brain": {
     "session": [],
     "manual": [],
