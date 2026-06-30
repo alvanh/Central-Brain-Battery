@@ -1,14 +1,14 @@
 {
-  "updatedAt": "2026-06-30T10:52:37.000Z",
+  "updatedAt": "2026-06-30T10:57:40.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
       "online": true,
-      "soc": 33,
-      "powerW": 0,
+      "soc": 32,
+      "powerW": -614,
       "temp": 3,
-      "direction": "IDLE",
-      "blacklisted": false,
+      "direction": "DISCHARGING",
+      "blacklisted": true,
       "lastMsg": 25
     },
     {
@@ -46,25 +46,25 @@
     "productionW": 5950
   },
   "grid": {
-    "powerW": 635
+    "powerW": -7
   },
   "shelly": {
     "online": true,
-    "gridPower": 635.3,
-    "kwhImported": 2119.56,
-    "kwhExported": 1811.57,
+    "gridPower": -7,
+    "kwhImported": 2119.62,
+    "kwhExported": 1811.58,
     "temperature": 56.2,
-    "kwhImportedToday": 9.36,
+    "kwhImportedToday": 9.41,
     "kwhExportedToday": 0.65
   },
   "economie": {
     "tarifOA": 0.1313,
     "tarifHP": 0.1609,
     "tempoCouleur": "BLEU",
-    "coutImport": 1.31,
+    "coutImport": 1.32,
     "revenuExport": 0.09,
-    "bilanJour": -1.22,
-    "kwhImport": 9.36,
+    "bilanJour": -1.23,
+    "kwhImport": 9.41,
     "kwhExport": 0.65
   },
   "tempo": {
@@ -72,14 +72,16 @@
     "tomorrow": "INCONNU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.83178",
+  "scriptVersion": "V50.5.3.83188",
   "brain": {
     "session": [
-      "batterie1",
-      "batterie4"
+      "batterie4",
+      "batterie3"
     ],
     "manual": [],
-    "failed": [],
-    "logTail": "10:48:01 AM | ACTION -> AUTO Batterie_1\n10:49:01 AM | AUTO -> Batterie_1 | session AUTO (Shelly-driven)\n10:49:01 AM | ACTION -> AUTO Batterie_1\n10:50:01 AM | AUTO -> Batterie_1 | session AUTO (Shelly-driven)\n10:50:01 AM | ACTION -> AUTO Batterie_1\n10:51:01 AM | !!! IMPORT ANORMAL 619.98W : fallback -> Batterie_1\n10:51:01 AM | AUTO -> Batterie_1 | fallback import anormal\n10:51:01 AM | ACTION -> AUTO Batterie_1\n10:52:00 AM | !!! ECHEC COMMANDE : Batterie_1 | attendu=DISCHARGE | reel=IDLE | tentative 1/3\n10:52:01 AM | → Réessai 1/3 pour Batterie_1\n10:52:01 AM | AUTO -> Batterie_1 | session AUTO (Shelly-driven)\n10:52:01 AM | ACTION -> AUTO Batterie_1"
+    "failed": [
+      "batterie1"
+    ],
+    "logTail": "10:54:01 AM | ACTION -> AUTO Batterie_4\n10:55:01 AM | !!! IMPORT ANORMAL 652.35W : fallback -> Batterie_4\n10:55:01 AM | AUTO -> Batterie_4 | fallback import anormal\n10:55:01 AM | ACTION -> AUTO Batterie_4\n10:56:00 AM | !!! ECHEC COMMANDE : Batterie_4 | attendu=DISCHARGE | reel=IDLE | tentative 1/3\n10:56:01 AM | → Réessai 1/3 pour Batterie_4\n10:56:01 AM | AUTO -> Batterie_4 | session AUTO (Shelly-driven)\n10:56:01 AM | ACTION -> AUTO Batterie_4\n10:57:01 AM | !!! ECHEC COMMANDE : Batterie_4 | attendu=DISCHARGE | reel=IDLE | tentative 2/3\n10:57:01 AM | → Réessai 2/3 pour Batterie_4\n10:57:01 AM | STOP -> Batterie_1 | jour - decharge hors session\n10:57:01 AM | ACTION -> STOP Batterie_1"
   }
 }
