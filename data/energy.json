@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-30T00:42:47.000Z",
+  "updatedAt": "2026-06-30T00:47:38.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
@@ -9,7 +9,7 @@
       "temp": 2.7,
       "direction": "IDLE",
       "blacklisted": false,
-      "lastMsg": 0
+      "lastMsg": 20
     },
     {
       "name": "Batterie_2",
@@ -19,7 +19,7 @@
       "temp": 2.8,
       "direction": "IDLE",
       "blacklisted": false,
-      "lastMsg": 0
+      "lastMsg": 20
     },
     {
       "name": "Batterie_3",
@@ -29,7 +29,7 @@
       "temp": 2.8,
       "direction": "IDLE",
       "blacklisted": true,
-      "lastMsg": 0
+      "lastMsg": 20
     },
     {
       "name": "Batterie_4",
@@ -39,32 +39,32 @@
       "temp": 2.9,
       "direction": "IDLE",
       "blacklisted": false,
-      "lastMsg": 0
+      "lastMsg": 20
     }
   ],
   "solar": {
     "productionW": 0
   },
   "grid": {
-    "powerW": 2762
+    "powerW": 497
   },
   "shelly": {
     "online": true,
-    "gridPower": 2761.6,
-    "kwhImported": 2110.17,
+    "gridPower": 496.9,
+    "kwhImported": 2110.25,
     "kwhExported": 1808.48,
     "temperature": 43.1,
-    "kwhImportedToday": 2.47,
+    "kwhImportedToday": 2.51,
     "kwhExportedToday": 0
   },
   "economie": {
     "tarifOA": 0.1313,
     "tarifHP": 0.1271,
     "tempoCouleur": "BLEU",
-    "coutImport": 0.31,
+    "coutImport": 0.32,
     "revenuExport": 0,
-    "bilanJour": -0.31,
-    "kwhImport": 2.47,
+    "bilanJour": -0.32,
+    "kwhImport": 2.51,
     "kwhExport": 0
   },
   "tempo": {
@@ -72,13 +72,13 @@
     "tomorrow": "INCONNU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.81958",
+  "scriptVersion": "V50.5.3.81968",
   "brain": {
     "session": [],
     "manual": [],
     "failed": [
       "batterie3"
     ],
-    "logTail": "12:37:01 AM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n12:37:31 AM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n12:38:01 AM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n12:38:31 AM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n12:39:01 AM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n12:39:31 AM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n12:40:01 AM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n12:40:31 AM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n12:41:01 AM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n12:41:30 AM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n12:42:01 AM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n12:42:30 AM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge"
+    "logTail": "12:44:31 AM | ACTION -> AUTO Batterie_3\n12:45:30 AM | !!! ECHEC COMMANDE : Batterie_3 | attendu=DISCHARGE | reel=IDLE | tentative 2/3\n12:45:30 AM | → Réessai 2/3 pour Batterie_3\n12:45:31 AM | !!! IMPORT ANORMAL 502.05W : fallback -> Batterie_3\n12:45:31 AM | AUTO -> Batterie_3 | fallback import anormal\n12:45:31 AM | ACTION -> AUTO Batterie_3\n12:46:30 AM | !!! ECHEC COMMANDE : Batterie_3 | attendu=DISCHARGE | reel=IDLE | tentative 3/3\n12:46:30 AM | !!! BATTERIE EXCLUE 30min : Batterie_3\n12:46:30 AM | → BLACKLIST 30min après 3 échecs : Batterie_3\n12:46:31 AM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n12:47:01 AM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n12:47:30 AM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge"
   }
 }
