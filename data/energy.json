@@ -1,17 +1,17 @@
 {
-  "updatedAt": "2026-06-30T16:52:42.000Z",
+  "updatedAt": "2026-06-30T16:57:46.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
       "online": true,
-      "soc": 65,
-      "powerW": -143,
+      "soc": 64,
+      "powerW": -771,
       "temp": 3.5,
       "direction": "DISCHARGING",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 5
+      "lastMsg": 11
     },
     {
       "name": "Batterie_2",
@@ -23,46 +23,46 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 5
+      "lastMsg": 11
     },
     {
       "name": "Batterie_3",
       "online": true,
       "soc": 100,
       "powerW": 0,
-      "temp": 3.6,
+      "temp": 3.5,
       "direction": "IDLE",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 5
+      "lastMsg": 11
     },
     {
       "name": "Batterie_4",
       "online": true,
-      "soc": 85,
-      "powerW": -1679,
+      "soc": 83,
+      "powerW": -1156,
       "temp": 3.6,
       "direction": "DISCHARGING",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 5
+      "lastMsg": 11
     }
   ],
   "solar": {
     "productionW": 520
   },
   "grid": {
-    "powerW": -134
+    "powerW": 57
   },
   "shelly": {
     "online": true,
-    "gridPower": -134.4,
-    "kwhImported": 2127.41,
-    "kwhExported": 1821.93,
-    "temperature": 53,
-    "kwhImportedToday": 10.31,
+    "gridPower": 57,
+    "kwhImported": 2127.47,
+    "kwhExported": 1821.99,
+    "temperature": 53.5,
+    "kwhImportedToday": 10.32,
     "kwhExportedToday": 4.12
   },
   "economie": {
@@ -72,7 +72,7 @@
     "coutImport": 1.47,
     "revenuExport": 0.54,
     "bilanJour": -0.93,
-    "kwhImport": 10.31,
+    "kwhImport": 10.32,
     "kwhExport": 4.12
   },
   "tempo": {
@@ -80,7 +80,7 @@
     "tomorrow": "BLEU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.83898",
+  "scriptVersion": "V50.5.3.83908",
   "brain": {
     "session": [
       "batterie1",
