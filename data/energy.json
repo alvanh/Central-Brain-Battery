@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-30T19:37:38.000Z",
+  "updatedAt": "2026-06-30T19:42:44.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
@@ -11,7 +11,7 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 7
+      "lastMsg": 12
     },
     {
       "name": "Batterie_2",
@@ -23,56 +23,56 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 7
+      "lastMsg": 12
     },
     {
       "name": "Batterie_3",
       "online": true,
-      "soc": 62,
+      "soc": 58,
       "powerW": -2492,
-      "temp": 3.6,
+      "temp": 3.7,
       "direction": "DISCHARGING",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 7
+      "lastMsg": 12
     },
     {
       "name": "Batterie_4",
       "online": true,
       "soc": 81,
       "powerW": 0,
-      "temp": 3.3,
+      "temp": 3.2,
       "direction": "IDLE",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 7
+      "lastMsg": 12
     }
   ],
   "solar": {
     "productionW": 0
   },
   "grid": {
-    "powerW": 4226
+    "powerW": 4391
   },
   "shelly": {
     "online": true,
-    "gridPower": 4226.1,
-    "kwhImported": 2131.32,
-    "kwhExported": 1822.96,
-    "temperature": 49.6,
-    "kwhImportedToday": 13.41,
+    "gridPower": 4390.9,
+    "kwhImported": 2131.72,
+    "kwhExported": 1823.01,
+    "temperature": 49.2,
+    "kwhImportedToday": 13.77,
     "kwhExportedToday": 4.31
   },
   "economie": {
     "tarifOA": 0.1313,
     "tarifHP": 0.1609,
     "tempoCouleur": "BLEU",
-    "coutImport": 1.96,
+    "coutImport": 2.02,
     "revenuExport": 0.57,
-    "bilanJour": -1.39,
-    "kwhImport": 13.41,
+    "bilanJour": -1.45,
+    "kwhImport": 13.77,
     "kwhExport": 4.31
   },
   "tempo": {
@@ -80,7 +80,7 @@
     "tomorrow": "BLEU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.84228",
+  "scriptVersion": "V50.5.3.84238",
   "brain": {
     "session": [],
     "manual": [],
