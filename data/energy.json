@@ -1,17 +1,17 @@
 {
-  "updatedAt": "2026-06-30T23:27:48.000Z",
+  "updatedAt": "2026-06-30T23:32:38.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
       "online": true,
-      "soc": 54,
-      "powerW": -486,
+      "soc": 53,
+      "powerW": -478,
       "temp": 3,
       "direction": "DISCHARGING",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 45
+      "lastMsg": 5
     },
     {
       "name": "Batterie_2",
@@ -21,9 +21,9 @@
       "temp": 3.3,
       "direction": "IDLE",
       "blacklisted": false,
-      "excluded": true,
-      "excludedMin": 4,
-      "lastMsg": 15
+      "excluded": false,
+      "excludedMin": 0,
+      "lastMsg": 5
     },
     {
       "name": "Batterie_3",
@@ -35,7 +35,7 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 15
+      "lastMsg": 5
     },
     {
       "name": "Batterie_4",
@@ -47,21 +47,21 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 15
+      "lastMsg": 5
     }
   ],
   "solar": {
     "productionW": 0
   },
   "grid": {
-    "powerW": 513
+    "powerW": 30
   },
   "shelly": {
     "online": true,
-    "gridPower": 512.8,
-    "kwhImported": 2137.96,
-    "kwhExported": 1827.32,
-    "temperature": 45.3,
+    "gridPower": 30.4,
+    "kwhImported": 2138,
+    "kwhExported": 1827.35,
+    "temperature": 44.9,
     "kwhImportedToday": 0.42,
     "kwhExportedToday": 0.06
   },
@@ -80,13 +80,11 @@
     "tomorrow": "BLEU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.84688",
+  "scriptVersion": "V50.5.3.84698",
   "brain": {
     "session": [],
     "manual": [],
-    "failed": [
-      "batterie2"
-    ],
+    "failed": [],
     "logTail": "11:01:00 PM | !!! ECHEC COMMANDE : Batterie_2 | attendu=DISCHARGE | reel=IDLE | tentative 2/3\n11:01:00 PM | → Réessai 2/3 pour Batterie_2\n11:01:01 PM | STOP -> Batterie_1 | night single\n11:01:01 PM | ACTION -> STOP Batterie_1\n11:02:00 PM | !!! ECHEC COMMANDE : Batterie_2 | attendu=DISCHARGE | reel=IDLE | tentative 3/3\n11:02:01 PM | !!! BATTERIE EXCLUE 30min : Batterie_2\n11:02:01 PM | → BLACKLIST 30min après 3 échecs : Batterie_2\n11:02:01 PM | NIGHT MASTER reset -> prochaine batterie disponible\n11:02:01 PM | !!! IMPORT ANORMAL 602.99W : fallback -> Batterie_1\n11:02:01 PM | AUTO -> Batterie_1 | fallback import anormal\n11:02:01 PM | ACTION -> AUTO Batterie_1\n11:03:01 PM | NIGHT MASTER -> Batterie_1 (SoC=58%)"
   }
 }
