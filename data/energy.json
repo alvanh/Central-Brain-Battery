@@ -1,96 +1,90 @@
 {
-  "updatedAt": "2026-06-30T18:22:44.000Z",
+  "updatedAt": "2026-06-30T19:07:40.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
       "online": true,
-      "soc": 63,
-      "powerW": -58,
-      "temp": 3.4,
-      "direction": "DISCHARGING",
+      "soc": 62,
+      "powerW": 0,
+      "temp": 3.3,
+      "direction": "IDLE",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 25
+      "lastMsg": 16
     },
     {
       "name": "Batterie_2",
       "online": true,
       "soc": 79,
       "powerW": 0,
-      "temp": 3.8,
+      "temp": 3.6,
       "direction": "IDLE",
       "blacklisted": false,
-      "excluded": true,
-      "excludedMin": 4,
-      "lastMsg": 25
+      "excluded": false,
+      "excludedMin": 0,
+      "lastMsg": 16
     },
     {
       "name": "Batterie_3",
       "online": true,
-      "soc": 98,
-      "powerW": 0,
+      "soc": 87,
+      "powerW": -2492,
       "temp": 3.3,
-      "direction": "IDLE",
+      "direction": "DISCHARGING",
       "blacklisted": false,
-      "excluded": true,
-      "excludedMin": 3,
-      "lastMsg": 25
+      "excluded": false,
+      "excludedMin": 0,
+      "lastMsg": 16
     },
     {
       "name": "Batterie_4",
       "online": true,
       "soc": 81,
       "powerW": 0,
-      "temp": 3.5,
+      "temp": 3.3,
       "direction": "IDLE",
       "blacklisted": false,
-      "excluded": true,
-      "excludedMin": 8,
-      "lastMsg": 25
+      "excluded": false,
+      "excludedMin": 0,
+      "lastMsg": 16
     }
   ],
   "solar": {
-    "productionW": 810
+    "productionW": 260
   },
   "grid": {
-    "powerW": -7
+    "powerW": 4805
   },
   "shelly": {
     "online": true,
-    "gridPower": -7,
-    "kwhImported": 2128.28,
-    "kwhExported": 1822.37,
-    "temperature": 50.6,
-    "kwhImportedToday": 10.85,
-    "kwhExportedToday": 4.23
+    "gridPower": 4805.4,
+    "kwhImported": 2128.91,
+    "kwhExported": 1822.72,
+    "temperature": 50.3,
+    "kwhImportedToday": 11.25,
+    "kwhExportedToday": 4.31
   },
   "economie": {
     "tarifOA": 0.1313,
     "tarifHP": 0.1609,
     "tempoCouleur": "BLEU",
-    "coutImport": 1.55,
-    "revenuExport": 0.56,
-    "bilanJour": -0.99,
-    "kwhImport": 10.85,
-    "kwhExport": 4.23
+    "coutImport": 1.62,
+    "revenuExport": 0.57,
+    "bilanJour": -1.05,
+    "kwhImport": 11.25,
+    "kwhExport": 4.31
   },
   "tempo": {
     "today": "BLEU",
     "tomorrow": "BLEU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.84078",
+  "scriptVersion": "V50.5.3.84168",
   "brain": {
-    "session": [
-      "batterie1"
-    ],
+    "session": [],
     "manual": [],
-    "failed": [
-      "batterie2",
-      "batterie3",
-      "batterie4"
-    ],
-    "logTail": "6:18:01 PM | ACTION -> AUTO Batterie_1\n6:19:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1\n6:19:01 PM | AUTO -> Batterie_1 | session AUTO (Shelly-driven)\n6:19:01 PM | ACTION -> AUTO Batterie_1\n6:20:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1\n6:20:01 PM | AUTO -> Batterie_1 | session AUTO (Shelly-driven)\n6:20:01 PM | ACTION -> AUTO Batterie_1\n6:21:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1\n6:21:01 PM | AUTO -> Batterie_1 | session AUTO (Shelly-driven)\n6:21:01 PM | ACTION -> AUTO Batterie_1\n6:22:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1\n6:22:31 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1"
+    "failed": [],
+    "logTail": "6:53:30 PM | !!! INTERDICTION ABSOLUE (jour) : arret decharge parasite\n6:53:30 PM | STOP -> Batterie_1 | interdiction absolue jour\n6:53:31 PM | ACTION -> STOP Batterie_1\n6:54:31 PM | AUTO -> Batterie_1 | session AUTO (Shelly-driven)\n6:54:31 PM | ACTION -> AUTO Batterie_1\n6:55:31 PM | AUTO -> Batterie_1 | session AUTO (Shelly-driven)\n6:55:31 PM | ACTION -> AUTO Batterie_1\n6:56:30 PM | AUTO -> Batterie_1 | session AUTO (Shelly-driven)\n6:56:31 PM | ACTION -> AUTO Batterie_1\n7:00:01 PM | NIGHT MASTER -> Batterie_3 (SoC=93%)\n7:00:01 PM | STOP -> Batterie_1 | night single\n7:00:01 PM | ACTION -> STOP Batterie_1"
   }
 }
