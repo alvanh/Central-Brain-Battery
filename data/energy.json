@@ -1,29 +1,29 @@
 {
-  "updatedAt": "2026-06-30T22:57:40.000Z",
+  "updatedAt": "2026-06-30T23:02:43.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
       "online": true,
-      "soc": 59,
-      "powerW": 0,
-      "temp": 2.9,
-      "direction": "IDLE",
+      "soc": 58,
+      "powerW": -378,
+      "temp": 3,
+      "direction": "DISCHARGING",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 10
+      "lastMsg": 15
     },
     {
       "name": "Batterie_2",
       "online": true,
-      "soc": 59,
+      "soc": 60,
       "powerW": 0,
       "temp": 3.3,
       "direction": "IDLE",
       "blacklisted": false,
-      "excluded": false,
-      "excludedMin": 0,
-      "lastMsg": 10
+      "excluded": true,
+      "excludedMin": 29,
+      "lastMsg": 15
     },
     {
       "name": "Batterie_3",
@@ -35,7 +35,7 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 10
+      "lastMsg": 15
     },
     {
       "name": "Batterie_4",
@@ -47,44 +47,46 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 10
+      "lastMsg": 15
     }
   ],
   "solar": {
     "productionW": 0
   },
   "grid": {
-    "powerW": 595
+    "powerW": 15
   },
   "shelly": {
     "online": true,
-    "gridPower": 595.1,
-    "kwhImported": 2137.73,
-    "kwhExported": 1827.13,
-    "temperature": 45.6,
-    "kwhImportedToday": 0.35,
-    "kwhExportedToday": 0.04
+    "gridPower": 14.8,
+    "kwhImported": 2137.79,
+    "kwhExported": 1827.16,
+    "temperature": 46.3,
+    "kwhImportedToday": 0.39,
+    "kwhExportedToday": 0.05
   },
   "economie": {
     "tarifOA": 0.1376,
     "tarifHP": 0.1271,
     "tempoCouleur": "BLEU",
-    "coutImport": 0.04,
+    "coutImport": 0.05,
     "revenuExport": 0.01,
-    "bilanJour": -0.03,
-    "kwhImport": 0.35,
-    "kwhExport": 0.04
+    "bilanJour": -0.04,
+    "kwhImport": 0.39,
+    "kwhExport": 0.05
   },
   "tempo": {
     "today": "BLEU",
     "tomorrow": "BLEU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.84628",
+  "scriptVersion": "V50.5.3.84638",
   "brain": {
     "session": [],
     "manual": [],
-    "failed": [],
-    "logTail": "10:53:01 PM | STOP -> Batterie_1 | night single\n10:53:01 PM | ACTION -> STOP Batterie_1\n10:54:01 PM | !!! IMPORT ANORMAL 966.79W : fallback -> Batterie_1\n10:54:01 PM | AUTO -> Batterie_1 | fallback import anormal\n10:54:01 PM | ACTION -> AUTO Batterie_1\n10:55:01 PM | STOP -> Batterie_1 | night single\n10:55:01 PM | ACTION -> STOP Batterie_1\n10:56:01 PM | !!! IMPORT ANORMAL 845.17W : fallback -> Batterie_1\n10:56:01 PM | AUTO -> Batterie_1 | fallback import anormal\n10:56:01 PM | ACTION -> AUTO Batterie_1\n10:57:01 PM | STOP -> Batterie_1 | night single\n10:57:01 PM | ACTION -> STOP Batterie_1"
+    "failed": [
+      "batterie2"
+    ],
+    "logTail": "11:00:01 PM | ACTION -> STOP Batterie_2\n11:01:00 PM | !!! ECHEC COMMANDE : Batterie_2 | attendu=DISCHARGE | reel=IDLE | tentative 2/3\n11:01:00 PM | → Réessai 2/3 pour Batterie_2\n11:01:01 PM | STOP -> Batterie_1 | night single\n11:01:01 PM | ACTION -> STOP Batterie_1\n11:02:00 PM | !!! ECHEC COMMANDE : Batterie_2 | attendu=DISCHARGE | reel=IDLE | tentative 3/3\n11:02:01 PM | !!! BATTERIE EXCLUE 30min : Batterie_2\n11:02:01 PM | → BLACKLIST 30min après 3 échecs : Batterie_2\n11:02:01 PM | NIGHT MASTER reset -> prochaine batterie disponible\n11:02:01 PM | !!! IMPORT ANORMAL 602.99W : fallback -> Batterie_1\n11:02:01 PM | AUTO -> Batterie_1 | fallback import anormal\n11:02:01 PM | ACTION -> AUTO Batterie_1"
   }
 }
