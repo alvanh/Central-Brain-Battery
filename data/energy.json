@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-06-30T18:02:43.000Z",
+  "updatedAt": "2026-06-30T18:07:46.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
       "online": true,
       "soc": 63,
-      "powerW": 206,
+      "powerW": 143,
       "temp": 3.5,
       "direction": "CHARGING",
       "blacklisted": false,
@@ -22,7 +22,7 @@
       "direction": "IDLE",
       "blacklisted": false,
       "excluded": true,
-      "excludedMin": 24,
+      "excludedMin": 19,
       "lastMsg": 0
     },
     {
@@ -34,7 +34,7 @@
       "direction": "IDLE",
       "blacklisted": false,
       "excluded": true,
-      "excludedMin": 23,
+      "excludedMin": 18,
       "lastMsg": 0
     },
     {
@@ -46,7 +46,7 @@
       "direction": "IDLE",
       "blacklisted": false,
       "excluded": true,
-      "excludedMin": 28,
+      "excludedMin": 23,
       "lastMsg": 0
     }
   ],
@@ -54,14 +54,14 @@
     "productionW": 810
   },
   "grid": {
-    "powerW": 26
+    "powerW": 44
   },
   "shelly": {
     "online": true,
-    "gridPower": 25.9,
-    "kwhImported": 2128.23,
+    "gridPower": 43.5,
+    "kwhImported": 2128.24,
     "kwhExported": 1822.34,
-    "temperature": 51.2,
+    "temperature": 50.7,
     "kwhImportedToday": 10.84,
     "kwhExportedToday": 4.22
   },
@@ -80,7 +80,7 @@
     "tomorrow": "BLEU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.84038",
+  "scriptVersion": "V50.5.3.84048",
   "brain": {
     "session": [
       "batterie1"
@@ -91,6 +91,6 @@
       "batterie3",
       "batterie4"
     ],
-    "logTail": "6:00:01 PM | AUTO -> Batterie_4 | night master\n6:00:01 PM | ACTION -> AUTO Batterie_4\n6:01:00 PM | !!! ECHEC COMMANDE : Batterie_4 | attendu=DISCHARGE | reel=CHARGE | tentative 3/3\n6:01:00 PM | !!! BATTERIE EXCLUE 30min : Batterie_4\n6:01:01 PM | → BLACKLIST 30min après 3 échecs : Batterie_4\n6:01:01 PM | NIGHT MASTER reset -> prochaine batterie disponible\n6:01:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1\n6:01:01 PM | STOP -> Batterie_4 | jour - residuel charge hors session\n6:01:01 PM | ACTION -> STOP Batterie_4\n6:02:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1\n6:02:01 PM | AUTO -> Batterie_1 | session AUTO (Shelly-driven)\n6:02:01 PM | ACTION -> AUTO Batterie_1"
+    "logTail": "6:02:01 PM | AUTO -> Batterie_1 | session AUTO (Shelly-driven)\n6:02:01 PM | ACTION -> AUTO Batterie_1\n6:03:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1\n6:03:31 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1\n6:04:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1\n6:04:31 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1\n6:05:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1\n6:05:31 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1\n6:06:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1\n6:06:31 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1\n6:07:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1\n6:07:31 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie1"
   }
 }
