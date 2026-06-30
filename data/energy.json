@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-30T02:02:46.000Z",
+  "updatedAt": "2026-06-30T02:07:37.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
@@ -9,7 +9,7 @@
       "temp": 2.7,
       "direction": "IDLE",
       "blacklisted": false,
-      "lastMsg": 18
+      "lastMsg": 8
     },
     {
       "name": "Batterie_2",
@@ -19,7 +19,7 @@
       "temp": 2.8,
       "direction": "IDLE",
       "blacklisted": false,
-      "lastMsg": 18
+      "lastMsg": 8
     },
     {
       "name": "Batterie_3",
@@ -29,7 +29,7 @@
       "temp": 2.7,
       "direction": "IDLE",
       "blacklisted": true,
-      "lastMsg": 18
+      "lastMsg": 8
     },
     {
       "name": "Batterie_4",
@@ -39,32 +39,32 @@
       "temp": 2.8,
       "direction": "IDLE",
       "blacklisted": false,
-      "lastMsg": 18
+      "lastMsg": 8
     }
   ],
   "solar": {
     "productionW": 0
   },
   "grid": {
-    "powerW": 579
+    "powerW": 574
   },
   "shelly": {
     "online": true,
-    "gridPower": 578.8,
-    "kwhImported": 2111.49,
+    "gridPower": 574.5,
+    "kwhImported": 2111.58,
     "kwhExported": 1808.48,
     "temperature": 42.1,
-    "kwhImportedToday": 3.76,
+    "kwhImportedToday": 3.85,
     "kwhExportedToday": 0
   },
   "economie": {
     "tarifOA": 0.1313,
     "tarifHP": 0.1271,
     "tempoCouleur": "BLEU",
-    "coutImport": 0.48,
+    "coutImport": 0.49,
     "revenuExport": 0,
-    "bilanJour": -0.48,
-    "kwhImport": 3.76,
+    "bilanJour": -0.49,
+    "kwhImport": 3.85,
     "kwhExport": 0
   },
   "tempo": {
@@ -72,13 +72,13 @@
     "tomorrow": "INCONNU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.82118",
+  "scriptVersion": "V50.5.3.82128",
   "brain": {
     "session": [],
     "manual": [],
     "failed": [
       "batterie3"
     ],
-    "logTail": "1:57:01 AM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n1:57:30 AM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n1:58:01 AM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n1:58:30 AM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n1:59:01 AM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n1:59:30 AM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n2:00:01 AM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n2:00:30 AM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n2:01:01 AM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n2:01:30 AM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n2:02:01 AM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n2:02:30 AM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge"
+    "logTail": "2:02:01 AM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n2:02:30 AM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n2:03:01 AM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n2:03:31 AM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n2:04:01 AM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n2:04:30 AM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n2:05:01 AM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n2:05:31 AM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n2:06:01 AM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n2:06:30 AM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n2:07:01 AM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n2:07:30 AM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge"
   }
 }
