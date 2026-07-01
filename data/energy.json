@@ -1,17 +1,17 @@
 {
-  "updatedAt": "2026-07-01T20:37:29.000Z",
+  "updatedAt": "2026-07-01T20:42:20.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
       "online": true,
-      "soc": 53,
+      "soc": 52,
       "powerW": 0,
       "temp": 3,
       "direction": "IDLE",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 26
+      "lastMsg": 16
     },
     {
       "name": "Batterie_2",
@@ -23,7 +23,7 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 26
+      "lastMsg": 16
     },
     {
       "name": "Batterie_3",
@@ -35,52 +35,52 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 26
+      "lastMsg": 16
     },
     {
       "name": "Batterie_4",
       "online": true,
-      "soc": 67,
-      "powerW": -573,
+      "soc": 66,
+      "powerW": -601,
       "temp": 3.3,
       "direction": "DISCHARGING",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 26
+      "lastMsg": 16
     }
   ],
   "solar": {
     "productionW": 0
   },
   "grid": {
-    "powerW": 2
+    "powerW": -48
   },
   "shelly": {
     "online": true,
-    "gridPower": 1.6,
-    "kwhImported": 2162.04,
-    "kwhExported": 1842.6,
+    "gridPower": -48.2,
+    "kwhImported": 2162.08,
+    "kwhExported": 1842.63,
     "temperature": 45.6,
-    "kwhImportedToday": 10.34,
-    "kwhExportedToday": 2.65
+    "kwhImportedToday": 10.35,
+    "kwhExportedToday": 2.66
   },
   "economie": {
     "tarifOA": 0.1376,
     "tarifHP": 0.1271,
     "tempoCouleur": "BLEU",
     "coutImport": 1.55,
-    "revenuExport": 0.36,
-    "bilanJour": -1.19,
-    "kwhImport": 10.34,
-    "kwhExport": 2.65
+    "revenuExport": 0.37,
+    "bilanJour": -1.18,
+    "kwhImport": 10.35,
+    "kwhExport": 2.66
   },
   "tempo": {
     "today": "BLEU",
     "tomorrow": "BLEU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.87227",
+  "scriptVersion": "V50.5.3.87237",
   "brain": {
     "session": [],
     "manual": [],
