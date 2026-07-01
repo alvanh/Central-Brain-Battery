@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-07-01T02:57:38.000Z",
+  "updatedAt": "2026-07-01T03:02:41.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
       "online": true,
-      "soc": 21,
+      "soc": 20,
       "powerW": 0,
       "temp": 2.9,
       "direction": "IDLE",
@@ -16,10 +16,10 @@
     {
       "name": "Batterie_2",
       "online": true,
-      "soc": 36,
-      "powerW": -539,
+      "soc": 35,
+      "powerW": 0,
       "temp": 3.2,
-      "direction": "DISCHARGING",
+      "direction": "IDLE",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
@@ -54,15 +54,15 @@
     "productionW": 0
   },
   "grid": {
-    "powerW": 554
+    "powerW": 517
   },
   "shelly": {
     "online": true,
-    "gridPower": 554,
-    "kwhImported": 2141.74,
-    "kwhExported": 1829.13,
+    "gridPower": 516.9,
+    "kwhImported": 2141.8,
+    "kwhExported": 1829.16,
     "temperature": 42.7,
-    "kwhImportedToday": 2.51,
+    "kwhImportedToday": 2.54,
     "kwhExportedToday": 0.22
   },
   "economie": {
@@ -72,7 +72,7 @@
     "coutImport": 0.32,
     "revenuExport": 0.03,
     "bilanJour": -0.29,
-    "kwhImport": 2.51,
+    "kwhImport": 2.54,
     "kwhExport": 0.22
   },
   "tempo": {
@@ -80,11 +80,11 @@
     "tomorrow": "INCONNU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.85108",
+  "scriptVersion": "V50.5.3.85118",
   "brain": {
     "session": [],
     "manual": [],
     "failed": [],
-    "logTail": "2:54:01 AM | STOP -> Batterie_1 | fallback import : stop charges\n2:54:01 AM | ACTION -> STOP Batterie_1\n2:55:01 AM | !!! IMPORT ANORMAL 553.82W : fallback -> Batterie_2\n2:55:01 AM | AUTO -> Batterie_2 | fallback import anormal\n2:55:01 AM | ACTION -> AUTO Batterie_2\n2:56:00 AM | !!! ECHEC COMMANDE : Batterie_2 | attendu=DISCHARGE | reel=IDLE | tentative 1/3\n2:56:01 AM | → Réessai 1/3 pour Batterie_2\n2:56:01 AM | !!! IMPORT ANORMAL 310.61W : fallback -> Batterie_2\n2:56:01 AM | AUTO -> Batterie_2 | fallback import anormal\n2:56:01 AM | ACTION -> AUTO Batterie_2\n2:57:01 AM | STOP -> Batterie_2 | night single\n2:57:02 AM | ACTION -> STOP Batterie_2"
+    "logTail": "2:59:01 AM | ACTION -> AUTO Batterie_2\n3:00:00 AM | !!! ECHEC COMMANDE : Batterie_2 | attendu=DISCHARGE | reel=IDLE | tentative 1/3\n3:00:01 AM | → Réessai 1/3 pour Batterie_2\n3:00:01 AM | AUTO -> Batterie_1 | night master\n3:00:01 AM | ACTION -> AUTO Batterie_1\n3:01:00 AM | !!! ECHEC COMMANDE : Batterie_1 | attendu=DISCHARGE | reel=CHARGE | tentative 1/3\n3:01:01 AM | → Réessai 1/3 pour Batterie_1\n3:01:01 AM | !!! INTERDICTION ABSOLUE (nuit) : arret charge parasite\n3:01:01 AM | STOP -> Batterie_1 | interdiction absolue nuit\n3:01:01 AM | ACTION -> STOP Batterie_1\n3:02:01 AM | STOP -> Batterie_2 | night single\n3:02:01 AM | ACTION -> STOP Batterie_2"
   }
 }
