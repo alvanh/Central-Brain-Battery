@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-01T05:47:42.000Z",
+  "updatedAt": "2026-07-01T05:52:44.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
@@ -16,10 +16,10 @@
     {
       "name": "Batterie_2",
       "online": true,
-      "soc": 14,
-      "powerW": -387,
-      "temp": 3.2,
-      "direction": "DISCHARGING",
+      "soc": 12,
+      "powerW": 0,
+      "temp": 3.3,
+      "direction": "IDLE",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
@@ -54,25 +54,25 @@
     "productionW": 210
   },
   "grid": {
-    "powerW": -17
+    "powerW": 394
   },
   "shelly": {
     "online": true,
-    "gridPower": -17.2,
-    "kwhImported": 2143.5,
-    "kwhExported": 1829.81,
-    "temperature": 42.3,
-    "kwhImportedToday": 3.75,
+    "gridPower": 393.6,
+    "kwhImported": 2143.54,
+    "kwhExported": 1829.84,
+    "temperature": 42,
+    "kwhImportedToday": 3.77,
     "kwhExportedToday": 0.36
   },
   "economie": {
     "tarifOA": 0.1376,
     "tarifHP": 0.1609,
     "tempoCouleur": "BLEU",
-    "coutImport": 0.49,
+    "coutImport": 0.5,
     "revenuExport": 0.05,
-    "bilanJour": -0.44,
-    "kwhImport": 3.75,
+    "bilanJour": -0.45,
+    "kwhImport": 3.77,
     "kwhExport": 0.36
   },
   "tempo": {
@@ -80,11 +80,11 @@
     "tomorrow": "INCONNU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.85448",
+  "scriptVersion": "V50.5.3.85458",
   "brain": {
     "session": [],
     "manual": [],
     "failed": [],
-    "logTail": "5:42:01 AM | !!! NO NIGHT BATTERY DISPO\n5:42:31 AM | !!! NO NIGHT BATTERY DISPO\n5:43:01 AM | !!! NO NIGHT BATTERY DISPO\n5:43:31 AM | !!! NO NIGHT BATTERY DISPO\n5:44:01 AM | !!! NO NIGHT BATTERY DISPO\n5:44:31 AM | !!! NO NIGHT BATTERY DISPO\n5:45:01 AM | !!! NO NIGHT BATTERY DISPO\n5:45:31 AM | !!! NO NIGHT BATTERY DISPO\n5:46:01 AM | !!! NO NIGHT BATTERY DISPO\n5:46:31 AM | !!! NO NIGHT BATTERY DISPO\n5:47:01 AM | !!! NO NIGHT BATTERY DISPO\n5:47:31 AM | !!! NO NIGHT BATTERY DISPO"
+    "logTail": "5:47:01 AM | !!! NO NIGHT BATTERY DISPO\n5:47:31 AM | !!! NO NIGHT BATTERY DISPO\n5:48:01 AM | !!! NO NIGHT BATTERY DISPO\n5:48:31 AM | !!! NO NIGHT BATTERY DISPO\n5:49:01 AM | !!! NO NIGHT BATTERY DISPO\n5:49:31 AM | !!! NO NIGHT BATTERY DISPO\n5:50:01 AM | !!! NO NIGHT BATTERY DISPO\n5:50:31 AM | !!! NO NIGHT BATTERY DISPO\n5:51:01 AM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n5:51:30 AM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n5:52:00 AM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n5:52:30 AM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge"
   }
 }
