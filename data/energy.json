@@ -1,29 +1,29 @@
 {
-  "updatedAt": "2026-07-01T15:22:24.000Z",
+  "updatedAt": "2026-07-01T15:27:27.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
       "online": true,
       "soc": 60,
-      "powerW": -500,
+      "powerW": 0,
       "temp": 3.4,
-      "direction": "DISCHARGING",
+      "direction": "IDLE",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 4
+      "lastMsg": 10
     },
     {
       "name": "Batterie_2",
       "online": true,
-      "soc": 75,
-      "powerW": 602,
+      "soc": 77,
+      "powerW": 1216,
       "temp": 3.7,
       "direction": "CHARGING",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 4
+      "lastMsg": 10
     },
     {
       "name": "Batterie_3",
@@ -35,7 +35,7 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 4
+      "lastMsg": 10
     },
     {
       "name": "Batterie_4",
@@ -47,23 +47,23 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 5
+      "lastMsg": 10
     }
   ],
   "solar": {
     "productionW": 5110
   },
   "grid": {
-    "powerW": 566
+    "powerW": -11
   },
   "shelly": {
     "online": true,
-    "gridPower": 565.9,
-    "kwhImported": 2159.58,
-    "kwhExported": 1840.33,
-    "temperature": 55,
-    "kwhImportedToday": 9.76,
-    "kwhExportedToday": 2.26
+    "gridPower": -10.8,
+    "kwhImported": 2159.64,
+    "kwhExported": 1840.39,
+    "temperature": 54.6,
+    "kwhImportedToday": 9.77,
+    "kwhExportedToday": 2.27
   },
   "economie": {
     "tarifOA": 0.1376,
@@ -72,15 +72,15 @@
     "coutImport": 1.46,
     "revenuExport": 0.31,
     "bilanJour": -1.15,
-    "kwhImport": 9.76,
-    "kwhExport": 2.26
+    "kwhImport": 9.77,
+    "kwhExport": 2.27
   },
   "tempo": {
     "today": "BLEU",
     "tomorrow": "BLEU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.86597",
+  "scriptVersion": "V50.5.3.86607",
   "brain": {
     "session": [
       "batterie2",
@@ -88,6 +88,6 @@
     ],
     "manual": [],
     "failed": [],
-    "logTail": "3:13:01 PM | ACTION -> AUTO Batterie_1\n3:14:30 PM | AUTO -> Batterie_1 | session AUTO (Shelly-driven)\n3:14:31 PM | ACTION -> AUTO Batterie_1\n3:16:00 PM | !!! INTERDICTION ABSOLUE (jour) : arret decharge parasite\n3:16:01 PM | STOP -> Batterie_1 | interdiction absolue jour\n3:16:01 PM | ACTION -> STOP Batterie_1\n3:17:01 PM | AUTO -> Batterie_1 | session AUTO (Shelly-driven)\n3:17:01 PM | ACTION -> AUTO Batterie_1\n3:18:01 PM | AUTO -> Batterie_1 | session AUTO (Shelly-driven)\n3:18:01 PM | ACTION -> AUTO Batterie_1\n3:22:01 PM | AUTO -> Batterie_1 | session AUTO (Shelly-driven)\n3:22:01 PM | ACTION -> AUTO Batterie_1"
+    "logTail": "3:22:01 PM | AUTO -> Batterie_1 | session AUTO (Shelly-driven)\n3:22:01 PM | ACTION -> AUTO Batterie_1\n3:22:30 PM | !!! INTERDICTION ABSOLUE (jour) : arret decharge parasite\n3:22:30 PM | STOP -> Batterie_1 | interdiction absolue jour\n3:22:31 PM | ACTION -> STOP Batterie_1\n3:23:31 PM | AUTO -> Batterie_1 | session AUTO (Shelly-driven)\n3:23:31 PM | ACTION -> AUTO Batterie_1\n3:26:01 PM | AUTO -> Batterie_1 | session AUTO (Shelly-driven)\n3:26:01 PM | ACTION -> AUTO Batterie_1\n3:26:30 PM | !!! INTERDICTION ABSOLUE (jour) : arret decharge parasite\n3:26:30 PM | STOP -> Batterie_1 | interdiction absolue jour\n3:26:31 PM | ACTION -> STOP Batterie_1"
   }
 }
