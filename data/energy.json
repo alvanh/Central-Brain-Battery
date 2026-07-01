@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-01T23:07:21.000Z",
+  "updatedAt": "2026-07-01T23:12:22.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
@@ -23,13 +23,13 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 3303
+      "lastMsg": 3603
     },
     {
       "name": "Batterie_3",
       "online": true,
-      "soc": 89,
-      "powerW": -549,
+      "soc": 88,
+      "powerW": -548,
       "temp": 3,
       "direction": "DISCHARGING",
       "blacklisted": false,
@@ -54,14 +54,14 @@
     "productionW": 0
   },
   "grid": {
-    "powerW": 6
+    "powerW": -29
   },
   "shelly": {
     "online": true,
-    "gridPower": 5.5,
-    "kwhImported": 2163.29,
-    "kwhExported": 1843.7,
-    "temperature": 42.9,
+    "gridPower": -29.4,
+    "kwhImported": 2163.31,
+    "kwhExported": 1843.73,
+    "temperature": 42.7,
     "kwhImportedToday": 0.15,
     "kwhExportedToday": 0.08
   },
@@ -80,11 +80,11 @@
     "tomorrow": "BLEU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.87527",
+  "scriptVersion": "V50.5.3.87537",
   "brain": {
     "session": [],
     "manual": [],
     "failed": [],
-    "logTail": "11:02:01 PM | STOP -> Batterie_2 | night single\n11:02:01 PM | ACTION -> STOP Batterie_2\n11:03:01 PM | STOP -> Batterie_2 | night single\n11:03:01 PM | ACTION -> STOP Batterie_2\n11:04:01 PM | STOP -> Batterie_2 | night single\n11:04:01 PM | ACTION -> STOP Batterie_2\n11:05:01 PM | STOP -> Batterie_2 | night single\n11:05:01 PM | ACTION -> STOP Batterie_2\n11:06:01 PM | STOP -> Batterie_2 | night single\n11:06:01 PM | ACTION -> STOP Batterie_2\n11:07:01 PM | STOP -> Batterie_2 | night single\n11:07:01 PM | ACTION -> STOP Batterie_2"
+    "logTail": "11:07:01 PM | STOP -> Batterie_2 | night single\n11:07:01 PM | ACTION -> STOP Batterie_2\n11:08:01 PM | STOP -> Batterie_2 | night single\n11:08:01 PM | ACTION -> STOP Batterie_2\n11:09:01 PM | STOP -> Batterie_2 | night single\n11:09:01 PM | ACTION -> STOP Batterie_2\n11:10:01 PM | STOP -> Batterie_2 | night single\n11:10:01 PM | ACTION -> STOP Batterie_2\n11:11:01 PM | STOP -> Batterie_2 | night single\n11:11:01 PM | ACTION -> STOP Batterie_2\n11:12:01 PM | STOP -> Batterie_2 | night single\n11:12:01 PM | ACTION -> STOP Batterie_2"
   }
 }
