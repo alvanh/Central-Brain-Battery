@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-02T05:17:28.000Z",
+  "updatedAt": "2026-07-02T05:22:30.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
@@ -17,13 +17,13 @@
       "name": "Batterie_2",
       "online": true,
       "soc": 76,
-      "powerW": 749,
+      "powerW": -66,
       "temp": 2.7,
-      "direction": "CHARGING",
+      "direction": "DISCHARGING",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 12
+      "lastMsg": 193
     },
     {
       "name": "Batterie_3",
@@ -40,8 +40,8 @@
     {
       "name": "Batterie_4",
       "online": true,
-      "soc": 41,
-      "powerW": -1381,
+      "soc": 40,
+      "powerW": -498,
       "temp": 2.7,
       "direction": "DISCHARGING",
       "blacklisted": false,
@@ -54,14 +54,14 @@
     "productionW": 70
   },
   "grid": {
-    "powerW": 16
+    "powerW": 2
   },
   "shelly": {
     "online": true,
-    "gridPower": 16.1,
-    "kwhImported": 2166.72,
-    "kwhExported": 1846.19,
-    "temperature": 39.9,
+    "gridPower": 2.2,
+    "kwhImported": 2166.75,
+    "kwhExported": 1846.22,
+    "temperature": 40.1,
     "kwhImportedToday": 1.31,
     "kwhExportedToday": 0.3
   },
@@ -80,11 +80,11 @@
     "tomorrow": "INCONNU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.88267",
+  "scriptVersion": "V50.5.3.88278",
   "brain": {
     "session": [],
     "manual": [],
     "failed": [],
-    "logTail": "5:13:01 AM | AUTO -> Batterie_1 | fallback import anormal\n5:13:01 AM | ACTION -> AUTO Batterie_1\n5:14:01 AM | STOP -> Batterie_1 | night single\n5:14:01 AM | ACTION -> STOP Batterie_1\n5:15:01 AM | !!! IMPORT ANORMAL 515.73W : fallback -> Batterie_4\n5:15:01 AM | AUTO -> Batterie_4 | fallback import anormal\n5:15:01 AM | ACTION -> AUTO Batterie_4\n5:16:01 AM | STOP -> Batterie_2 | night single\n5:16:01 AM | ACTION -> STOP Batterie_2\n5:17:01 AM | !!! INTERDICTION ABSOLUE (nuit) : arret charge parasite\n5:17:01 AM | STOP -> Batterie_2 | interdiction absolue nuit\n5:17:01 AM | ACTION -> STOP Batterie_2"
+    "logTail": "5:17:01 AM | ACTION -> STOP Batterie_2\n5:17:30 AM | !!! INTERDICTION ABSOLUE (nuit) : arret charge parasite\n5:17:30 AM | STOP -> Batterie_2 | interdiction absolue nuit\n5:17:31 AM | ACTION -> STOP Batterie_2\n5:18:31 AM | STOP -> Batterie_2 | night single\n5:18:31 AM | ACTION -> STOP Batterie_2\n5:19:31 AM | STOP -> Batterie_2 | night single\n5:19:31 AM | ACTION -> STOP Batterie_2\n5:20:31 AM | STOP -> Batterie_2 | night single\n5:20:31 AM | ACTION -> STOP Batterie_2\n5:21:31 AM | STOP -> Batterie_2 | night single\n5:21:31 AM | ACTION -> STOP Batterie_2"
   }
 }
