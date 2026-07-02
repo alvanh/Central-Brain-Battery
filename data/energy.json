@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-02T19:07:31.000Z",
+  "updatedAt": "2026-07-02T19:12:23.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
@@ -11,7 +11,7 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 17
+      "lastMsg": 8
     },
     {
       "name": "Batterie_2",
@@ -23,64 +23,64 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 17
+      "lastMsg": 8
     },
     {
       "name": "Batterie_3",
       "online": true,
       "soc": 13,
       "powerW": 0,
-      "temp": 3.8,
+      "temp": 3.7,
       "direction": "IDLE",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 17
+      "lastMsg": 8
     },
     {
       "name": "Batterie_4",
       "online": true,
-      "soc": 57,
-      "powerW": -894,
+      "soc": 54,
+      "powerW": -884,
       "temp": 3.4,
       "direction": "DISCHARGING",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 17
+      "lastMsg": 8
     }
   ],
   "solar": {
     "productionW": 40
   },
   "grid": {
-    "powerW": 2295
+    "powerW": 668
   },
   "shelly": {
     "online": true,
-    "gridPower": 2295.1,
-    "kwhImported": 2179.43,
-    "kwhExported": 1868.71,
-    "temperature": 49.1,
-    "kwhImportedToday": 4.47,
-    "kwhExportedToday": 13.25
+    "gridPower": 667.8,
+    "kwhImported": 2179.52,
+    "kwhExported": 1868.78,
+    "temperature": 48.8,
+    "kwhImportedToday": 4.49,
+    "kwhExportedToday": 13.26
   },
   "economie": {
     "tarifOA": 0.1376,
     "tarifHP": 0.1609,
     "tempoCouleur": "BLEU",
-    "coutImport": 0.69,
+    "coutImport": 0.7,
     "revenuExport": 1.82,
-    "bilanJour": 1.13,
-    "kwhImport": 4.47,
-    "kwhExport": 13.25
+    "bilanJour": 1.12,
+    "kwhImport": 4.49,
+    "kwhExport": 13.26
   },
   "tempo": {
     "today": "BLEU",
     "tomorrow": "BLEU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.89928",
+  "scriptVersion": "V50.5.3.89937",
   "brain": {
     "session": [],
     "manual": [],
