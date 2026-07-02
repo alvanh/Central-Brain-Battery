@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-02T11:22:29.000Z",
+  "updatedAt": "2026-07-02T11:27:20.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
@@ -11,7 +11,7 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 20
+      "lastMsg": 15
     },
     {
       "name": "Batterie_2",
@@ -23,46 +23,46 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 21790
+      "lastMsg": 22086
     },
     {
       "name": "Batterie_3",
       "online": true,
-      "soc": 61,
-      "powerW": 2430,
-      "temp": 3.6,
-      "direction": "CHARGING",
-      "blacklisted": false,
-      "excluded": false,
-      "excludedMin": 0,
-      "lastMsg": 20
-    },
-    {
-      "name": "Batterie_4",
-      "online": true,
-      "soc": 90,
-      "powerW": 2230,
+      "soc": 65,
+      "powerW": 2369,
       "temp": 3.7,
       "direction": "CHARGING",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 20
+      "lastMsg": 15
+    },
+    {
+      "name": "Batterie_4",
+      "online": true,
+      "soc": 93,
+      "powerW": 2389,
+      "temp": 3.8,
+      "direction": "CHARGING",
+      "blacklisted": false,
+      "excluded": false,
+      "excludedMin": 0,
+      "lastMsg": 15
     }
   ],
   "solar": {
     "productionW": 6420
   },
   "grid": {
-    "powerW": 56
+    "powerW": 54
   },
   "shelly": {
     "online": true,
-    "gridPower": 55.8,
-    "kwhImported": 2172.23,
-    "kwhExported": 1851.68,
-    "temperature": 52.9,
-    "kwhImportedToday": 2.24,
+    "gridPower": 53.8,
+    "kwhImported": 2172.37,
+    "kwhExported": 1851.82,
+    "temperature": 52.8,
+    "kwhImportedToday": 2.25,
     "kwhExportedToday": 1.21
   },
   "economie": {
@@ -72,7 +72,7 @@
     "coutImport": 0.33,
     "revenuExport": 0.17,
     "bilanJour": -0.16,
-    "kwhImport": 2.24,
+    "kwhImport": 2.25,
     "kwhExport": 1.21
   },
   "tempo": {
@@ -80,7 +80,7 @@
     "tomorrow": "BLEU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.88997",
+  "scriptVersion": "V50.5.3.89007",
   "brain": {
     "session": [
       "batterie3",
