@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-02T18:57:25.000Z",
+  "updatedAt": "2026-07-02T19:02:27.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
@@ -11,7 +11,7 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 12
+      "lastMsg": 17
     },
     {
       "name": "Batterie_2",
@@ -23,7 +23,7 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 12
+      "lastMsg": 17
     },
     {
       "name": "Batterie_3",
@@ -35,52 +35,52 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 12
+      "lastMsg": 17
     },
     {
       "name": "Batterie_4",
       "online": true,
-      "soc": 61,
-      "powerW": -841,
-      "temp": 3.3,
+      "soc": 59,
+      "powerW": -474,
+      "temp": 3.4,
       "direction": "DISCHARGING",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 12
+      "lastMsg": 17
     }
   ],
   "solar": {
-    "productionW": 120
+    "productionW": 40
   },
   "grid": {
-    "powerW": 15
+    "powerW": -1095
   },
   "shelly": {
     "online": true,
-    "gridPower": 15,
-    "kwhImported": 2179.25,
-    "kwhExported": 1868.55,
-    "temperature": 49.6,
-    "kwhImportedToday": 4.41,
-    "kwhExportedToday": 13.23
+    "gridPower": -1094.6,
+    "kwhImported": 2179.34,
+    "kwhExported": 1868.63,
+    "temperature": 49.9,
+    "kwhImportedToday": 4.44,
+    "kwhExportedToday": 13.25
   },
   "economie": {
     "tarifOA": 0.1376,
     "tarifHP": 0.1609,
     "tempoCouleur": "BLEU",
-    "coutImport": 0.68,
+    "coutImport": 0.69,
     "revenuExport": 1.82,
-    "bilanJour": 1.14,
-    "kwhImport": 4.41,
-    "kwhExport": 13.23
+    "bilanJour": 1.13,
+    "kwhImport": 4.44,
+    "kwhExport": 13.25
   },
   "tempo": {
     "today": "BLEU",
     "tomorrow": "BLEU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.89907",
+  "scriptVersion": "V50.5.3.89917",
   "brain": {
     "session": [],
     "manual": [],
