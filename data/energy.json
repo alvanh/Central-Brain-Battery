@@ -1,17 +1,17 @@
 {
-  "updatedAt": "2026-07-02T18:47:29.000Z",
+  "updatedAt": "2026-07-02T18:52:21.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
       "online": true,
       "soc": 76,
       "powerW": 0,
-      "temp": 3.2,
+      "temp": 3.1,
       "direction": "IDLE",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 16
+      "lastMsg": 72
     },
     {
       "name": "Batterie_2",
@@ -23,7 +23,7 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 17
+      "lastMsg": 12
     },
     {
       "name": "Batterie_3",
@@ -35,52 +35,52 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 16
+      "lastMsg": 72
     },
     {
       "name": "Batterie_4",
       "online": true,
-      "soc": 67,
-      "powerW": -1293,
+      "soc": 64,
+      "powerW": -2178,
       "temp": 3.3,
       "direction": "DISCHARGING",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 17
+      "lastMsg": 12
     }
   ],
   "solar": {
     "productionW": 120
   },
   "grid": {
-    "powerW": -28
+    "powerW": 12
   },
   "shelly": {
     "online": true,
-    "gridPower": -28.5,
-    "kwhImported": 2178.95,
-    "kwhExported": 1868.33,
+    "gridPower": 12.4,
+    "kwhImported": 2179.12,
+    "kwhExported": 1868.45,
     "temperature": 49.6,
-    "kwhImportedToday": 4.32,
-    "kwhExportedToday": 13.22
+    "kwhImportedToday": 4.38,
+    "kwhExportedToday": 13.23
   },
   "economie": {
     "tarifOA": 0.1376,
     "tarifHP": 0.1609,
     "tempoCouleur": "BLEU",
-    "coutImport": 0.67,
+    "coutImport": 0.68,
     "revenuExport": 1.82,
-    "bilanJour": 1.15,
-    "kwhImport": 4.32,
-    "kwhExport": 13.22
+    "bilanJour": 1.14,
+    "kwhImport": 4.38,
+    "kwhExport": 13.23
   },
   "tempo": {
     "today": "BLEU",
     "tomorrow": "BLEU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.89887",
+  "scriptVersion": "V50.5.3.89897",
   "brain": {
     "session": [],
     "manual": [],
