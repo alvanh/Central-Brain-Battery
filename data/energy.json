@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-02T14:42:21.000Z",
+  "updatedAt": "2026-07-02T14:47:24.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
@@ -28,8 +28,8 @@
     {
       "name": "Batterie_3",
       "online": true,
-      "soc": 88,
-      "powerW": -934,
+      "soc": 86,
+      "powerW": -1145,
       "temp": 3.7,
       "direction": "DISCHARGING",
       "blacklisted": false,
@@ -47,21 +47,21 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 950
+      "lastMsg": 1251
     }
   ],
   "solar": {
     "productionW": 5300
   },
   "grid": {
-    "powerW": -27
+    "powerW": -25
   },
   "shelly": {
     "online": true,
-    "gridPower": -26.6,
-    "kwhImported": 2173.46,
-    "kwhExported": 1864.68,
-    "temperature": 58.8,
+    "gridPower": -24.7,
+    "kwhImported": 2173.52,
+    "kwhExported": 1864.74,
+    "temperature": 58.4,
     "kwhImportedToday": 2.35,
     "kwhExportedToday": 13.08
   },
@@ -80,13 +80,13 @@
     "tomorrow": "BLEU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.89397",
+  "scriptVersion": "V50.5.3.89407",
   "brain": {
     "session": [
       "batterie3"
     ],
     "manual": [],
     "failed": [],
-    "logTail": "2:36:30 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie3\n2:37:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie3\n2:37:31 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie3\n2:38:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie3\n2:38:30 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie3\n2:39:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie3\n2:39:31 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie3\n2:40:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie3\n2:40:31 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie3\n2:41:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie3\n2:41:31 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie3\n2:42:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie3"
+    "logTail": "2:41:31 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie3\n2:42:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie3\n2:42:31 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie3\n2:43:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie3\n2:43:31 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie3\n2:44:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie3\n2:44:31 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie3\n2:45:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie3\n2:45:31 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie3\n2:46:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie3\n2:46:30 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie3\n2:47:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie3"
   }
 }
