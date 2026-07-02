@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-02T21:42:21.000Z",
+  "updatedAt": "2026-07-02T21:47:23.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
@@ -11,19 +11,19 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 19
+      "lastMsg": 20
     },
     {
       "name": "Batterie_2",
       "online": true,
-      "soc": 76,
-      "powerW": 0,
+      "soc": 75,
+      "powerW": -408,
       "temp": 2.7,
-      "direction": "IDLE",
+      "direction": "DISCHARGING",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 49
+      "lastMsg": 20
     },
     {
       "name": "Batterie_3",
@@ -35,7 +35,7 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 19
+      "lastMsg": 20
     },
     {
       "name": "Batterie_4",
@@ -47,23 +47,23 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 19
+      "lastMsg": 20
     }
   ],
   "solar": {
     "productionW": 0
   },
   "grid": {
-    "powerW": 442
+    "powerW": -11
   },
   "shelly": {
     "online": true,
-    "gridPower": 442.5,
-    "kwhImported": 2180.92,
-    "kwhExported": 1870.08,
+    "gridPower": -10.7,
+    "kwhImported": 2180.97,
+    "kwhExported": 1870.12,
     "temperature": 44.6,
-    "kwhImportedToday": 4.63,
-    "kwhExportedToday": 13.3
+    "kwhImportedToday": 4.65,
+    "kwhExportedToday": 13.31
   },
   "economie": {
     "tarifOA": 0.1376,
@@ -72,19 +72,19 @@
     "coutImport": 0.72,
     "revenuExport": 1.83,
     "bilanJour": 1.11,
-    "kwhImport": 4.63,
-    "kwhExport": 13.3
+    "kwhImport": 4.65,
+    "kwhExport": 13.31
   },
   "tempo": {
     "today": "BLEU",
     "tomorrow": "BLEU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.90237",
+  "scriptVersion": "V50.5.3.90247",
   "brain": {
     "session": [],
     "manual": [],
     "failed": [],
-    "logTail": "5:59:01 PM | ACTION -> AUTO Batterie_4\n6:00:01 PM | STOP -> Batterie_4 | jour - decharge hors session\n6:00:01 PM | ACTION -> STOP Batterie_4\n6:01:01 PM | !!! IMPORT ANORMAL 1619.13W : fallback -> Batterie_4\n6:01:01 PM | AUTO -> Batterie_4 | fallback import anormal\n6:01:01 PM | ACTION -> AUTO Batterie_4\n6:02:01 PM | NIGHT MASTER -> Batterie_4 (SoC=86%)\n7:04:31 PM | STOP -> Batterie_3 | night single\n7:04:31 PM | ACTION -> STOP Batterie_3\n9:41:31 PM | NIGHT MASTER -> Batterie_2 (SoC=76%)\n9:41:31 PM | STOP -> Batterie_4 | night single\n9:41:31 PM | ACTION -> STOP Batterie_4"
+    "logTail": "6:01:01 PM | !!! IMPORT ANORMAL 1619.13W : fallback -> Batterie_4\n6:01:01 PM | AUTO -> Batterie_4 | fallback import anormal\n6:01:01 PM | ACTION -> AUTO Batterie_4\n6:02:01 PM | NIGHT MASTER -> Batterie_4 (SoC=86%)\n7:04:31 PM | STOP -> Batterie_3 | night single\n7:04:31 PM | ACTION -> STOP Batterie_3\n9:41:31 PM | NIGHT MASTER -> Batterie_2 (SoC=76%)\n9:41:31 PM | STOP -> Batterie_4 | night single\n9:41:31 PM | ACTION -> STOP Batterie_4\n9:42:30 PM | !!! IMPORT ANORMAL 439.78W : fallback -> Batterie_2\n9:42:31 PM | AUTO -> Batterie_2 | fallback import anormal\n9:42:31 PM | ACTION -> AUTO Batterie_2"
   }
 }
