@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-02T01:47:29.000Z",
+  "updatedAt": "2026-07-02T01:52:31.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
@@ -23,13 +23,13 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 12915
+      "lastMsg": 13216
     },
     {
       "name": "Batterie_3",
       "online": true,
-      "soc": 46,
-      "powerW": -1698,
+      "soc": 44,
+      "powerW": -556,
       "temp": 3.3,
       "direction": "DISCHARGING",
       "blacklisted": false,
@@ -47,22 +47,22 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 45
+      "lastMsg": 15
     }
   ],
   "solar": {
     "productionW": 0
   },
   "grid": {
-    "powerW": -3
+    "powerW": -25
   },
   "shelly": {
     "online": true,
-    "gridPower": -2.6,
-    "kwhImported": 2164.6,
-    "kwhExported": 1844.87,
-    "temperature": 41.4,
-    "kwhImportedToday": 0.4,
+    "gridPower": -24.8,
+    "kwhImported": 2164.66,
+    "kwhExported": 1844.92,
+    "temperature": 41.3,
+    "kwhImportedToday": 0.41,
     "kwhExportedToday": 0.19
   },
   "economie": {
@@ -72,7 +72,7 @@
     "coutImport": 0.05,
     "revenuExport": 0.03,
     "bilanJour": -0.02,
-    "kwhImport": 0.4,
+    "kwhImport": 0.41,
     "kwhExport": 0.19
   },
   "tempo": {
@@ -80,11 +80,11 @@
     "tomorrow": "INCONNU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.87847",
+  "scriptVersion": "V50.5.3.87858",
   "brain": {
     "session": [],
     "manual": [],
     "failed": [],
-    "logTail": "1:42:01 AM | STOP -> Batterie_2 | night single\n1:42:01 AM | ACTION -> STOP Batterie_2\n1:43:01 AM | STOP -> Batterie_2 | night single\n1:43:01 AM | ACTION -> STOP Batterie_2\n1:44:01 AM | STOP -> Batterie_2 | night single\n1:44:01 AM | ACTION -> STOP Batterie_2\n1:45:01 AM | STOP -> Batterie_2 | night single\n1:45:01 AM | ACTION -> STOP Batterie_2\n1:46:01 AM | STOP -> Batterie_2 | night single\n1:46:01 AM | ACTION -> STOP Batterie_2\n1:47:01 AM | STOP -> Batterie_2 | night single\n1:47:01 AM | ACTION -> STOP Batterie_2"
+    "logTail": "1:47:01 AM | STOP -> Batterie_2 | night single\n1:47:01 AM | ACTION -> STOP Batterie_2\n1:48:01 AM | STOP -> Batterie_2 | night single\n1:48:01 AM | ACTION -> STOP Batterie_2\n1:49:01 AM | STOP -> Batterie_2 | night single\n1:49:01 AM | ACTION -> STOP Batterie_2\n1:50:01 AM | STOP -> Batterie_2 | night single\n1:50:01 AM | ACTION -> STOP Batterie_2\n1:51:01 AM | STOP -> Batterie_2 | night single\n1:51:01 AM | ACTION -> STOP Batterie_2\n1:52:01 AM | STOP -> Batterie_2 | night single\n1:52:01 AM | ACTION -> STOP Batterie_2"
   }
 }
