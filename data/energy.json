@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-02T14:07:29.000Z",
+  "updatedAt": "2026-07-02T14:12:20.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
@@ -11,7 +11,7 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 1
+      "lastMsg": 17
     },
     {
       "name": "Batterie_2",
@@ -23,19 +23,19 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 31695
+      "lastMsg": 31981
     },
     {
       "name": "Batterie_3",
       "online": true,
-      "soc": 98,
-      "powerW": -424,
+      "soc": 97,
+      "powerW": -384,
       "temp": 3.8,
       "direction": "DISCHARGING",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 1
+      "lastMsg": 17
     },
     {
       "name": "Batterie_4",
@@ -47,21 +47,21 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 2708
+      "lastMsg": 2994
     }
   ],
   "solar": {
     "productionW": 6010
   },
   "grid": {
-    "powerW": -4
+    "powerW": -24
   },
   "shelly": {
     "online": true,
-    "gridPower": -3.8,
-    "kwhImported": 2173.13,
-    "kwhExported": 1864.41,
-    "temperature": 53.5,
+    "gridPower": -23.9,
+    "kwhImported": 2173.15,
+    "kwhExported": 1864.43,
+    "temperature": 53.4,
     "kwhImportedToday": 2.25,
     "kwhExportedToday": 13.05
   },
@@ -80,13 +80,13 @@
     "tomorrow": "BLEU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.89327",
+  "scriptVersion": "V50.5.3.89337",
   "brain": {
     "session": [
       "batterie3"
     ],
     "manual": [],
     "failed": [],
-    "logTail": "11:03:31 AM | STOP -> Batterie_1 | stop manuel manuel plein\n11:03:31 AM | ACTION -> STOP Batterie_1\n12:13:01 PM | SESSION RESET -> nouvelle paire\n1:43:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie3\n1:43:31 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie3\n1:44:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie3\n1:44:01 PM | SESSION RESET -> nouvelle paire\n2:05:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie3\n2:05:31 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie3\n2:06:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie3\n2:06:31 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie3\n2:07:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie3"
+    "logTail": "2:06:31 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie3\n2:07:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie3\n2:07:31 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie3\n2:08:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie3\n2:08:31 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie3\n2:09:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie3\n2:09:30 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie3\n2:10:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie3\n2:10:31 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie3\n2:11:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie3\n2:11:31 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie3\n2:12:01 PM | NEW SESSION 1 BATTERIE (degrade) -> batterie3"
   }
 }
