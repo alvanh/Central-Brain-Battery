@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-03T17:07:29.000Z",
+  "updatedAt": "2026-07-03T17:12:31.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
@@ -11,19 +11,19 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 12
+      "lastMsg": 13
     },
     {
       "name": "Batterie_2",
       "online": true,
-      "soc": 34,
-      "powerW": -83,
+      "soc": 32,
+      "powerW": 278,
       "temp": 3.4,
-      "direction": "DISCHARGING",
+      "direction": "CHARGING",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 12
+      "lastMsg": 13
     },
     {
       "name": "Batterie_3",
@@ -35,7 +35,7 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 12
+      "lastMsg": 13
     },
     {
       "name": "Batterie_4",
@@ -47,40 +47,40 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 12
+      "lastMsg": 13
     }
   ],
   "solar": {
     "productionW": 1170
   },
   "grid": {
-    "powerW": -33
+    "powerW": -60
   },
   "shelly": {
     "online": true,
-    "gridPower": -33,
-    "kwhImported": 2197.64,
-    "kwhExported": 1885.76,
-    "temperature": 52.7,
-    "kwhImportedToday": 3.99,
-    "kwhExportedToday": 3.31
+    "gridPower": -59.8,
+    "kwhImported": 2197.7,
+    "kwhExported": 1885.82,
+    "temperature": 52.5,
+    "kwhImportedToday": 4.01,
+    "kwhExportedToday": 3.32
   },
   "economie": {
     "tarifOA": 0.1376,
     "tarifHP": 0.1609,
     "tempoCouleur": "BLEU",
     "coutImport": 0.56,
-    "revenuExport": 0.45,
-    "bilanJour": -0.11,
-    "kwhImport": 3.99,
-    "kwhExport": 3.31
+    "revenuExport": 0.46,
+    "bilanJour": -0.1,
+    "kwhImport": 4.01,
+    "kwhExport": 3.32
   },
   "tempo": {
     "today": "BLEU",
     "tomorrow": "BLEU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.92567",
+  "scriptVersion": "V50.5.3.92578",
   "brain": {
     "session": [
       "batterie1",
