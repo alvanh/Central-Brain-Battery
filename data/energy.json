@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-03T04:27:27.000Z",
+  "updatedAt": "2026-07-03T04:32:30.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
@@ -17,7 +17,7 @@
       "name": "Batterie_2",
       "online": true,
       "soc": 33,
-      "powerW": -460,
+      "powerW": -405,
       "temp": 2.8,
       "direction": "DISCHARGING",
       "blacklisted": false,
@@ -47,21 +47,21 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 6071
+      "lastMsg": 6372
     }
   ],
   "solar": {
     "productionW": 0
   },
   "grid": {
-    "powerW": -30
+    "powerW": 29
   },
   "shelly": {
     "online": true,
-    "gridPower": -30.4,
-    "kwhImported": 2185.52,
-    "kwhExported": 1872.38,
-    "temperature": 36.7,
+    "gridPower": 29.1,
+    "kwhImported": 2185.53,
+    "kwhExported": 1872.4,
+    "temperature": 36.8,
     "kwhImportedToday": 2.55,
     "kwhExportedToday": 0.41
   },
@@ -80,11 +80,11 @@
     "tomorrow": "INCONNU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.91047",
+  "scriptVersion": "V50.5.3.91057",
   "brain": {
     "session": [],
     "manual": [],
     "failed": [],
-    "logTail": "4:22:01 AM | STOP -> Batterie_4 | night single\n4:22:01 AM | ACTION -> STOP Batterie_4\n4:23:01 AM | STOP -> Batterie_4 | night single\n4:23:01 AM | ACTION -> STOP Batterie_4\n4:24:01 AM | STOP -> Batterie_4 | night single\n4:24:01 AM | ACTION -> STOP Batterie_4\n4:25:01 AM | STOP -> Batterie_4 | night single\n4:25:01 AM | ACTION -> STOP Batterie_4\n4:26:01 AM | STOP -> Batterie_4 | night single\n4:26:01 AM | ACTION -> STOP Batterie_4\n4:27:01 AM | STOP -> Batterie_4 | night single\n4:27:01 AM | ACTION -> STOP Batterie_4"
+    "logTail": "4:27:01 AM | STOP -> Batterie_4 | night single\n4:27:01 AM | ACTION -> STOP Batterie_4\n4:28:01 AM | STOP -> Batterie_4 | night single\n4:28:01 AM | ACTION -> STOP Batterie_4\n4:29:01 AM | STOP -> Batterie_4 | night single\n4:29:01 AM | ACTION -> STOP Batterie_4\n4:30:01 AM | STOP -> Batterie_4 | night single\n4:30:01 AM | ACTION -> STOP Batterie_4\n4:31:01 AM | STOP -> Batterie_4 | night single\n4:31:01 AM | ACTION -> STOP Batterie_4\n4:32:01 AM | STOP -> Batterie_4 | night single\n4:32:01 AM | ACTION -> STOP Batterie_4"
   }
 }
