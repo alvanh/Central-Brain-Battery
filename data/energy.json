@@ -1,95 +1,96 @@
 {
-  "updatedAt": "2026-07-03T09:57:21.000Z",
+  "updatedAt": "2026-07-03T10:02:28.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
       "online": true,
-      "soc": 26,
-      "powerW": 2119,
-      "temp": 3,
-      "direction": "CHARGING",
-      "blacklisted": false,
-      "excluded": false,
-      "excludedMin": 0,
-      "lastMsg": 24
-    },
-    {
-      "name": "Batterie_2",
-      "online": true,
-      "soc": 24,
-      "powerW": 2441,
-      "temp": 2.9,
-      "direction": "CHARGING",
-      "blacklisted": false,
-      "excluded": false,
-      "excludedMin": 0,
-      "lastMsg": 145
-    },
-    {
-      "name": "Batterie_3",
-      "online": true,
-      "soc": 39,
-      "powerW": 1171,
+      "soc": 27,
+      "powerW": 84,
       "temp": 3.1,
       "direction": "CHARGING",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 25
+      "lastMsg": 35
     },
     {
-      "name": "Batterie_4",
+      "name": "Batterie_2",
       "online": true,
-      "soc": 20,
+      "soc": 25,
       "powerW": 0,
-      "temp": 2.6,
+      "temp": 2.9,
       "direction": "IDLE",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 25
+      "lastMsg": 35
+    },
+    {
+      "name": "Batterie_3",
+      "online": true,
+      "soc": 41,
+      "powerW": 1128,
+      "temp": 3.1,
+      "direction": "CHARGING",
+      "blacklisted": false,
+      "excluded": false,
+      "excludedMin": 0,
+      "lastMsg": 35
+    },
+    {
+      "name": "Batterie_4",
+      "online": true,
+      "soc": 22,
+      "powerW": 2441,
+      "temp": 2.6,
+      "direction": "CHARGING",
+      "blacklisted": false,
+      "excluded": false,
+      "excludedMin": 0,
+      "lastMsg": 35
     }
   ],
   "solar": {
-    "productionW": 5140
+    "productionW": 5830
   },
   "grid": {
-    "powerW": -188
+    "powerW": 54
   },
   "shelly": {
     "online": true,
-    "gridPower": -188.3,
-    "kwhImported": 2189.51,
-    "kwhExported": 1876.41,
-    "temperature": 50.4,
-    "kwhImportedToday": 2.96,
-    "kwhExportedToday": 0.91
+    "gridPower": 54.3,
+    "kwhImported": 2189.62,
+    "kwhExported": 1876.53,
+    "temperature": 50.8,
+    "kwhImportedToday": 2.97,
+    "kwhExportedToday": 0.92
   },
   "economie": {
     "tarifOA": 0.1376,
     "tarifHP": 0.1609,
     "tempoCouleur": "BLEU",
     "coutImport": 0.39,
-    "revenuExport": 0.12,
-    "bilanJour": -0.27,
-    "kwhImport": 2.96,
-    "kwhExport": 0.91
+    "revenuExport": 0.13,
+    "bilanJour": -0.26,
+    "kwhImport": 2.97,
+    "kwhExport": 0.92
   },
   "tempo": {
     "today": "BLEU",
     "tomorrow": "INCONNU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.91707",
+  "scriptVersion": "V50.5.3.91717",
   "brain": {
     "session": [
       "batterie3",
       "batterie1"
     ],
     "manual": [
-      "batterie2"
+      "batterie2",
+      "batterie4"
     ],
     "failed": [],
-    "logTail": "9:52:01 AM | AUTO -> Batterie_1 | session AUTO (Shelly-driven)\n9:52:01 AM | ACTION -> AUTO Batterie_1\n9:53:01 AM | !!! INTERDICTION ABSOLUE (jour) : arret decharge parasite\n9:53:01 AM | STOP -> Batterie_3 | interdiction absolue jour\n9:53:01 AM | ACTION -> STOP Batterie_3\n9:53:30 AM | !!! INTERDICTION ABSOLUE (jour) : arret decharge parasite\n9:53:30 AM | STOP -> Batterie_3 | interdiction absolue jour\n9:53:31 AM | ACTION -> STOP Batterie_3\n9:54:01 AM | AUTO -> Batterie_3 | session AUTO (Shelly-driven)\n9:54:01 AM | ACTION -> AUTO Batterie_3\n9:55:01 AM | AUTO -> Batterie_3 | session AUTO (Shelly-driven)\n9:55:01 AM | ACTION -> AUTO Batterie_3"
+    "logTail": "9:55:01 AM | AUTO -> Batterie_3 | session AUTO (Shelly-driven)\n9:55:01 AM | ACTION -> AUTO Batterie_3\n9:59:31 AM | MANUEL 2450 -> Batterie_4 (slot 2)\n9:59:31 AM | ACTION -> MANUEL Batterie_4\n10:00:01 AM | !!! INTERDICTION ABSOLUE (jour) : arret decharge parasite\n10:00:01 AM | STOP -> Batterie_1 | interdiction absolue jour\n10:00:01 AM | ACTION -> STOP Batterie_1\n10:00:30 AM | !!! INTERDICTION ABSOLUE (jour) : arret decharge parasite\n10:00:31 AM | STOP -> Batterie_1 | interdiction absolue jour\n10:00:31 AM | ACTION -> STOP Batterie_1\n10:01:31 AM | AUTO -> Batterie_1 | session AUTO (Shelly-driven)\n10:01:31 AM | ACTION -> AUTO Batterie_1"
   }
 }
