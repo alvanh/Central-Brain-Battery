@@ -1,17 +1,17 @@
 {
-  "updatedAt": "2026-07-03T23:52:27.000Z",
+  "updatedAt": "2026-07-03T23:57:28.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
       "online": true,
       "soc": 70,
       "powerW": 0,
-      "temp": 3,
+      "temp": 2.9,
       "direction": "IDLE",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 45
+      "lastMsg": 51
     },
     {
       "name": "Batterie_2",
@@ -23,7 +23,7 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 45
+      "lastMsg": 51
     },
     {
       "name": "Batterie_3",
@@ -35,35 +35,35 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 45
+      "lastMsg": 51
     },
     {
       "name": "Batterie_4",
       "online": true,
-      "soc": 27,
-      "powerW": -2216,
+      "soc": 26,
+      "powerW": 152,
       "temp": 3.1,
-      "direction": "DISCHARGING",
+      "direction": "CHARGING",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 45
+      "lastMsg": 51
     }
   ],
   "solar": {
     "productionW": 0
   },
   "grid": {
-    "powerW": 17
+    "powerW": -11
   },
   "shelly": {
     "online": true,
-    "gridPower": 16.8,
-    "kwhImported": 2201.51,
-    "kwhExported": 1889.08,
-    "temperature": 42.4,
-    "kwhImportedToday": 0.16,
-    "kwhExportedToday": 0.04
+    "gridPower": -10.9,
+    "kwhImported": 2201.55,
+    "kwhExported": 1889.11,
+    "temperature": 42.3,
+    "kwhImportedToday": 0.17,
+    "kwhExportedToday": 0.05
   },
   "economie": {
     "tarifOA": 0.1376,
@@ -72,15 +72,15 @@
     "coutImport": 0.02,
     "revenuExport": 0.01,
     "bilanJour": -0.01,
-    "kwhImport": 0.16,
-    "kwhExport": 0.04
+    "kwhImport": 0.17,
+    "kwhExport": 0.05
   },
   "tempo": {
     "today": "BLEU",
     "tomorrow": "BLEU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.93377",
+  "scriptVersion": "V50.5.3.93387",
   "brain": {
     "session": [],
     "manual": [],
