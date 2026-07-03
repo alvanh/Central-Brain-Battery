@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-07-03T08:02:27.000Z",
+  "updatedAt": "2026-07-03T08:07:31.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
       "online": true,
-      "soc": 18,
-      "powerW": -262,
+      "soc": 17,
+      "powerW": -323,
       "temp": 3,
       "direction": "DISCHARGING",
       "blacklisted": false,
@@ -47,23 +47,23 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 7303
+      "lastMsg": 7604
     }
   ],
   "solar": {
     "productionW": 320
   },
   "grid": {
-    "powerW": 10
+    "powerW": 54
   },
   "shelly": {
     "online": true,
-    "gridPower": 9.5,
-    "kwhImported": 2187.19,
-    "kwhExported": 1873.98,
-    "temperature": 42.7,
+    "gridPower": 54.1,
+    "kwhImported": 2187.22,
+    "kwhExported": 1874.01,
+    "temperature": 42.9,
     "kwhImportedToday": 2.81,
-    "kwhExportedToday": 0.62
+    "kwhExportedToday": 0.63
   },
   "economie": {
     "tarifOA": 0.1376,
@@ -73,14 +73,14 @@
     "revenuExport": 0.09,
     "bilanJour": -0.28,
     "kwhImport": 2.81,
-    "kwhExport": 0.62
+    "kwhExport": 0.63
   },
   "tempo": {
     "today": "BLEU",
     "tomorrow": "INCONNU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.91477",
+  "scriptVersion": "V50.5.3.91488",
   "brain": {
     "session": [
       "batterie3",
@@ -88,6 +88,6 @@
     ],
     "manual": [],
     "failed": [],
-    "logTail": "7:57:01 AM | ACTION -> STOP Batterie_4\n7:58:01 AM | STOP -> Batterie_4 | night single\n7:58:01 AM | ACTION -> STOP Batterie_4\n7:59:01 AM | STOP -> Batterie_4 | night single\n7:59:01 AM | ACTION -> STOP Batterie_4\n8:00:01 AM | STOP -> Batterie_4 | night single\n8:00:01 AM | ACTION -> STOP Batterie_4\n8:01:01 AM | STOP -> Batterie_4 | night single\n8:01:01 AM | ACTION -> STOP Batterie_4\n8:02:01 AM | NEW SESSION -> batterie3,batterie1\n8:02:01 AM | AUTO -> Batterie_3 | session AUTO (Shelly-driven)\n8:02:01 AM | ACTION -> AUTO Batterie_3"
+    "logTail": "8:02:01 AM | AUTO -> Batterie_3 | session AUTO (Shelly-driven)\n8:02:01 AM | ACTION -> AUTO Batterie_3\n8:03:01 AM | AUTO -> Batterie_3 | session AUTO (Shelly-driven)\n8:03:01 AM | ACTION -> AUTO Batterie_3\n8:04:01 AM | AUTO -> Batterie_3 | session AUTO (Shelly-driven)\n8:04:01 AM | ACTION -> AUTO Batterie_3\n8:05:01 AM | AUTO -> Batterie_3 | session AUTO (Shelly-driven)\n8:05:01 AM | ACTION -> AUTO Batterie_3\n8:06:01 AM | AUTO -> Batterie_3 | session AUTO (Shelly-driven)\n8:06:01 AM | ACTION -> AUTO Batterie_3\n8:07:01 AM | AUTO -> Batterie_3 | session AUTO (Shelly-driven)\n8:07:01 AM | ACTION -> AUTO Batterie_3"
   }
 }
