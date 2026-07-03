@@ -1,29 +1,29 @@
 {
-  "updatedAt": "2026-07-03T13:52:23.000Z",
+  "updatedAt": "2026-07-03T13:57:28.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
       "online": true,
-      "soc": 83,
-      "powerW": 396,
+      "soc": 84,
+      "powerW": 1763,
       "temp": 4,
       "direction": "CHARGING",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 15
+      "lastMsg": 21
     },
     {
       "name": "Batterie_2",
       "online": true,
-      "soc": 31,
-      "powerW": 1540,
-      "temp": 2.9,
-      "direction": "CHARGING",
+      "soc": 32,
+      "powerW": -445,
+      "temp": 3,
+      "direction": "DISCHARGING",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 15
+      "lastMsg": 21
     },
     {
       "name": "Batterie_3",
@@ -34,36 +34,36 @@
       "direction": "IDLE",
       "blacklisted": false,
       "excluded": true,
-      "excludedMin": 9,
-      "lastMsg": 15
+      "excludedMin": 4,
+      "lastMsg": 21
     },
     {
       "name": "Batterie_4",
       "online": true,
-      "soc": 70,
-      "powerW": 2442,
+      "soc": 74,
+      "powerW": 2441,
       "temp": 3.5,
       "direction": "CHARGING",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 15
+      "lastMsg": 21
     }
   ],
   "solar": {
     "productionW": 3510
   },
   "grid": {
-    "powerW": -314
+    "powerW": 46
   },
   "shelly": {
     "online": true,
-    "gridPower": -314.2,
-    "kwhImported": 2194.69,
-    "kwhExported": 1882.72,
-    "temperature": 55.6,
-    "kwhImportedToday": 3.62,
-    "kwhExportedToday": 2.83
+    "gridPower": 45.6,
+    "kwhImported": 2194.81,
+    "kwhExported": 1882.84,
+    "temperature": 56.1,
+    "kwhImportedToday": 3.64,
+    "kwhExportedToday": 2.86
   },
   "economie": {
     "tarifOA": 0.1376,
@@ -72,15 +72,15 @@
     "coutImport": 0.5,
     "revenuExport": 0.39,
     "bilanJour": -0.11,
-    "kwhImport": 3.62,
-    "kwhExport": 2.83
+    "kwhImport": 3.64,
+    "kwhExport": 2.86
   },
   "tempo": {
     "today": "BLEU",
     "tomorrow": "BLEU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.92177",
+  "scriptVersion": "V50.5.3.92187",
   "brain": {
     "session": [
       "batterie1",
