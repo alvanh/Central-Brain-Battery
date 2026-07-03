@@ -1,26 +1,34 @@
 {
-  "generatedAt": "2026-06-15T00:10:00Z",
-  "date": "2026-06-15",
-  "totalItems": 8,
+  "generatedAt": "2026-07-03T09:30:00Z",
+  "date": "2026-07-03",
+  "totalItems": 10,
   "categories": [
     {
       "id": "marstek",
       "label": "Marstek Venus E",
       "items": [
         {
-          "titre": "Firmware V151 référencé comme version recommandée (actuel : V148)",
-          "source": "Marstek FAQ via Robinsun / marstek.fr",
-          "url": "https://robinsun.es/en/blogs/news/marstek-venus-e-3-0-frequently-asked-questions",
+          "titre": "Firmware V151 requis pour multi-batteries monophasées avec CT002/CT003 (actuel : V148)",
+          "source": "Marstek Venus Series FAQs (device.report)",
+          "url": "https://device.report/manuals/marstek-venus-series-faqs",
           "date": "2026-06",
-          "resume": "La FAQ Marstek Venus E 3.0 mentionne V151 comme version recommandée — supérieure à la V148 installée sur les 4 batteries. V151 est citée pour la gestion multi-batteries monophasées et la compatibilité CT003.",
+          "resume": "La FAQ officielle Venus indique que le pilotage de plusieurs Venus monophasés avec CT002 (V118) ou CT003 (V114) exige le firmware V151. Directement lié au ping-pong L2 (P2) : V148 est sous le minimum documenté pour cette configuration.",
           "pertinence": "haute"
         },
         {
-          "titre": "Archive communautaire firmware Marstek (15 fichiers, màj avril 2026)",
+          "titre": "Modbus TCP supporté à partir du firmware v144 — piste pour le port 502 fermé (P4)",
+          "source": "GitHub ViperRNMC/marstek_venus_modbus + forum Domoticz",
+          "url": "https://github.com/ViperRNMC/marstek_venus_modbus",
+          "date": "2026-06",
+          "resume": "Des intégrations communautaires confirment le contrôle Venus via Modbus TCP (port 502) à partir de v144, avec mode RS485 control (registre 42000) pour la plage 42000-42999. Alternative locale robuste, y compris via passerelle RS485→TCP sans attendre Marstek.",
+          "pertinence": "haute"
+        },
+        {
+          "titre": "Archive firmware communautaire mise à jour le 23/06/2026",
           "source": "GitHub rweijnen/marstek-firmware-archive",
           "url": "https://github.com/rweijnen/marstek-firmware-archive",
-          "date": "2026-04",
-          "resume": "Archive communautaire de 15 fichiers firmware Marstek, mise à jour en avril 2026. Permet de consulter les versions disponibles indépendamment de l'app officielle.",
+          "date": "2026-06-23",
+          "resume": "L'archive communautaire des firmwares Marstek a été mise à jour fin juin. Utile pour suivre les versions disponibles indépendamment de l'app officielle.",
           "pertinence": "moyenne"
         }
       ]
@@ -30,20 +38,20 @@
       "label": "Retours d'expérience Venus E",
       "items": [
         {
-          "titre": "Bug communautaire : perte de couplage CT002 après coupure disjoncteur",
-          "source": "Forum photovoltaïque français",
-          "url": "https://forum-photovoltaique.fr/viewtopic.php?t=79167&start=480",
-          "date": "2026-06",
-          "resume": "Plusieurs utilisateurs signalent qu'une coupure secteur (disjoncteur) découple le CT002 de la batterie, nécessitant un redémarrage manuel. Cohérent avec le problème ping-pong L2 en installation.",
+          "titre": "Procédure confirmée : Shelly Pro 3EM comme compteur source du Venus (fix P1)",
+          "source": "Instructions Venus + Shelly Pro 3EM (manuals.plus)",
+          "url": "https://manuals.plus/m/37faa136b6a3e9c1e33efed5b270146becfe956610bcd09a8543f16065832bb9",
+          "date": "2026",
+          "resume": "Procédure officielle revalidée : app Marstek → self-adaption, compteur « Shelly Pro 3EM-3CT63 » ; app Shelly → RPC over UDP port 2220 ou 1010 ; même WiFi. Élimine le CT002/CT003 de la boucle (dropouts, diagnostic bloqué, ping-pong L2).",
           "pertinence": "haute"
         },
         {
-          "titre": "Test Venus E 3.0 : positif, WiFi 2.4 GHz et configuration CT critiques",
-          "source": "mac4ever.com",
-          "url": "https://www.mac4ever.com/ecotech/194229-test-de-la-batterie-solaire-marstek-venus-e-3-0-5-kwh-a-1300-seulement-canon-ou-bidon",
+          "titre": "AstraMeter : émulateur de compteur Shelly pour Venus (plan B au CT)",
+          "source": "GitHub tomquist/AstraMeter",
+          "url": "https://github.com/tomquist/AstraMeter",
           "date": "2026",
-          "resume": "Test positif de la Venus E 3.0 (~1 300 €). WiFi 2.4 GHz exclusif et configuration CT identifiés comme points critiques. Pas de retour négatif majeur sur la 3.0 hors problèmes CT.",
-          "pertinence": "faible"
+          "resume": "Projet qui émule un Shelly Pro 3EM pour les batteries Marstek, permettant d'utiliser presque n'importe quel compteur comme source. Plan B si la liaison directe Shelly→Venus pose problème.",
+          "pertinence": "moyenne"
         }
       ]
     },
@@ -74,12 +82,20 @@
       "label": "EDF Tempo & OA",
       "items": [
         {
-          "titre": "Tarif rachat EDF OA 2026 : chute à ~4 c€/kWh (–68 % en 18 mois)",
-          "source": "potentielsolaire.com / libow.fr",
-          "url": "https://www.potentielsolaire.com/baisse-tarifs-revente-2026",
+          "titre": "⚡ OA : surplus racheté 1,1 c€/kWh depuis juin 2026, prime autoconso supprimée",
+          "source": "Hellowatt / Hellio / EcoFlow (arrêté du 1er juin 2026)",
+          "url": "https://www.hellowatt.fr/panneaux-solaires-photovoltaiques/tarif-rachat-photovoltaique",
           "date": "2026-06",
-          "resume": "Depuis T2 2025, le tarif OA pour ≤9 kWc est tombé à ~4 c€/kWh. Une source cite 1,1 c€/kWh depuis juin 2026. Chaque kWh exporté vaut désormais très peu — renforce la stratégie zéro-export du Brain.",
+          "resume": "Le rachat du surplus photovoltaïque est passé à un tarif unique de 1,1 c€/kWh HT (revalorisé +2 %/an, 20 ans) et la prime à l'autoconsommation est supprimée. Chaque kWh exporté ne vaut quasiment plus rien : la stratégie zéro-export (batteries + charges flexibles) devient encore plus rentable.",
           "pertinence": "haute"
+        },
+        {
+          "titre": "Tarifs Tempo en vigueur : 0,1325 €/kWh (bleu HC) à 0,7060 €/kWh (rouge HP)",
+          "source": "fournisseurs-electricite.com",
+          "url": "https://www.fournisseurs-electricite.com/fournisseurs/edf/tarifs/tempo/prix",
+          "date": "2026-02",
+          "resume": "Grille Tempo appliquée depuis le 1er février 2026 après hausses CRE (+7,55 % à +9,15 % selon plages). À croiser avec les constantes tarifaires du calcul économique du dashboard.",
+          "pertinence": "moyenne"
         }
       ]
     },
@@ -100,30 +116,30 @@
   ],
   "propositions": [
     {
-      "id": "fw-v151",
-      "titre": "Vérifier la disponibilité du firmware V151 dans l'app Marstek",
-      "description": "La version V151 est référencée comme recommandée (>V148 actuel) pour la gestion multi-batteries et la compatibilité CT. Vérifier dans l'app Marstek iPhone sur chaque batterie. Ne mettre à jour qu'une seule batterie en test avant généralisation.",
+      "id": "prop-shelly-meter",
+      "titre": "Basculer les Venus sur le Shelly Pro 3EM comme compteur (P1, fix racine)",
+      "description": "Procédure officielle revalidée : app Marstek → self-adaption + compteur « Shelly Pro 3EM-3CT63 », app Shelly → RPC over UDP (port 2220 ou 1010). Supprime les dropouts CT, le diagnostic bloqué et probablement le ping-pong L2.",
       "urgence": "urgent",
-      "action": "App Marstek → sélectionner Bat1/Bat2/Bat3/Bat4 → vérifier si une mise à jour firmware est disponible"
+      "action": "Configuration côté apps iPhone (Marstek + Shelly), aucun code à déployer. ~15 min par batterie."
     },
     {
-      "id": "oa-tarif-baisse",
-      "titre": "Tarif revente OA en chute — stratégie zéro-export économiquement renforcée",
-      "description": "Le tarif de rachat EDF OA est passé d'environ 13 c€/kWh (2023) à ~4 c€/kWh voire moins en 2026. La stratégie du Brain (BOOST solaire, stockage prioritaire sur export) est encore plus justifiée. Mettre à jour le calcul ROI si nécessaire.",
-      "urgence": "recommande",
-      "action": "Confirmer le tarif OA exact sur l'espace EDF OA et mettre à jour INSTALLATION-MARSTEK.md"
+      "id": "prop-firmware-v151",
+      "titre": "Exiger la mise à jour firmware V151 auprès du SAV Marstek (P2)",
+      "description": "La FAQ officielle exige V151 pour plusieurs Venus monophasés sur CT002/CT003 — l'installation (4 batteries, V148) est sous le minimum documenté. Argument officiel à verser au dossier SAV/mise en demeure du 19/03/2026.",
+      "urgence": "urgent",
+      "action": "Citer la FAQ Venus Series (V151 requis, CT003 V114) dans le prochain échange SAV Marstek + vérifier l'app pour une mise à jour disponible."
     },
     {
-      "id": "ct-bug-communautaire",
-      "titre": "Perte de couplage CT après coupure disjoncteur : bug documenté par la communauté",
-      "description": "Des utilisateurs signalent que le CT002 perd son couplage après une coupure disjoncteur. Cet élément communautaire documenté renforce le dossier SAV Marstek (mise en demeure du 19/03/2026).",
+      "id": "prop-zero-export",
+      "titre": "Rachat surplus à 1,1 c€/kWh : renforcer la stratégie zéro-export",
+      "description": "Depuis l'arrêté du 1er juin 2026, le surplus exporté ne rapporte quasiment rien. Prioriser l'absorption locale : batteries, puis charges flexibles (clim, filtration piscine) au signal grid.",
       "urgence": "recommande",
-      "action": "Ajouter la référence forum dans le dossier SAV Marstek"
+      "action": "Vérifier que le calcul ROI du dashboard valorise l'export à 1,1 c€/kWh et accélérer le pilotage des charges flexibles."
     }
   ],
   "highlight": {
-    "titre": "Firmware Marstek V151 disponible — V148 actuel sur 4 batteries",
-    "resume": "La V151 est référencée comme recommandée (>V148). Vérifier l'app Marstek iPhone sur chaque batterie.",
+    "titre": "Surplus solaire racheté 1,1 c€/kWh (arrêté 01/06/2026) — le zéro-export devient critique",
+    "resume": "Prime autoconso supprimée, surplus quasi gratuit pour EDF : chaque kWh exporté au lieu d'être stocké/consommé est une perte. Fix P1 (Shelly compteur des Venus) et charges flexibles passent en priorité.",
     "urgence": true
   }
 }
