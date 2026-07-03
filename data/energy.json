@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-03T20:17:27.000Z",
+  "updatedAt": "2026-07-03T20:22:20.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
@@ -9,9 +9,9 @@
       "temp": 3.4,
       "direction": "IDLE",
       "blacklisted": false,
-      "excluded": true,
-      "excludedMin": 3,
-      "lastMsg": 0
+      "excluded": false,
+      "excludedMin": 0,
+      "lastMsg": 49
     },
     {
       "name": "Batterie_2",
@@ -23,7 +23,7 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 0
+      "lastMsg": 49
     },
     {
       "name": "Batterie_3",
@@ -35,34 +35,34 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 0
+      "lastMsg": 49
     },
     {
       "name": "Batterie_4",
       "online": true,
-      "soc": 80,
-      "powerW": -625,
+      "soc": 78,
+      "powerW": -2493,
       "temp": 3,
       "direction": "DISCHARGING",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 0
+      "lastMsg": 49
     }
   ],
   "solar": {
     "productionW": 0
   },
   "grid": {
-    "powerW": -29
+    "powerW": 11
   },
   "shelly": {
     "online": true,
-    "gridPower": -29.3,
-    "kwhImported": 2199.65,
-    "kwhExported": 1887.41,
-    "temperature": 47.3,
-    "kwhImportedToday": 4.55,
+    "gridPower": 10.6,
+    "kwhImported": 2199.71,
+    "kwhExported": 1887.46,
+    "temperature": 47.5,
+    "kwhImportedToday": 4.56,
     "kwhExportedToday": 3.48
   },
   "economie": {
@@ -72,7 +72,7 @@
     "coutImport": 0.65,
     "revenuExport": 0.48,
     "bilanJour": -0.17,
-    "kwhImport": 4.55,
+    "kwhImport": 4.56,
     "kwhExport": 3.48
   },
   "tempo": {
@@ -80,13 +80,11 @@
     "tomorrow": "BLEU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.92947",
+  "scriptVersion": "V50.5.3.92957",
   "brain": {
     "session": [],
     "manual": [],
-    "failed": [
-      "batterie1"
-    ],
+    "failed": [],
     "logTail": "7:48:31 PM | STOP -> Batterie_1 | interdiction absolue nuit\n7:48:31 PM | ACTION -> STOP Batterie_1\n7:49:00 PM | !!! ECHEC COMMANDE : Batterie_1 | attendu=DISCHARGE | reel=CHARGE | tentative 2/3\n7:49:01 PM | → Réessai 2/3 pour Batterie_1\n7:49:01 PM | !!! INTERDICTION ABSOLUE (nuit) : arret charge parasite\n7:49:01 PM | STOP -> Batterie_1 | interdiction absolue nuit\n7:49:01 PM | ACTION -> STOP Batterie_1\n7:50:00 PM | !!! ECHEC COMMANDE : Batterie_1 | attendu=DISCHARGE | reel=IDLE | tentative 3/3\n7:50:01 PM | !!! BATTERIE EXCLUE 30min : Batterie_1\n7:50:01 PM | → BLACKLIST 30min après 3 échecs : Batterie_1\n7:50:01 PM | NIGHT MASTER reset -> prochaine batterie disponible\n7:50:01 PM | NIGHT MASTER -> Batterie_4 (SoC=87%)"
   }
 }
