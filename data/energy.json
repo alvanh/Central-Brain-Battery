@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-03T22:27:31.000Z",
+  "updatedAt": "2026-07-03T22:32:21.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
@@ -11,19 +11,19 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 57
+      "lastMsg": 48
     },
     {
       "name": "Batterie_2",
       "online": true,
       "soc": 20,
       "powerW": 0,
-      "temp": 3.1,
+      "temp": 3,
       "direction": "IDLE",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 57
+      "lastMsg": 48
     },
     {
       "name": "Batterie_3",
@@ -35,52 +35,52 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 57
+      "lastMsg": 48
     },
     {
       "name": "Batterie_4",
       "online": true,
-      "soc": 51,
-      "powerW": -561,
+      "soc": 49,
+      "powerW": -563,
       "temp": 3.2,
       "direction": "DISCHARGING",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 57
+      "lastMsg": 48
     }
   ],
   "solar": {
     "productionW": 0
   },
   "grid": {
-    "powerW": -12
+    "powerW": 421
   },
   "shelly": {
     "online": true,
-    "gridPower": -12.1,
-    "kwhImported": 2200.64,
-    "kwhExported": 1888.32,
-    "temperature": 44.4,
-    "kwhImportedToday": 0.03,
-    "kwhExportedToday": 0.01
+    "gridPower": 421.1,
+    "kwhImported": 2200.71,
+    "kwhExported": 1888.37,
+    "temperature": 44.3,
+    "kwhImportedToday": 0.04,
+    "kwhExportedToday": 0.02
   },
   "economie": {
     "tarifOA": 0.1376,
     "tarifHP": 0.1271,
     "tempoCouleur": "BLEU",
-    "coutImport": 0,
+    "coutImport": 0.01,
     "revenuExport": 0,
-    "bilanJour": 0,
-    "kwhImport": 0.03,
-    "kwhExport": 0.01
+    "bilanJour": -0.01,
+    "kwhImport": 0.04,
+    "kwhExport": 0.02
   },
   "tempo": {
     "today": "BLEU",
     "tomorrow": "BLEU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.93208",
+  "scriptVersion": "V50.5.3.93217",
   "brain": {
     "session": [],
     "manual": [],
