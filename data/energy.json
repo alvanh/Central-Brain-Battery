@@ -1,29 +1,29 @@
 {
-  "updatedAt": "2026-07-03T14:57:27.000Z",
+  "updatedAt": "2026-07-03T15:02:21.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
       "online": true,
-      "soc": 90,
-      "powerW": 0,
+      "soc": 91,
+      "powerW": 1815,
       "temp": 3.9,
-      "direction": "IDLE",
+      "direction": "CHARGING",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 19
+      "lastMsg": 9
     },
     {
       "name": "Batterie_2",
       "online": true,
       "soc": 37,
-      "powerW": 0,
+      "powerW": 107,
       "temp": 3.2,
-      "direction": "IDLE",
+      "direction": "CHARGING",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 19
+      "lastMsg": 9
     },
     {
       "name": "Batterie_3",
@@ -35,7 +35,7 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 19
+      "lastMsg": 9
     },
     {
       "name": "Batterie_4",
@@ -47,40 +47,40 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 19
+      "lastMsg": 9
     }
   ],
   "solar": {
-    "productionW": 4640
+    "productionW": 5180
   },
   "grid": {
-    "powerW": -1891
+    "powerW": 37
   },
   "shelly": {
     "online": true,
-    "gridPower": -1891.1,
-    "kwhImported": 2196.14,
-    "kwhExported": 1884.22,
-    "temperature": 58.4,
-    "kwhImportedToday": 3.83,
-    "kwhExportedToday": 3.13
+    "gridPower": 36.8,
+    "kwhImported": 2196.19,
+    "kwhExported": 1884.3,
+    "temperature": 58.5,
+    "kwhImportedToday": 3.86,
+    "kwhExportedToday": 3.17
   },
   "economie": {
     "tarifOA": 0.1376,
     "tarifHP": 0.1609,
     "tempoCouleur": "BLEU",
-    "coutImport": 0.53,
-    "revenuExport": 0.43,
+    "coutImport": 0.54,
+    "revenuExport": 0.44,
     "bilanJour": -0.1,
-    "kwhImport": 3.83,
-    "kwhExport": 3.13
+    "kwhImport": 3.86,
+    "kwhExport": 3.17
   },
   "tempo": {
     "today": "BLEU",
     "tomorrow": "BLEU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.92307",
+  "scriptVersion": "V50.5.3.92317",
   "brain": {
     "session": [
       "batterie1",
@@ -88,6 +88,6 @@
     ],
     "manual": [],
     "failed": [],
-    "logTail": "2:52:01 PM | ACTION -> MANUEL Batterie_4\n2:53:01 PM | AUTO -> Batterie_1 | session AUTO (Shelly-driven)\n2:53:01 PM | ACTION -> AUTO Batterie_1\n2:54:01 PM | AUTO -> Batterie_1 | session AUTO (Shelly-driven)\n2:54:01 PM | ACTION -> AUTO Batterie_1\n2:55:01 PM | AUTO -> Batterie_1 | session AUTO (Shelly-driven)\n2:55:01 PM | ACTION -> AUTO Batterie_1\n2:56:01 PM | AUTO -> Batterie_1 | session AUTO (Shelly-driven)\n2:56:01 PM | ACTION -> AUTO Batterie_1\n2:57:01 PM | !!! IMPORT ANORMAL : MANUEL en cause -> retrait derniere manuelle\n2:57:01 PM | STOP -> Batterie_4 | stop manuel vigilance import : Manuel cause import\n2:57:01 PM | ACTION -> STOP Batterie_4"
+    "logTail": "2:56:01 PM | ACTION -> AUTO Batterie_1\n2:57:01 PM | !!! IMPORT ANORMAL : MANUEL en cause -> retrait derniere manuelle\n2:57:01 PM | STOP -> Batterie_4 | stop manuel vigilance import : Manuel cause import\n2:57:01 PM | ACTION -> STOP Batterie_4\n2:58:01 PM | AUTO -> Batterie_1 | session AUTO (Shelly-driven)\n2:58:01 PM | ACTION -> AUTO Batterie_1\n2:59:01 PM | AUTO -> Batterie_1 | session AUTO (Shelly-driven)\n2:59:01 PM | ACTION -> AUTO Batterie_1\n3:00:01 PM | AUTO -> Batterie_1 | session AUTO (Shelly-driven)\n3:00:01 PM | ACTION -> AUTO Batterie_1\n3:01:01 PM | AUTO -> Batterie_2 | session AUTO (Shelly-driven)\n3:01:01 PM | ACTION -> AUTO Batterie_2"
   }
 }
