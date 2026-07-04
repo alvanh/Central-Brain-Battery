@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-07-04T04:02:27.000Z",
+  "updatedAt": "2026-07-04T04:07:28.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
       "online": true,
-      "soc": 58,
-      "powerW": -2493,
+      "soc": 57,
+      "powerW": -580,
       "temp": 2.8,
       "direction": "DISCHARGING",
       "blacklisted": false,
@@ -30,11 +30,11 @@
       "online": true,
       "soc": 36,
       "powerW": 0,
-      "temp": 3.2,
+      "temp": 3.1,
       "direction": "IDLE",
       "blacklisted": false,
-      "excluded": true,
-      "excludedMin": 3,
+      "excluded": false,
+      "excludedMin": 0,
       "lastMsg": 36
     },
     {
@@ -54,14 +54,14 @@
     "productionW": 0
   },
   "grid": {
-    "powerW": -10
+    "powerW": -73
   },
   "shelly": {
     "online": true,
-    "gridPower": -10.2,
-    "kwhImported": 2204.12,
-    "kwhExported": 1891.14,
-    "temperature": 38.7,
+    "gridPower": -72.6,
+    "kwhImported": 2204.16,
+    "kwhExported": 1891.18,
+    "temperature": 38.8,
     "kwhImportedToday": 0.93,
     "kwhExportedToday": 0.22
   },
@@ -80,13 +80,11 @@
     "tomorrow": "INCONNU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.93877",
+  "scriptVersion": "V50.5.3.93887",
   "brain": {
     "session": [],
     "manual": [],
-    "failed": [
-      "batterie3"
-    ],
+    "failed": [],
     "logTail": "3:35:00 AM | !!! ECHEC COMMANDE : Batterie_3 | attendu=DISCHARGE | reel=IDLE | tentative 3/3\n3:35:01 AM | !!! BATTERIE EXCLUE 30min : Batterie_3\n3:35:01 AM | → BLACKLIST 30min après 3 échecs : Batterie_3\n3:35:01 AM | NIGHT MASTER reset -> prochaine batterie disponible\n3:35:01 AM | !!! IMPORT ANORMAL 530.69W : fallback -> Batterie_1\n3:35:01 AM | AUTO -> Batterie_1 | fallback import anormal\n3:35:01 AM | ACTION -> AUTO Batterie_1\n3:36:00 AM | !!! ECHEC COMMANDE : Batterie_1 | attendu=DISCHARGE | reel=IDLE | tentative 2/3\n3:36:01 AM | → Réessai 2/3 pour Batterie_1\n3:36:01 AM | NIGHT MASTER -> Batterie_1 (SoC=68%)\n3:36:01 AM | AUTO -> Batterie_1 | night master\n3:36:01 AM | ACTION -> AUTO Batterie_1"
   }
 }
