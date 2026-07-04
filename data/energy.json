@@ -1,41 +1,41 @@
 {
-  "updatedAt": "2026-07-04T01:07:27.000Z",
+  "updatedAt": "2026-07-04T01:12:30.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
       "online": true,
       "soc": 70,
       "powerW": 0,
-      "temp": 2.9,
+      "temp": 2.8,
       "direction": "IDLE",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 41
+      "lastMsg": 47
     },
     {
       "name": "Batterie_2",
       "online": true,
       "soc": 20,
       "powerW": 0,
-      "temp": 2.9,
+      "temp": 2.8,
       "direction": "IDLE",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 41
+      "lastMsg": 47
     },
     {
       "name": "Batterie_3",
       "online": true,
-      "soc": 75,
-      "powerW": -559,
-      "temp": 2.8,
+      "soc": 74,
+      "powerW": -492,
+      "temp": 2.9,
       "direction": "DISCHARGING",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 41
+      "lastMsg": 47
     },
     {
       "name": "Batterie_4",
@@ -47,22 +47,22 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 41
+      "lastMsg": 47
     }
   ],
   "solar": {
     "productionW": 0
   },
   "grid": {
-    "powerW": 7
+    "powerW": -3
   },
   "shelly": {
     "online": true,
-    "gridPower": 6.6,
-    "kwhImported": 2202.3,
-    "kwhExported": 1889.72,
-    "temperature": 41.6,
-    "kwhImportedToday": 0.37,
+    "gridPower": -3.1,
+    "kwhImported": 2202.35,
+    "kwhExported": 1889.76,
+    "temperature": 41.3,
+    "kwhImportedToday": 0.39,
     "kwhExportedToday": 0.11
   },
   "economie": {
@@ -72,7 +72,7 @@
     "coutImport": 0.05,
     "revenuExport": 0.02,
     "bilanJour": -0.03,
-    "kwhImport": 0.37,
+    "kwhImport": 0.39,
     "kwhExport": 0.11
   },
   "tempo": {
@@ -80,7 +80,7 @@
     "tomorrow": "INCONNU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.93527",
+  "scriptVersion": "V50.5.3.93538",
   "brain": {
     "session": [],
     "manual": [],
