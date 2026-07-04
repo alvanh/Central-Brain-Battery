@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-04T15:52:21.000Z",
+  "updatedAt": "2026-07-04T15:57:22.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
@@ -11,19 +11,19 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 48
+      "lastMsg": 49
     },
     {
       "name": "Batterie_2",
       "online": true,
-      "soc": 74,
-      "powerW": -1320,
+      "soc": 72,
+      "powerW": 376,
       "temp": 3.9,
-      "direction": "DISCHARGING",
+      "direction": "CHARGING",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 48
+      "lastMsg": 49
     },
     {
       "name": "Batterie_3",
@@ -35,35 +35,35 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 48
+      "lastMsg": 49
     },
     {
       "name": "Batterie_4",
       "online": true,
       "soc": 100,
       "powerW": 0,
-      "temp": 3.5,
+      "temp": 3.4,
       "direction": "IDLE",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 48
+      "lastMsg": 49
     }
   ],
   "solar": {
     "productionW": 4160
   },
   "grid": {
-    "powerW": -29
+    "powerW": 2240
   },
   "shelly": {
     "online": true,
-    "gridPower": -29.1,
-    "kwhImported": 2216.95,
-    "kwhExported": 1904.07,
-    "temperature": 56.4,
-    "kwhImportedToday": 2.03,
-    "kwhExportedToday": 1.35
+    "gridPower": 2239.5,
+    "kwhImported": 2217.04,
+    "kwhExported": 1904.16,
+    "temperature": 56.6,
+    "kwhImportedToday": 2.04,
+    "kwhExportedToday": 1.36
   },
   "economie": {
     "tarifOA": 0.1376,
@@ -72,15 +72,15 @@
     "coutImport": 0.3,
     "revenuExport": 0.19,
     "bilanJour": -0.11,
-    "kwhImport": 2.03,
-    "kwhExport": 1.35
+    "kwhImport": 2.04,
+    "kwhExport": 1.36
   },
   "tempo": {
     "today": "BLEU",
     "tomorrow": "BLEU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.95297",
+  "scriptVersion": "V50.5.3.95307",
   "brain": {
     "session": [
       "batterie4",
