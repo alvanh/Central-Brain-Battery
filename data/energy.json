@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-04T07:52:21.000Z",
+  "updatedAt": "2026-07-04T07:57:27.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
@@ -11,19 +11,19 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 13
+      "lastMsg": 23
     },
     {
       "name": "Batterie_2",
       "online": true,
       "soc": 19,
-      "powerW": -160,
+      "powerW": -123,
       "temp": 2.6,
       "direction": "DISCHARGING",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 13
+      "lastMsg": 23
     },
     {
       "name": "Batterie_3",
@@ -34,8 +34,8 @@
       "direction": "IDLE",
       "blacklisted": false,
       "excluded": true,
-      "excludedMin": 24,
-      "lastMsg": 13
+      "excludedMin": 19,
+      "lastMsg": 23
     },
     {
       "name": "Batterie_4",
@@ -47,21 +47,21 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 13
+      "lastMsg": 23
     }
   ],
   "solar": {
     "productionW": 330
   },
   "grid": {
-    "powerW": 5
+    "powerW": 26
   },
   "shelly": {
     "online": true,
-    "gridPower": 5.3,
+    "gridPower": 26.2,
     "kwhImported": 2205.91,
     "kwhExported": 1892.8,
-    "temperature": 44.1,
+    "temperature": 44.6,
     "kwhImportedToday": 1.22,
     "kwhExportedToday": 0.35
   },
@@ -80,7 +80,7 @@
     "tomorrow": "INCONNU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.94337",
+  "scriptVersion": "V50.5.3.94347",
   "brain": {
     "session": [
       "batterie4",
@@ -90,6 +90,6 @@
     "failed": [
       "batterie3"
     ],
-    "logTail": "7:48:01 AM | AUTO -> Batterie_4 | session AUTO (Shelly-driven)\n7:48:01 AM | ACTION -> AUTO Batterie_4\n7:49:00 AM | !!! ECHEC COMMANDE : Batterie_2 | attendu=DISCHARGE | reel=IDLE | tentative 2/3\n7:49:01 AM | → Réessai 2/3 pour Batterie_2\n7:49:01 AM | AUTO -> Batterie_4 | session AUTO (Shelly-driven)\n7:49:01 AM | ACTION -> AUTO Batterie_4\n7:50:01 AM | AUTO -> Batterie_4 | session AUTO (Shelly-driven)\n7:50:01 AM | ACTION -> AUTO Batterie_4\n7:51:01 AM | AUTO -> Batterie_4 | session AUTO (Shelly-driven)\n7:51:01 AM | ACTION -> AUTO Batterie_4\n7:52:01 AM | AUTO -> Batterie_4 | session AUTO (Shelly-driven)\n7:52:01 AM | ACTION -> AUTO Batterie_4"
+    "logTail": "7:52:01 AM | AUTO -> Batterie_4 | session AUTO (Shelly-driven)\n7:52:01 AM | ACTION -> AUTO Batterie_4\n7:53:01 AM | AUTO -> Batterie_4 | session AUTO (Shelly-driven)\n7:53:01 AM | ACTION -> AUTO Batterie_4\n7:54:01 AM | AUTO -> Batterie_4 | session AUTO (Shelly-driven)\n7:54:01 AM | ACTION -> AUTO Batterie_4\n7:55:01 AM | AUTO -> Batterie_4 | session AUTO (Shelly-driven)\n7:55:01 AM | ACTION -> AUTO Batterie_4\n7:56:01 AM | AUTO -> Batterie_4 | session AUTO (Shelly-driven)\n7:56:01 AM | ACTION -> AUTO Batterie_4\n7:57:01 AM | AUTO -> Batterie_4 | session AUTO (Shelly-driven)\n7:57:01 AM | ACTION -> AUTO Batterie_4"
   }
 }
