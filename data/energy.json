@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-04T21:17:27.000Z",
+  "updatedAt": "2026-07-04T21:22:20.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
@@ -11,59 +11,59 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 39
+      "lastMsg": 30
     },
     {
       "name": "Batterie_2",
       "online": true,
       "soc": 16,
       "powerW": 0,
-      "temp": 3.5,
+      "temp": 3.4,
       "direction": "IDLE",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 39
+      "lastMsg": 30
     },
     {
       "name": "Batterie_3",
       "online": true,
       "soc": 44,
       "powerW": 0,
-      "temp": 2.9,
+      "temp": 2.8,
       "direction": "IDLE",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 39
+      "lastMsg": 30
     },
     {
       "name": "Batterie_4",
       "online": true,
-      "soc": 38,
-      "powerW": -1063,
+      "soc": 35,
+      "powerW": -1375,
       "temp": 3.3,
       "direction": "DISCHARGING",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 39
+      "lastMsg": 30
     }
   ],
   "solar": {
     "productionW": 0
   },
   "grid": {
-    "powerW": 969
+    "powerW": -19
   },
   "shelly": {
     "online": true,
-    "gridPower": 969.4,
-    "kwhImported": 2221.12,
-    "kwhExported": 1907.41,
-    "temperature": 45.7,
-    "kwhImportedToday": 3,
-    "kwhExportedToday": 1.48
+    "gridPower": -18.9,
+    "kwhImported": 2221.22,
+    "kwhExported": 1907.49,
+    "temperature": 46.1,
+    "kwhImportedToday": 3.01,
+    "kwhExportedToday": 1.49
   },
   "economie": {
     "tarifOA": 0.1376,
@@ -72,15 +72,15 @@
     "coutImport": 0.45,
     "revenuExport": 0.2,
     "bilanJour": -0.25,
-    "kwhImport": 3,
-    "kwhExport": 1.48
+    "kwhImport": 3.01,
+    "kwhExport": 1.49
   },
   "tempo": {
     "today": "BLEU",
     "tomorrow": "BLEU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.95947",
+  "scriptVersion": "V50.5.3.95957",
   "brain": {
     "session": [],
     "manual": [],
