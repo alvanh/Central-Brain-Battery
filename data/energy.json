@@ -1,17 +1,17 @@
 {
-  "updatedAt": "2026-07-04T22:52:26.000Z",
+  "updatedAt": "2026-07-04T22:57:30.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
       "online": true,
-      "soc": 42,
+      "soc": 41,
       "powerW": 0,
       "temp": 2.7,
       "direction": "IDLE",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 32
+      "lastMsg": 38
     },
     {
       "name": "Batterie_2",
@@ -23,19 +23,19 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 32
+      "lastMsg": 38
     },
     {
       "name": "Batterie_3",
       "online": true,
-      "soc": 22,
-      "powerW": -1186,
-      "temp": 2.8,
+      "soc": 21,
+      "powerW": -1125,
+      "temp": 2.9,
       "direction": "DISCHARGING",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 32
+      "lastMsg": 38
     },
     {
       "name": "Batterie_4",
@@ -47,32 +47,32 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 32
+      "lastMsg": 38
     }
   ],
   "solar": {
     "productionW": 0
   },
   "grid": {
-    "powerW": -56
+    "powerW": 22
   },
   "shelly": {
     "online": true,
-    "gridPower": -56.4,
-    "kwhImported": 2222.84,
-    "kwhExported": 1908.89,
-    "temperature": 43.7,
-    "kwhImportedToday": 0.25,
+    "gridPower": 22.1,
+    "kwhImported": 2222.95,
+    "kwhExported": 1908.96,
+    "temperature": 43.2,
+    "kwhImportedToday": 0.3,
     "kwhExportedToday": 0.03
   },
   "economie": {
     "tarifOA": 0.1376,
     "tarifHP": 0.1271,
     "tempoCouleur": "BLEU",
-    "coutImport": 0.03,
+    "coutImport": 0.04,
     "revenuExport": 0,
-    "bilanJour": -0.03,
-    "kwhImport": 0.25,
+    "bilanJour": -0.04,
+    "kwhImport": 0.3,
     "kwhExport": 0.03
   },
   "tempo": {
@@ -80,7 +80,7 @@
     "tomorrow": "BLEU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.96137",
+  "scriptVersion": "V50.5.3.96148",
   "brain": {
     "session": [],
     "manual": [],
