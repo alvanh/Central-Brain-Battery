@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-04T09:17:29.000Z",
+  "updatedAt": "2026-07-04T09:22:21.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
@@ -11,7 +11,7 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 19
+      "lastMsg": 10
     },
     {
       "name": "Batterie_2",
@@ -23,7 +23,7 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 19
+      "lastMsg": 10
     },
     {
       "name": "Batterie_3",
@@ -35,35 +35,35 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 19
+      "lastMsg": 10
     },
     {
       "name": "Batterie_4",
       "online": true,
-      "soc": 21,
-      "powerW": 754,
+      "soc": 23,
+      "powerW": 1394,
       "temp": 2.7,
       "direction": "CHARGING",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 19
+      "lastMsg": 10
     }
   ],
   "solar": {
     "productionW": 3550
   },
   "grid": {
-    "powerW": 105
+    "powerW": 61
   },
   "shelly": {
     "online": true,
-    "gridPower": 105.1,
-    "kwhImported": 2206.97,
-    "kwhExported": 1893.61,
-    "temperature": 48.7,
+    "gridPower": 61.1,
+    "kwhImported": 2207.04,
+    "kwhExported": 1893.69,
+    "temperature": 49.1,
     "kwhImportedToday": 1.51,
-    "kwhExportedToday": 0.39
+    "kwhExportedToday": 0.4
   },
   "economie": {
     "tarifOA": 0.1376,
@@ -73,14 +73,14 @@
     "revenuExport": 0.05,
     "bilanJour": -0.16,
     "kwhImport": 1.51,
-    "kwhExport": 0.39
+    "kwhExport": 0.4
   },
   "tempo": {
     "today": "BLEU",
     "tomorrow": "INCONNU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.94507",
+  "scriptVersion": "V50.5.3.94517",
   "brain": {
     "session": [
       "batterie4",
@@ -88,6 +88,6 @@
     ],
     "manual": [],
     "failed": [],
-    "logTail": "9:12:31 AM | AUTO -> Batterie_2 | session AUTO (Shelly-driven)\n9:12:31 AM | ACTION -> AUTO Batterie_2\n9:13:01 AM | AUTO -> Batterie_2 | session AUTO (Shelly-driven)\n9:13:01 AM | ACTION -> AUTO Batterie_2\n9:14:01 AM | AUTO -> Batterie_2 | session AUTO (Shelly-driven)\n9:14:01 AM | ACTION -> AUTO Batterie_2\n9:15:01 AM | AUTO -> Batterie_2 | session AUTO (Shelly-driven)\n9:15:01 AM | ACTION -> AUTO Batterie_2\n9:16:01 AM | AUTO -> Batterie_2 | session AUTO (Shelly-driven)\n9:16:01 AM | ACTION -> AUTO Batterie_2\n9:17:01 AM | AUTO -> Batterie_2 | session AUTO (Shelly-driven)\n9:17:01 AM | ACTION -> AUTO Batterie_2"
+    "logTail": "9:17:01 AM | AUTO -> Batterie_2 | session AUTO (Shelly-driven)\n9:17:01 AM | ACTION -> AUTO Batterie_2\n9:18:01 AM | AUTO -> Batterie_2 | session AUTO (Shelly-driven)\n9:18:01 AM | ACTION -> AUTO Batterie_2\n9:19:01 AM | AUTO -> Batterie_2 | session AUTO (Shelly-driven)\n9:19:01 AM | ACTION -> AUTO Batterie_2\n9:20:01 AM | AUTO -> Batterie_2 | session AUTO (Shelly-driven)\n9:20:01 AM | ACTION -> AUTO Batterie_2\n9:20:31 AM | AUTO -> Batterie_2 | session AUTO (Shelly-driven)\n9:20:31 AM | ACTION -> AUTO Batterie_2\n9:21:30 AM | AUTO -> Batterie_2 | session AUTO (Shelly-driven)\n9:21:31 AM | ACTION -> AUTO Batterie_2"
   }
 }
