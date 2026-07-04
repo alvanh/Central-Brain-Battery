@@ -1,77 +1,90 @@
 {
-  "updatedAt": "2026-07-04T18:00:00.329Z",
+  "updatedAt": "2026-07-04T18:02:24.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
+      "online": true,
       "soc": 42,
       "powerW": 0,
       "temp": 3,
-      "online": true,
       "direction": "IDLE",
-      "blacklisted": false
+      "blacklisted": false,
+      "excluded": false,
+      "excludedMin": 0,
+      "lastMsg": 46
     },
     {
       "name": "Batterie_2",
-      "soc": 18,
-      "powerW": -2492,
-      "temp": 4,
       "online": true,
-      "direction": "DISCHARGING",
-      "blacklisted": false
+      "soc": 16,
+      "powerW": 0,
+      "temp": 4,
+      "direction": "IDLE",
+      "blacklisted": false,
+      "excluded": false,
+      "excludedMin": 0,
+      "lastMsg": 46
     },
     {
       "name": "Batterie_3",
+      "online": true,
       "soc": 44,
       "powerW": 0,
       "temp": 3,
-      "online": true,
       "direction": "IDLE",
-      "blacklisted": false
+      "blacklisted": false,
+      "excluded": false,
+      "excludedMin": 0,
+      "lastMsg": 46
     },
     {
       "name": "Batterie_4",
+      "online": true,
       "soc": 100,
       "powerW": 0,
       "temp": 3.2,
-      "online": true,
       "direction": "IDLE",
-      "blacklisted": false
+      "blacklisted": false,
+      "excluded": false,
+      "excludedMin": 0,
+      "lastMsg": 46
     }
   ],
   "solar": {
-    "productionW": 720
+    "productionW": 270
   },
   "grid": {
-    "powerW": -639120
+    "powerW": 1557
   },
   "shelly": {
-    "kwhImported": 2218.97,
-    "kwhExported": null,
-    "gridPower": -639.12,
-    "powerA": 309.3,
-    "powerB": -1538.7,
-    "powerC": 590.3,
-    "voltageA": 239.9,
-    "voltageB": 248.5,
-    "voltageC": 242.4,
-    "currentA": 10.97,
-    "currentB": 6.44,
-    "currentC": 2.63,
-    "powerFactor": null
+    "online": true,
+    "gridPower": 1557,
+    "kwhImported": 2219.04,
+    "kwhExported": 1905.43,
+    "temperature": 53.6,
+    "kwhImportedToday": 2.85,
+    "kwhExportedToday": 1.42
+  },
+  "economie": {
+    "tarifOA": 0.1376,
+    "tarifHP": 0.1609,
+    "tempoCouleur": "BLEU",
+    "coutImport": 0.43,
+    "revenuExport": 0.2,
+    "bilanJour": -0.23,
+    "kwhImport": 2.85,
+    "kwhExport": 1.42
   },
   "tempo": {
-    "today": "INCONNU",
-    "tomorrow": "INCONNU"
+    "today": "BLEU",
+    "tomorrow": "BLEU"
   },
-  "events": {
-    "echecCount": 432,
-    "echecs": [],
-    "importAlarmes": 2698,
-    "interdictions": 2,
-    "sessionResets": 0,
-    "blacklists": [],
-    "boostCount": 591,
-    "noBatteryEvents": 1822
-  },
-  "scriptVersion": "V50.5.3.95553"
+  "events": {},
+  "scriptVersion": "V50.5.3.95557",
+  "brain": {
+    "session": [],
+    "manual": [],
+    "failed": [],
+    "logTail": "3:24:31 PM | ACTION -> AUTO Batterie_2\n4:01:31 PM | AUTO -> Batterie_2 | session AUTO (Shelly-driven)\n4:01:31 PM | ACTION -> AUTO Batterie_2\n4:03:31 PM | AUTO -> Batterie_2 | session AUTO (Shelly-driven)\n4:03:31 PM | ACTION -> AUTO Batterie_2\n4:04:31 PM | AUTO -> Batterie_2 | session AUTO (Shelly-driven)\n4:04:31 PM | ACTION -> AUTO Batterie_2\n4:05:01 PM | AUTO -> Batterie_2 | session AUTO (Shelly-driven)\n4:05:01 PM | ACTION -> AUTO Batterie_2\n6:01:31 PM | NIGHT MASTER -> Batterie_4 (SoC=100%)\n6:01:31 PM | STOP -> Batterie_2 | night single\n6:01:31 PM | ACTION -> STOP Batterie_2"
+  }
 }
