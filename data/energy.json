@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-05T02:47:29.000Z",
+  "updatedAt": "2026-07-05T02:52:20.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
@@ -11,31 +11,31 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 21
+      "lastMsg": 11
     },
     {
       "name": "Batterie_2",
       "online": true,
-      "soc": 15,
-      "powerW": -586,
+      "soc": 14,
+      "powerW": -552,
       "temp": 2.9,
       "direction": "DISCHARGING",
       "blacklisted": false,
       "excluded": true,
-      "excludedMin": 17,
-      "lastMsg": 21
+      "excludedMin": 12,
+      "lastMsg": 11
     },
     {
       "name": "Batterie_3",
       "online": true,
       "soc": 15,
       "powerW": 0,
-      "temp": 2.9,
+      "temp": 2.8,
       "direction": "IDLE",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 21
+      "lastMsg": 11
     },
     {
       "name": "Batterie_4",
@@ -47,7 +47,7 @@
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
-      "lastMsg": 21
+      "lastMsg": 11
     }
   ],
   "solar": {
@@ -58,11 +58,11 @@
   },
   "shelly": {
     "online": true,
-    "gridPower": -6.1,
-    "kwhImported": 2225.76,
-    "kwhExported": 1910.08,
-    "temperature": 38.5,
-    "kwhImportedToday": 2.04,
+    "gridPower": -5.9,
+    "kwhImported": 2225.81,
+    "kwhExported": 1910.11,
+    "temperature": 39.2,
+    "kwhImportedToday": 2.07,
     "kwhExportedToday": 0.11
   },
   "economie": {
@@ -72,7 +72,7 @@
     "coutImport": 0.26,
     "revenuExport": 0.02,
     "bilanJour": -0.24,
-    "kwhImport": 2.04,
+    "kwhImport": 2.07,
     "kwhExport": 0.11
   },
   "tempo": {
@@ -80,13 +80,13 @@
     "tomorrow": "INCONNU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.96607",
+  "scriptVersion": "V50.5.3.96617",
   "brain": {
     "session": [],
     "manual": [],
     "failed": [
       "batterie2"
     ],
-    "logTail": "2:41:30 AM | !!! IMPORT ANORMAL mais AUCUNE batterie dispo pour decharge\n2:42:01 AM | !!! NO NIGHT BATTERY DISPO\n2:42:31 AM | !!! NO NIGHT BATTERY DISPO\n2:43:01 AM | !!! NO NIGHT BATTERY DISPO\n2:43:31 AM | !!! NO NIGHT BATTERY DISPO\n2:44:01 AM | !!! NO NIGHT BATTERY DISPO\n2:44:31 AM | !!! NO NIGHT BATTERY DISPO\n2:45:01 AM | !!! NO NIGHT BATTERY DISPO\n2:45:31 AM | !!! NO NIGHT BATTERY DISPO\n2:46:01 AM | !!! NO NIGHT BATTERY DISPO\n2:46:31 AM | !!! NO NIGHT BATTERY DISPO\n2:47:01 AM | !!! NO NIGHT BATTERY DISPO"
+    "logTail": "2:46:31 AM | !!! NO NIGHT BATTERY DISPO\n2:47:01 AM | !!! NO NIGHT BATTERY DISPO\n2:47:31 AM | !!! NO NIGHT BATTERY DISPO\n2:48:01 AM | !!! NO NIGHT BATTERY DISPO\n2:48:31 AM | !!! NO NIGHT BATTERY DISPO\n2:49:01 AM | !!! NO NIGHT BATTERY DISPO\n2:49:31 AM | !!! NO NIGHT BATTERY DISPO\n2:50:01 AM | !!! NO NIGHT BATTERY DISPO\n2:50:31 AM | !!! NO NIGHT BATTERY DISPO\n2:51:01 AM | !!! NO NIGHT BATTERY DISPO\n2:51:31 AM | !!! NO NIGHT BATTERY DISPO\n2:52:01 AM | !!! NO NIGHT BATTERY DISPO"
   }
 }
