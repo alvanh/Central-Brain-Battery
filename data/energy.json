@@ -1,13 +1,13 @@
 {
-  "updatedAt": "2026-07-05T08:42:24.000Z",
+  "updatedAt": "2026-07-05T08:47:28.000Z",
   "batteries": [
     {
       "name": "Batterie_1",
       "online": true,
       "soc": 20,
-      "powerW": 221,
+      "powerW": 0,
       "temp": 2.6,
-      "direction": "CHARGING",
+      "direction": "IDLE",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
@@ -40,10 +40,10 @@
     {
       "name": "Batterie_4",
       "online": true,
-      "soc": 13,
-      "powerW": 0,
+      "soc": 14,
+      "powerW": 1000,
       "temp": 2.6,
-      "direction": "IDLE",
+      "direction": "CHARGING",
       "blacklisted": false,
       "excluded": false,
       "excludedMin": 0,
@@ -54,16 +54,16 @@
     "productionW": 1240
   },
   "grid": {
-    "powerW": 20
+    "powerW": -56
   },
   "shelly": {
     "online": true,
-    "gridPower": 20.5,
-    "kwhImported": 2230.19,
-    "kwhExported": 1910.33,
-    "temperature": 46.3,
+    "gridPower": -55.9,
+    "kwhImported": 2230.21,
+    "kwhExported": 1910.35,
+    "temperature": 46.9,
     "kwhImportedToday": 6.24,
-    "kwhExportedToday": 0.13
+    "kwhExportedToday": 0.14
   },
   "economie": {
     "tarifOA": 0.1376,
@@ -73,14 +73,14 @@
     "revenuExport": 0.02,
     "bilanJour": -0.87,
     "kwhImport": 6.24,
-    "kwhExport": 0.13
+    "kwhExport": 0.14
   },
   "tempo": {
     "today": "BLEU",
     "tomorrow": "INCONNU"
   },
   "events": {},
-  "scriptVersion": "V50.5.3.97317",
+  "scriptVersion": "V50.5.3.97327",
   "brain": {
     "session": [
       "batterie4",
@@ -88,6 +88,6 @@
     ],
     "manual": [],
     "failed": [],
-    "logTail": "8:37:01 AM | AUTO -> Batterie_4 | session AUTO (Shelly-driven)\n8:37:01 AM | ACTION -> AUTO Batterie_4\n8:38:01 AM | AUTO -> Batterie_4 | session AUTO (Shelly-driven)\n8:38:01 AM | ACTION -> AUTO Batterie_4\n8:39:01 AM | AUTO -> Batterie_4 | session AUTO (Shelly-driven)\n8:39:01 AM | ACTION -> AUTO Batterie_4\n8:40:01 AM | AUTO -> Batterie_4 | session AUTO (Shelly-driven)\n8:40:01 AM | ACTION -> AUTO Batterie_4\n8:41:01 AM | AUTO -> Batterie_4 | session AUTO (Shelly-driven)\n8:41:01 AM | ACTION -> AUTO Batterie_4\n8:42:01 AM | AUTO -> Batterie_4 | session AUTO (Shelly-driven)\n8:42:01 AM | ACTION -> AUTO Batterie_4"
+    "logTail": "8:42:01 AM | ACTION -> AUTO Batterie_4\n8:43:01 AM | AUTO -> Batterie_4 | session AUTO (Shelly-driven)\n8:43:01 AM | ACTION -> AUTO Batterie_4\n8:44:01 AM | AUTO -> Batterie_4 | session AUTO (Shelly-driven)\n8:44:01 AM | ACTION -> AUTO Batterie_4\n8:45:01 AM | AUTO -> Batterie_4 | session AUTO (Shelly-driven)\n8:45:01 AM | ACTION -> AUTO Batterie_4\n8:46:01 AM | AUTO -> Batterie_4 | session AUTO (Shelly-driven)\n8:46:01 AM | ACTION -> AUTO Batterie_4\n8:46:31 AM | !!! IMPORT ANORMAL 658.07W : fallback -> Batterie_1\n8:46:31 AM | STOP -> Batterie_1 | fallback import : stop charges\n8:46:31 AM | ACTION -> STOP Batterie_1"
   }
 }
