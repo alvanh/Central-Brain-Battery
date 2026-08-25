@@ -445,6 +445,176 @@ body{
 .rouge-banner-title{ font-size:18px; font-weight:900; margin-bottom:6px; }
 .rouge-banner-text{ font-size:13px; opacity:.9; }
 
+/* ── CLIMATISATION ── */
+.clim-notice{
+  background:linear-gradient(145deg,#fff7ed,#ffedd5);
+  border:1.5px solid #fdba74;
+  border-radius:18px;
+  padding:14px 16px;
+  margin-bottom:12px;
+}
+
+.clim-notice-title{
+  font-size:12px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  color:#c2410c;
+  margin-bottom:6px;
+}
+
+.clim-notice-text{
+  font-size:12px;
+  line-height:1.5;
+  color:#7c2d12;
+}
+
+.clim-demo-banner{
+  background:#111827;
+  color:#fff;
+  border-radius:14px;
+  padding:10px 14px;
+  margin-bottom:12px;
+  font-size:12px;
+  font-weight:700;
+  text-align:center;
+}
+
+/* Une carte clim porte beaucoup de texte : une seule colonne sous 520 px. */
+#climContainer{
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  align-items:start;
+}
+
+.clim-card{
+  background:#fff;
+  border-radius:20px;
+  padding:14px;
+  box-shadow:0 6px 20px rgba(0,0,0,.07);
+  border:1px solid rgba(0,0,0,.05);
+  border-top:4px solid #d1d5db;
+  text-align:left;
+}
+
+.clim-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:6px;
+  margin-bottom:8px;
+}
+
+.clim-name{
+  font-size:14px;
+  font-weight:900;
+  color:#111827;
+  line-height:1.2;
+}
+
+.clim-zone{
+  font-size:10px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  color:#9ca3af;
+}
+
+.clim-icon{ font-size:22px; line-height:1; }
+
+.clim-setpoint{
+  font-size:34px;
+  font-weight:950;
+  letter-spacing:-1.5px;
+  line-height:1;
+}
+
+.clim-setpoint sup{ font-size:16px; font-weight:700; }
+
+.clim-setpoint-label{
+  font-size:10px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.07em;
+  color:#9ca3af;
+  margin-bottom:2px;
+}
+
+.clim-mode{
+  font-size:12px;
+  font-weight:800;
+  margin-top:4px;
+}
+
+.clim-row{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-size:11px;
+  color:#4b5563;
+  margin-top:8px;
+  padding-top:8px;
+  border-top:1px solid #f1f5f9;
+}
+
+.clim-badge{
+  display:inline-block;
+  font-size:10px;
+  font-weight:800;
+  padding:3px 8px;
+  border-radius:99px;
+  letter-spacing:.02em;
+}
+
+.clim-warn{
+  background:#fef2f2;
+  color:#b91c1c;
+  border-radius:10px;
+  padding:7px 9px;
+  font-size:11px;
+  font-weight:600;
+  line-height:1.4;
+  margin-top:8px;
+}
+
+.clim-check{
+  background:#fff;
+  border-radius:18px;
+  padding:14px 16px;
+  margin-bottom:12px;
+  box-shadow:0 6px 20px rgba(0,0,0,.07);
+}
+
+.clim-check-title{
+  font-size:11px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:#6b7280;
+  margin-bottom:10px;
+}
+
+.clim-check-line{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  font-size:12px;
+  color:#4b5563;
+  padding:4px 0;
+}
+
+.clim-check-line b{ font-size:14px; color:#111827; }
+
+.clim-empty{
+  background:#fff;
+  border-radius:18px;
+  padding:22px 18px;
+  text-align:center;
+  box-shadow:0 6px 20px rgba(0,0,0,.07);
+  font-size:13px;
+  line-height:1.6;
+  color:#6b7280;
+}
+
 @media(max-width:370px){
   .app{ padding:14px 10px 30px; }
   .metric-value{ font-size:34px; }
@@ -466,6 +636,7 @@ body{
   <!-- TABS -->
   <div class="tabs">
     <div class="tab active" onclick="showTab('energie')">Énergie</div>
+    <div class="tab" onclick="showTab('clim')">Clim</div>
     <div class="tab" onclick="showTab('veille');loadVeille()">Veille</div>
     <div class="tab" onclick="showTab('roi')">ROI</div>
     <div class="tab" onclick="showTab('alertes')">Alertes</div>
@@ -571,6 +742,41 @@ body{
       <div class="refresh" onclick="loadData()">↻</div>
       <div>Dernière mise à jour</div>
       <div id="updatedAt">--</div>
+    </div>
+  </div>
+
+  <!-- PAGE CLIMATISATION -->
+  <div class="page" id="page-clim">
+
+    <!-- Bandeau aperçu (?demo=clim) -->
+    <div class="clim-demo-banner" id="climDemoBanner" style="display:none;">
+      🧪 APERÇU — données fictives, ce ne sont pas vos climatisations
+    </div>
+
+    <!-- Rappel de la limite : pilotage infrarouge -->
+    <div class="clim-notice">
+      <div class="clim-notice-title">📡 Pilotage infrarouge — liaison à sens unique</div>
+      <div class="clim-notice-text">
+        Homey commande les splits par émetteur infrarouge, exactement comme une télécommande :
+        l'ordre part, mais l'unité ne renvoie rien. Ce qui est affiché ici est donc la
+        <b>dernière commande envoyée</b>, jamais l'état réel de la clim. Une commande passée
+        à la télécommande d'origine, une coupure secteur ou un ordre non reçu restent invisibles
+        pour Homey. Les seuls repères fiables sont la <b>température de la pièce</b> (quand un
+        vrai capteur existe) et la <b>consommation mesurée par le Shelly</b>.
+      </div>
+    </div>
+
+    <!-- Recoupement avec la consommation réelle -->
+    <div id="climCrosscheck"></div>
+
+    <!-- Unités -->
+    <div class="grid" id="climContainer"></div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="refresh" onclick="loadData()">↻</div>
+      <div>Dernière mise à jour</div>
+      <div id="climUpdatedAt">--</div>
     </div>
   </div>
 
@@ -1088,6 +1294,201 @@ async function loadEconomicHistory() {
   } catch(e) { console.warn('History erreur:', e); }
 }
 
+// ── CLIMATISATION ──
+// Les splits du rez-de-chaussée sont pilotés par émetteur infrarouge : la liaison est à
+// sens unique. Homey sait ce qu'il a envoyé, jamais ce que fait réellement l'unité — donc
+// on n'affiche jamais ces valeurs comme un état mesuré, mais comme une commande envoyée.
+// Deux recoupements seulement sont de vraies mesures :
+//   1. la température de la pièce, si un capteur existe dans la zone ;
+//   2. la consommation maison mesurée par le Shelly Pro 3EM.
+const CLIM_BASE_LOAD_W = 400;  // conso maison de base hors clim (350-400 W constatés)
+const CLIM_MIN_DRAW_W  = 250;  // un split en marche tire au minimum ~250 W
+const CLIM_DRIFT_C     = 2;    // écart pièce/consigne au-delà duquel la commande est douteuse
+const CLIM_STALE_H     = 12;   // au-delà, la dernière commande ne renseigne plus sur rien
+
+const CLIM_DEMO = [
+  { name:'Clim Salon',   zone:'Rez-de-chaussée', online:true, power:true,  mode:'cool', target:21, roomTemp:26.4, roomTempSource:'Capteur Salon', fan:'auto', openLoop:true, powerW:null, lastCommandAt:new Date(Date.now()-2*3600e3).toISOString() },
+  { name:'Clim Cuisine', zone:'Rez-de-chaussée', online:true, power:true,  mode:'cool', target:22, roomTemp:22.3, roomTempSource:'Capteur Cuisine', fan:'medium', openLoop:true, powerW:null, lastCommandAt:new Date(Date.now()-25*60e3).toISOString() },
+  { name:'Clim Bureau',  zone:'Rez-de-chaussée', online:true, power:false, mode:null,   target:20, roomTemp:null, roomTempSource:null, fan:null, openLoop:true, powerW:null, lastCommandAt:new Date(Date.now()-30*3600e3).toISOString() }
+];
+
+function climIsDemo() {
+  try { return new URLSearchParams(location.search).get('demo') === 'clim'; }
+  catch(e) { return false; }
+}
+
+function climModeVisual(u) {
+  const m = String(u.mode || '').toLowerCase();
+  if (u.power === false)  return { icon:'⏻',  label:'Éteinte',      color:'#8e8e93', border:'#d1d5db' };
+  if (u.power === null || u.power === undefined)
+                          return { icon:'❔',  label:'Inconnu',      color:'#8e8e93', border:'#d1d5db' };
+  if (m.includes('cool') || m.includes('froid')) return { icon:'❄️', label:'Froid',        color:'#0a84ff', border:'#0a84ff' };
+  if (m.includes('heat') || m.includes('chaud')) return { icon:'🔥', label:'Chaud',        color:'#ff6b00', border:'#ff6b00' };
+  if (m.includes('dry')  || m.includes('deshu')) return { icon:'💧', label:'Déshumidif.',  color:'#06b6d4', border:'#06b6d4' };
+  if (m.includes('fan')  || m.includes('vent'))  return { icon:'🌀', label:'Ventilation',  color:'#64748b', border:'#94a3b8' };
+  if (m.includes('auto'))                        return { icon:'🔄', label:'Auto',         color:'#7c3aed', border:'#7c3aed' };
+  return { icon:'❄️', label:'En marche', color:'#0a84ff', border:'#0a84ff' };
+}
+
+function climAge(iso) {
+  if (!iso) return null;
+  const t = new Date(iso).getTime();
+  if (!isFinite(t)) return null;
+  const hours = (Date.now() - t) / 3600000;
+  return {
+    hours,
+    clock: new Date(t).toLocaleTimeString('fr-FR', { hour:'2-digit', minute:'2-digit' }),
+    text:  formatDuration(Math.max(0, hours))
+  };
+}
+
+// Écart entre la consigne envoyée et ce que mesure vraiment la pièce.
+// C'est le seul indice par unité qu'une commande n'est pas passée.
+function climDrift(u) {
+  if (u.power !== true) return null;
+  if (u.roomTemp == null || u.target == null) return null;
+  const m = String(u.mode || '').toLowerCase();
+  const diff = Number(u.roomTemp) - Number(u.target);
+  if (!m.includes('heat') && !m.includes('chaud') && diff > CLIM_DRIFT_C)
+    return `La pièce est à ${Number(u.roomTemp).toFixed(1)} °C pour une consigne de ${u.target} °C : soit la commande n'est pas passée, soit l'unité vient de démarrer.`;
+  if ((m.includes('heat') || m.includes('chaud')) && -diff > CLIM_DRIFT_C)
+    return `La pièce est à ${Number(u.roomTemp).toFixed(1)} °C pour une consigne de ${u.target} °C : soit la commande n'est pas passée, soit l'unité vient de démarrer.`;
+  return null;
+}
+
+function renderClimUnit(u) {
+  const v     = climModeVisual(u);
+  const age   = climAge(u.lastCommandAt);
+  const stale = age && age.hours > CLIM_STALE_H;
+  const drift = climDrift(u);
+
+  // Une unité qui mesure sa propre puissance n'est plus en aveugle : on l'affiche comme telle.
+  const hasRealPower = u.powerW != null && !isNaN(Number(u.powerW));
+  const confirmed    = hasRealPower ? Number(u.powerW) > 30 : null;
+
+  const targetHtml = u.target != null
+    ? `<div class="clim-setpoint" style="color:${u.power ? v.color : '#9ca3af'}">${Math.round(Number(u.target))}<sup>°C</sup></div>`
+    : `<div class="clim-setpoint" style="color:#9ca3af">--</div>`;
+
+  const stateBadge = u.online === false
+    ? `<span class="clim-badge" style="background:#f4f4f5;color:#6b7280;">Hors ligne</span>`
+    : hasRealPower
+      ? `<span class="clim-badge" style="background:${confirmed?'#f0fdf4':'#f4f4f5'};color:${confirmed?'#15803d':'#6b7280'};">${confirmed ? '✓ Confirmée par la conso' : '✓ Mesurée à l\'arrêt'}</span>`
+      : `<span class="clim-badge" style="background:#fff7ed;color:#c2410c;">⚠︎ État non confirmé</span>`;
+
+  const roomHtml = u.roomTemp != null
+    ? `<div class="clim-row">
+         <span>🌡️</span>
+         <span>Pièce <b style="color:#111827;">${Number(u.roomTemp).toFixed(1)} °C</b></span>
+         <span title="${u.roomTempSource || ''}" style="margin-left:auto;color:#9ca3af;font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:45%;">${u.roomTempSource ? 'mesuré · ' + u.roomTempSource : 'mesuré'}</span>
+       </div>`
+    : `<div class="clim-row"><span>🌡️</span><span style="color:#9ca3af;">Aucun capteur de température dans la pièce</span></div>`;
+
+  const powerHtml = hasRealPower
+    ? `<div class="clim-row"><span>⚡</span><span>Consommation <b style="color:#111827;">${fmtW(Number(u.powerW))}</b></span></div>`
+    : '';
+
+  const ageHtml = age
+    ? `<div class="clim-row">
+         <span>🕐</span>
+         <span>Commande envoyée à <b style="color:#111827;">${age.clock}</b></span>
+         <span style="margin-left:auto;color:${stale ? '#b91c1c' : '#9ca3af'};font-size:10px;font-weight:700;">il y a ${age.text}</span>
+       </div>`
+    : `<div class="clim-row"><span>🕐</span><span style="color:#9ca3af;">Date de la dernière commande inconnue</span></div>`;
+
+  const staleHtml = stale
+    ? `<div class="clim-warn">Dernière commande il y a plus de ${CLIM_STALE_H} h : ce qui est affiché ne dit plus rien de l'état actuel de l'unité.</div>`
+    : '';
+
+  const driftHtml = drift ? `<div class="clim-warn">${drift}</div>` : '';
+
+  const fanHtml = u.fan
+    ? `<span style="font-size:11px;color:#6b7280;font-weight:600;"> · Vitesse ${String(u.fan).toLowerCase()}</span>`
+    : '';
+
+  return `
+    <div class="clim-card" style="border-top-color:${u.power ? v.border : '#d1d5db'}">
+      <div class="clim-head">
+        <div>
+          <div class="clim-name">${u.name || 'Climatisation'}</div>
+          ${u.zone ? `<div class="clim-zone">${u.zone}</div>` : ''}
+        </div>
+        <div class="clim-icon">${v.icon}</div>
+      </div>
+      <div class="clim-setpoint-label">Consigne envoyée</div>
+      ${targetHtml}
+      <div class="clim-mode" style="color:${v.color}">${v.label}${fanHtml}</div>
+      <div style="margin-top:8px;">${stateBadge}</div>
+      ${roomHtml}
+      ${powerHtml}
+      ${ageHtml}
+      ${driftHtml}
+      ${staleHtml}
+    </div>`;
+}
+
+// Recoupement global : le Shelly mesure toute la maison, pas chaque split.
+// Il ne permet donc pas d'attribuer une consommation à une unité précise, seulement
+// de dire si une clim tourne quelque part — ce qui suffit à détecter le cas le plus
+// gênant : tout est commandé en marche et rien ne consomme.
+function renderClimCrosscheck(units, consoW) {
+  const on = units.filter(u => u.power === true);
+  if (!units.length) return '';
+
+  const known = consoW != null && !isNaN(consoW);
+  const above = known ? Math.round(consoW - CLIM_BASE_LOAD_W) : null;
+
+  let verdict = '';
+  if (!on.length) {
+    verdict = `<div class="clim-warn" style="background:#f8fafc;color:#475569;">Aucune unité n'est commandée en marche. Attention : si quelqu'un a allumé un split à la télécommande d'origine, Homey n'en sait rien.</div>`;
+  } else if (!known) {
+    verdict = `<div class="clim-warn" style="background:#f8fafc;color:#475569;">Consommation maison indisponible : aucun recoupement possible pour l'instant.</div>`;
+  } else if (above < CLIM_MIN_DRAW_W) {
+    verdict = `<div class="clim-warn">${on.length} unité${on.length>1?'s':''} commandée${on.length>1?'s':''} en marche, mais la maison ne consomme que ${fmtW(consoW)} — soit ${above > 0 ? fmtW(above) : 'rien'} au-dessus de la base. Aucune consommation compatible avec un split en fonctionnement : les commandes ne sont probablement pas passées.</div>`;
+  } else {
+    verdict = `<div class="clim-warn" style="background:#f0fdf4;color:#15803d;">${fmtW(above)} au-dessus de la consommation de base : compatible avec ${on.length} unité${on.length>1?'s':''} en marche. Le Shelly mesure toute la maison, il ne peut pas dire laquelle.</div>`;
+  }
+
+  return `
+    <div class="clim-check">
+      <div class="clim-check-title">🔍 Recoupement avec la consommation réelle</div>
+      <div class="clim-check-line"><span>Commandées en marche</span><b>${on.length} / ${units.length}</b></div>
+      <div class="clim-check-line"><span>Conso maison (Shelly)</span><b>${known ? fmtW(consoW) : '--'}</b></div>
+      <div class="clim-check-line"><span>Base hors clim (référence)</span><b>${fmtW(CLIM_BASE_LOAD_W)}</b></div>
+      ${verdict}
+    </div>`;
+}
+
+function renderClim(data, consoW) {
+  const container = document.getElementById('climContainer');
+  const check     = document.getElementById('climCrosscheck');
+  const banner    = document.getElementById('climDemoBanner');
+  if (!container) return;
+
+  const demo  = climIsDemo();
+  const units = demo ? CLIM_DEMO : (data.climatisation || data.clim || []);
+  if (banner) banner.style.display = demo ? 'block' : 'none';
+
+  const upd = document.getElementById('climUpdatedAt');
+  if (upd && data.updatedAt) upd.textContent = new Date(data.updatedAt).toLocaleTimeString('fr-FR');
+
+  if (!units.length) {
+    check.innerHTML = '';
+    container.innerHTML = `
+      <div class="clim-empty" style="grid-column:1 / -1;">
+        Aucune climatisation reçue de Homey.<br><br>
+        Le script <b>brain/homey-live-push.js</b> doit être redéployé dans HomeyScript :
+        il détecte les unités automatiquement (nom contenant « clim » ou classe
+        <i>thermostat</i>) et les pousse dans <b>data/energy.json</b>.<br><br>
+        <a href="?demo=clim" style="color:#0066ff;font-weight:700;text-decoration:none;">Voir un aperçu de la mise en page →</a>
+      </div>`;
+    return;
+  }
+
+  check.innerHTML     = renderClimCrosscheck(units, demo ? 520 : consoW);
+  container.innerHTML = units.map(renderClimUnit).join('');
+}
+
 // ── LOAD DATA ──
 const GITHUB_RAW = 'https://raw.githubusercontent.com/alvanh/Central-Brain-Battery/main';
 const ENERGY_URL  = GITHUB_RAW + '/data/energy.json';
@@ -1170,6 +1571,9 @@ async function loadData() {
 
     // Alertes
     buildAlertes(data);
+
+    // Climatisation (splits IR — voir renderClim)
+    renderClim(data, consoW);
 
     // ── ROI dynamique ──
     (function buildROI() {
@@ -1506,6 +1910,8 @@ function renderVeille(data) {
 
 // ── INIT ──
 initWeather();
+// Le panneau Clim s'affiche même si le chargement des données échoue.
+renderClim({}, null);
 loadData();
 // Polling rapide 3s — redessine seulement si les données ont changé
 let _lastSolarW = null;
